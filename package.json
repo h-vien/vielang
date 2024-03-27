@@ -1,0 +1,32 @@
+{
+  "name": "vietlang",
+  "version": "1.0.0",
+  "description": "Vietnamese programing language",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon",
+    "build": "rimraf ./dist && tsc && tsc-alias",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/N3iV/vietlang.git"
+  },
+  "keywords": [
+    "vietlang"
+  ],
+  "author": "vienhuynh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N3iV/vietlang/issues"
+  },
+  "homepage": "https://github.com/N3iV/vietlang#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "typescript": "^5.4.3"
+  }
+}
