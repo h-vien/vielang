@@ -1,2 +1,5 @@
-const name: string = 'Vienn Huynh'
-console.log(name)
+import Parser from "./parser";
+
+const parser = new Parser();
+
+export default parser;

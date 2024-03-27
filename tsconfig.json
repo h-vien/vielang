@@ -9,7 +9,13 @@
       "skipLibCheck": true ,
       "baseUrl": ".",
       "paths": {
-        "~/*": ["src/*"] 
+        "~/*": ["src/*"] ,
+        "@parser": [
+          "./src/index.ts"
+        ],
+        "@parser/*": [
+          "./src/*"
+        ]
       }
     },
     "ts-node": {
