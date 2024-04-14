@@ -1,5 +1,5 @@
-import Parser from "./parser";
+import { Parser } from './parser'
 
-const parser = new Parser();
+const parser = new Parser()
 
-export default parser;
+export default parser
