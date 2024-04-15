@@ -1,4 +1,4 @@
-import { Keyword } from '~/constants/keyword'
+import { Keyword } from '@parser/constants/keyword'
 import { Operator } from './operator'
 
 export type Token = {

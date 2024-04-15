@@ -23,18 +23,18 @@ export class Tokenizer {
   }
 
   public isEOF() {
-    return this.cursor === this.parser._syntax.length
+    return this.cursor === this.parser.syntax.length
   }
 
   public hasMoreTokens() {
-    return this.cursor < this.parser._syntax.length
+    return this.cursor < this.parser.syntax.length
   }
 
   public getNextToken(): Token | null {
     if (!this.hasMoreTokens()) {
       return null
     }
-    const string = this.parser._syntax.slice(this.cursor)
+    const string = this.parser.syntax.slice(this.cursor)
 
     for (const [regexp, tokenType] of Specs) {
       const tokenValue = this.match(regexp, string)

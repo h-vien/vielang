@@ -1,4 +1,4 @@
-import { Spec } from '~/types/spec'
+import { Spec } from '@parser/types/spec'
 import { Keyword } from './keyword'
 
 export const SpecIdentifier = [/^[A-Za-z\u00C0-\u1EF9]+(\s[A-Za-z\u00C0-\u1EF9]+)*/, Keyword.IDENTIFIER] as Spec

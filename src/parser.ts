@@ -1,49 +1,44 @@
+import { Keyword } from './constants/keyword'
+import { Program } from './program'
 import { Tokenizer } from './tokenizer'
+import { Token } from './types/token'
 
 export class Parser {
-  _syntax: string
-  _tokenizer: Tokenizer
-  _nextToken: any
+  syntax: string
+  tokenizer: Tokenizer
+  nextToken: any
   constructor() {
-    this._syntax = ''
-    this._tokenizer = new Tokenizer(this)
-    this._nextToken = this._tokenizer.getNextToken()
+    this.syntax = ''
+    this.tokenizer = new Tokenizer(this)
+    this.nextToken = this.tokenizer.getNextToken()
   }
+
   parse(syntax: string) {
-    console.log(syntax, 'syntax')
-    this._syntax = syntax
-    this._tokenizer = new Tokenizer(this)
-    this._nextToken = this._tokenizer.getNextToken()
-    return this.Program()
-    //
+    //Reset the tokenizer and nextToken
+    this.nextToken = null
+    this.syntax = ''
+
+    // Set the syntax and tokenizer
+    this.syntax = syntax
+    this.tokenizer = new Tokenizer(this)
+    this.nextToken = this.tokenizer.getNextToken()
+    return new Program(this)
   }
 
-  Program() {
-    return this.NumericLiteral()
-  }
+  validate(type: Token['type']) {
+    const token = this.nextToken
+    if (token === null) throw new SyntaxError(`Unexpected end of input, expected: "${type}`)
 
-  _eat(type: string) {
-    const token = this._nextToken
-    console.log(token, 'log token')
     if (token.type !== type) {
-      throw new Error(`Unexpected token: ${token.type}`)
+      if (type === Keyword.IDENTIFIER)
+        throw new SyntaxError(
+          `Unexpected token: "${token.value}", cannot use keyword "${token.value}" for the beginning of the identifer`
+        )
+      throw new SyntaxError(`Unexpected token: "${token.value}", expected: "${type}"`)
     }
-    if (token === null) {
-      throw new Error(`Unexpected end of input`)
-    }
-    this._nextToken = this._tokenizer.getNextToken()
 
+    this.nextToken = this.tokenizer.getNextToken()
+    console.log(this.nextToken, 'this.nextToken')
     return token
-  }
-
-  NumericLiteral() {
-    console.log(this._syntax, 'this._syntax')
-    const token = this._eat('NUMBER')
-    return {
-      type: 'NumericLiteral',
-      value: Number(token.value),
-      start: 0,
-      end: 0
-    }
   }
 }

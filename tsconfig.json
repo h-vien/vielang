@@ -9,7 +9,6 @@
       "skipLibCheck": true ,
       "baseUrl": ".",
       "paths": {
-        "~/*": ["src/*"] ,
         "@parser": [
           "./src/index.ts"
         ],
