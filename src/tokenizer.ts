@@ -1,4 +1,6 @@
+import { Specs } from './constants/specs'
 import { Parser } from './parser'
+import { Token } from './types/token'
 
 export class Tokenizer {
   private parser: Parser
@@ -9,42 +11,46 @@ export class Tokenizer {
     this.parser = parser
     this.cursor = 0
   }
+  private match(regexp: RegExp, syntax: string) {
+    const matched = regexp.exec(syntax)
 
-  isEOF() {
+    if (matched === null) {
+      return null
+    }
+    this.cursor += matched[0].length
+
+    return matched[0]
+  }
+
+  public isEOF() {
     return this.cursor === this.parser._syntax.length
   }
-  hasMoreTokens() {
-    console.log(this.cursor, this.parser._syntax.length, 'this.cursor < this.parser._syntax.length')
+
+  public hasMoreTokens() {
     return this.cursor < this.parser._syntax.length
   }
-  getNextToken() {
+
+  public getNextToken(): Token | null {
     if (!this.hasMoreTokens()) {
       return null
     }
     const string = this.parser._syntax.slice(this.cursor)
-    console.log(string, 'log day ne string')
-    if (!Number.isNaN(Number(string[0]))) {
-      let number = ''
-      while (!Number.isNaN(Number(string[this.cursor]))) {
-        number += string[this.cursor++]
-      }
+
+    for (const [regexp, tokenType] of Specs) {
+      const tokenValue = this.match(regexp, string)
+
+      if (tokenValue === null) continue
+
+      if (tokenType === null) return this.getNextToken()
+
       return {
-        type: 'NUMBER',
-        value: Number(number)
+        type: tokenType,
+        value: tokenValue,
+        start: this.cursor - String(tokenValue).length,
+        end: this.cursor
       }
     }
 
-    if (string[0] === '"') {
-      let string = ''
-      while (string[this.cursor] !== '"' && this.isEOF()) {
-        string += string[this.cursor++]
-      }
-      this.cursor++
-      return {
-        type: 'STRING',
-        value: string
-      }
-    }
-    return null
+    throw new SyntaxError(`Unexpected token: "${string[0]}"`)
   }
 }
