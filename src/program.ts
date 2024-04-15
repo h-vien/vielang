@@ -6,6 +6,5 @@ export class Program {
   body: any
   constructor(parser: Parser) {
     this.body = new VariableDeclaration(parser)
-    console.log('Program', parser)
   }
 }

@@ -7,7 +7,6 @@ export class Tokenizer {
   private cursor: number
 
   constructor(parser: Parser) {
-    console.log(parser, 'parser')
     this.parser = parser
     this.cursor = 0
   }
@@ -40,7 +39,6 @@ export class Tokenizer {
       const tokenValue = this.match(regexp, string)
       if (tokenValue === null) continue
 
-      console.log(tokenValue, 'tokenValue', tokenType, 'tokenType', regexp, string)
       if (tokenType === null) return this.getNextToken()
 
       return {

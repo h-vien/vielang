@@ -28,11 +28,10 @@ export class Parser {
   validate(type: Token['type']) {
     const token = this.nextToken
     if (token === null) throw new SyntaxError(`Unexpected end of input, expected: "${type}`)
-
     if (token.type !== type) {
       if (type === Keyword.IDENTIFIER)
         throw new SyntaxError(
-          `Unexpected token: "${token.value}", cannot use keyword "${token.value}" for the beginning of the identifer`
+          `Unexpected token: "${token.value}", cannot use keyword "${token.value}" for the beginning of the identifier`
         )
       throw new SyntaxError(`Unexpected token: "${token.value}", expected: "${type}"`)
     }
