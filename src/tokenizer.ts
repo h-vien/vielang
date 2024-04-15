@@ -38,9 +38,9 @@ export class Tokenizer {
 
     for (const [regexp, tokenType] of Specs) {
       const tokenValue = this.match(regexp, string)
-
       if (tokenValue === null) continue
 
+      console.log(tokenValue, 'tokenValue', tokenType, 'tokenType', regexp, string)
       if (tokenType === null) return this.getNextToken()
 
       return {

@@ -38,7 +38,6 @@ export class Parser {
     }
 
     this.nextToken = this.tokenizer.getNextToken()
-    console.log(this.nextToken, 'this.nextToken')
     return token
   }
 }

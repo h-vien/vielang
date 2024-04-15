@@ -75,7 +75,7 @@ export const Specs: Array<Spec> = [
 
   // --------------------------------------
   // Keywords
-  [/^\b(var|khai b\u00E1o)\b/, Keyword.VAR], // khai báo
+  [/^\b(var|khai b\u00E1o)\b/, Keyword.LET], // khai báo
   [/^\b(break|ph\u00E1 v\u00F2ng l\u1EB7p)\b/, Keyword.BREAK], // phá vòng lặp
   [/^\b(do|th\u1EF1c hi\u1EC7n)\b/, Keyword.DO], // thực hiện
   [/^\binstanceof\b/, Keyword.INSTANCEOF],
