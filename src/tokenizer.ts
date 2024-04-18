@@ -1,5 +1,5 @@
 import { Keyword } from './constants/keyword'
-import { Specs } from './constants/specs'
+import { EdgeCaseSpecs, Specs } from './constants/specs'
 import { Parser } from './parser'
 import { Token } from './types/token'
 
@@ -35,18 +35,22 @@ export class Tokenizer {
       return null
     }
     const string = this.parser.syntax.slice(this.cursor)
-    if (string === 'vô giá trị') {
+
+    //Todo: handle this with regex later
+    for (const [tokenValue, tokenType] of EdgeCaseSpecs) {
+      if (tokenValue !== string) continue
+      if (tokenType === null) return this.getNextToken()
+
       return {
-        type: Keyword.NULL,
-        value: Keyword.NULL,
+        type: tokenType,
+        value: tokenType,
         start: this.cursor,
-        end: this.cursor + 12
+        end: this.cursor + String(tokenValue).length
       }
     }
     for (const [regexp, tokenType] of Specs) {
       const tokenValue = this.match(regexp, string)
       if (tokenValue === null) continue
-
       if (tokenType === null) return this.getNextToken()
 
       return {

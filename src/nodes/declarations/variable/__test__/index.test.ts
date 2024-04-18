@@ -148,7 +148,7 @@ describe('Test for null declaration', () => {
           init: {
             type: 'NullLiteral',
             start: 13,
-            end: 25
+            end: 23
           }
         }
       ],

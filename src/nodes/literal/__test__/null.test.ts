@@ -17,7 +17,7 @@ describe('Test for null literal', () => {
     expect(toPlainObject(result)).toStrictEqual({
       type: 'NullLiteral',
       start: 0,
-      end: 12
+      end: 10
     } as StringLiteral)
   })
 })
