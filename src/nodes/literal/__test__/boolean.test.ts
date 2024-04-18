@@ -3,7 +3,7 @@ import { BooleanLiteral } from '../boolean'
 import { parserNode } from '@parser/test'
 import { Literal } from '..'
 
-describe('literal-boolean.test', () => {
+describe('Test for boolean literal', () => {
   it('should parse the syntax normally', () => {
     const result = parserNode.parse('sai', Literal)
 
