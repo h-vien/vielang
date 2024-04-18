@@ -1,5 +1,5 @@
 import { Keyword } from '@parser/constants/keyword'
-import { Literal } from '@parser/literal'
+import { Literal } from '@parser/nodes/literal'
 import { Parser } from '@parser/parser'
 
 export class Expression {

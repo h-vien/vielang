@@ -2,6 +2,7 @@ import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { NumericLiteral } from './numeric'
 import { StringLiteral } from './string'
+import { BooleanLiteral } from './boolean'
 
 export class Literal {
   constructor(parser: Parser) {
@@ -12,6 +13,10 @@ export class Literal {
       }
       case Keyword.STRING: {
         Object.assign(this, new StringLiteral(parser))
+        break
+      }
+      case Keyword.BOOLEAN: {
+        Object.assign(this, new BooleanLiteral(parser))
         break
       }
     }

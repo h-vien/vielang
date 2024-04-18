@@ -13,6 +13,9 @@ export class Parser {
     this.nextToken = this.tokenizer.getNextToken()
   }
 
+  //Overload function
+  public parse(syntax: string, InitAtsNodeClass?: any): any
+
   parse(syntax: string) {
     //Reset the tokenizer and nextToken
     this.nextToken = null

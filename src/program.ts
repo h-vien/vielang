@@ -1,5 +1,5 @@
 import { Parser } from '@parser/parser'
-import { VariableDeclaration } from './declarations/variable/declaration'
+import { VariableDeclaration } from './nodes/declarations/variable/declaration'
 
 export class Program {
   type = 'Program'

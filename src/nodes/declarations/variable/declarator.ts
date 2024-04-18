@@ -1,6 +1,6 @@
 import { Keyword } from '@parser/constants/keyword'
-import { Expression } from '@parser/expression'
-import { Identifier } from '@parser/identifier'
+import { Expression } from '@parser/nodes/expression'
+import { Identifier } from '@parser/nodes/identifier'
 import { Parser } from '@parser/parser'
 
 export class VariableDeclarator {
