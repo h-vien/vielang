@@ -1,3 +1,4 @@
+import { Keyword } from './constants/keyword'
 import { Specs } from './constants/specs'
 import { Parser } from './parser'
 import { Token } from './types/token'
@@ -34,7 +35,14 @@ export class Tokenizer {
       return null
     }
     const string = this.parser.syntax.slice(this.cursor)
-
+    if (string === 'vô giá trị') {
+      return {
+        type: Keyword.NULL,
+        value: Keyword.NULL,
+        start: this.cursor,
+        end: this.cursor + 12
+      }
+    }
     for (const [regexp, tokenType] of Specs) {
       const tokenValue = this.match(regexp, string)
       if (tokenValue === null) continue

@@ -84,32 +84,75 @@ describe('Test for string declaration', () => {
       kind: 'let'
     } as VariableDeclaration)
   })
-  describe('Test for string declaration', () => {
-    it('should parse the string syntax normally', () => {
-      const result = parser.parse(`khai báo tên con vật = 'Nhím'`)
-      expect(toPlainObject(result.body)).toStrictEqual({
-        type: 'VariableDeclaration',
-        declarations: [
-          {
-            type: 'VariableDeclarator',
-            id: {
-              type: 'Identifier',
-              name: 'tên con vật'
+  it('should parse the string syntax normally', () => {
+    const result = parser.parse(`khai báo tên con vật = 'Nhím'`)
+    expect(toPlainObject(result.body)).toStrictEqual({
+      type: 'VariableDeclaration',
+      declarations: [
+        {
+          type: 'VariableDeclarator',
+          id: {
+            type: 'Identifier',
+            name: 'tên con vật'
+          },
+          init: {
+            type: 'StringLiteral',
+            value: 'Nhím',
+            extra: {
+              rawValue: 'Nhím',
+              raw: '"Nhím"'
             },
-            init: {
-              type: 'StringLiteral',
-              value: 'Nhím',
-              extra: {
-                rawValue: 'Nhím',
-                raw: '"Nhím"'
-              },
-              start: 23,
-              end: 29
-            }
+            start: 23,
+            end: 29
           }
-        ],
-        kind: 'let'
-      } as VariableDeclaration)
-    })
+        }
+      ],
+      kind: 'let'
+    } as VariableDeclaration)
+  })
+})
+
+describe('Test for null declaration', () => {
+  it('should parse the null syntax normally', () => {
+    const result = parser.parse(`khai báo a = null`)
+    expect(toPlainObject(result.body)).toStrictEqual({
+      type: 'VariableDeclaration',
+      declarations: [
+        {
+          type: 'VariableDeclarator',
+          id: {
+            type: 'Identifier',
+            name: 'a'
+          },
+          init: {
+            type: 'NullLiteral',
+            start: 13,
+            end: 17
+          }
+        }
+      ],
+      kind: 'let'
+    } as VariableDeclaration)
+  })
+  it('should parse the vietnamse null syntax normally', () => {
+    const result = parser.parse(`khai báo a = vô giá trị`)
+    expect(toPlainObject(result.body)).toStrictEqual({
+      type: 'VariableDeclaration',
+      declarations: [
+        {
+          type: 'VariableDeclarator',
+          id: {
+            type: 'Identifier',
+            name: 'a'
+          },
+          init: {
+            type: 'NullLiteral',
+            start: 13,
+            end: 25
+          }
+        }
+      ],
+      kind: 'let'
+    } as VariableDeclaration)
   })
 })

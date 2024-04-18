@@ -143,7 +143,8 @@ export const Specs: Array<Spec> = [
 
   // --------------------------------------
   // Literal with Keyword:
-  [/^\bnull\b/, Keyword.NULL],
+
+  [/^\bnull|\u0076\u00f4\u0020\u0067\u0069\u00e1\u0020\u0074\u0072\u1ecb\b/, Keyword.NULL],
   [/^\bNaN\b/, Keyword.NAN],
   [/^\b(undefined|kh\u00F4ng x\u00E1c \u0111\u1ECBnh)\b/, Keyword.UNDEFINED],
   [/(true|false|\u0111\u00FAng|sai)\b/, Keyword.BOOLEAN],
