@@ -110,6 +110,11 @@ describe('Test for string declaration', () => {
       kind: 'let'
     } as VariableDeclaration)
   })
+  it('should throw error', () => {
+    expect(() => parser.parse(`Khai báo a = '1'`)).toThrow(
+      new SyntaxError('Unexpected token: "Khai báo a", expected a variable declarator!')
+    )
+  })
 })
 
 describe('Test for null declaration', () => {
