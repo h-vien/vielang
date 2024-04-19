@@ -1,7 +1,7 @@
 import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
 import { Literal } from '..'
-import { StringLiteral } from '../string'
+import { NullLiteral } from '../null'
 
 describe('Test for null literal', () => {
   it('should parse the null', () => {
@@ -10,7 +10,7 @@ describe('Test for null literal', () => {
       type: 'NullLiteral',
       start: 0,
       end: 4
-    } as StringLiteral)
+    } as NullLiteral)
   })
   it('should parse the vietnamse null', () => {
     const result = parserNode.parse('vô giá trị', Literal)
@@ -18,6 +18,6 @@ describe('Test for null literal', () => {
       type: 'NullLiteral',
       start: 0,
       end: 10
-    } as StringLiteral)
+    } as NullLiteral)
   })
 })

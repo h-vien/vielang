@@ -4,6 +4,7 @@ import { NumericLiteral } from './numeric'
 import { StringLiteral } from './string'
 import { BooleanLiteral } from './boolean'
 import { NullLiteral } from './null'
+import { UndefinedLiteral } from './undefined'
 
 export class Literal {
   constructor(parser: Parser) {
@@ -22,6 +23,10 @@ export class Literal {
       }
       case Keyword.NULL: {
         Object.assign(this, new NullLiteral(parser))
+        break
+      }
+      case Keyword.UNDEFINED: {
+        Object.assign(this, new UndefinedLiteral(parser))
         break
       }
     }
