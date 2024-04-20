@@ -76,6 +76,7 @@ export const Specs: Array<Spec> = [
 
   // --------------------------------------
   // Keywords
+  [/^\b(console.log|\u0069\u006E\u0020\u0072\u0061)\b/, Keyword.LOG], // khai báo
   [/^\b(var|khai b\u00E1o)\b/, Keyword.LET], // khai báo
   [/^\b(break|ph\u00E1 v\u00F2ng l\u1EB7p)\b/, Keyword.BREAK], // phá vòng lặp
   [/^\b(do|th\u1EF1c hi\u1EC7n)\b/, Keyword.DO], // thực hiện

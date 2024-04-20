@@ -1,5 +1,5 @@
 import { Keyword } from '@parser/constants/keyword'
-import { Expression } from '@parser/nodes/expression'
+import { Expression } from '@parser/nodes/expressions'
 import { Identifier } from '@parser/nodes/identifier'
 import { Parser } from '@parser/parser'
 

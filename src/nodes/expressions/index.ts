@@ -4,6 +4,7 @@ import { Literal } from '../literal'
 import { Identifier } from '../identifier'
 import { BinaryExpression } from './binary'
 import { AssignmentExpression } from './assignment'
+import { FunctionDeclaration } from '../declarations/function'
 
 export class Expression {
   [key: string]: any
@@ -17,6 +18,10 @@ export class Expression {
       case Keyword.NULL:
       case Keyword.UNDEFINED: {
         Object.assign(this, new Literal(parser))
+        break
+      }
+      case Keyword.FUNCTION: {
+        Object.assign(this, new FunctionDeclaration(parser))
         break
       }
 
