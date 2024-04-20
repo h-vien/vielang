@@ -1,6 +1,7 @@
 import { Parser } from '@parser/parser'
 import { VariableDeclarator } from './declarator'
 import { Keyword } from '@parser/constants/keyword'
+import { FunctionDeclaration } from '../function'
 
 export class VariableDeclaration {
   type = 'VariableDeclaration'
@@ -33,6 +34,7 @@ export class VariableDeclaration {
 
         break
       }
+
       default: {
         throw new SyntaxError(`Unexpected token: "${parser.nextToken?.value}", expected a variable declarator!`)
       }

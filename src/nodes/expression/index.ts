@@ -1,6 +1,7 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Literal } from '@parser/nodes/literal'
 import { Parser } from '@parser/parser'
+import { FunctionDeclaration } from '../declarations/function'
 
 export class Expression {
   [key: string]: any
@@ -14,6 +15,10 @@ export class Expression {
       case Keyword.NULL:
       case Keyword.UNDEFINED: {
         Object.assign(this, new Literal(parser))
+        break
+      }
+      case Keyword.FUNCTION: {
+        Object.assign(this, new FunctionDeclaration(parser))
         break
       }
     }
