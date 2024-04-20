@@ -13,7 +13,6 @@ export class BlockStatement {
     statements.push(...new StatementTree(parser, ['}']).body)
 
     parser.validate('}')
-    console.log(parser.nextToken)
     this.body = statements
   }
 }

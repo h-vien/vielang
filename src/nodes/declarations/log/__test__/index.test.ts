@@ -5,7 +5,6 @@ import toPlainObject from '@parser/utils/toPlainObject'
 describe('Test for console.log', () => {
   it('should parse the console.log syntax normally', () => {
     const result = parserNode.parse(`console.log('Hello World')`, ConsoleLogExpression)
-
     expect(toPlainObject(result)).toStrictEqual({
       type: 'ConsoleLogExpression',
       body: [
@@ -25,7 +24,6 @@ describe('Test for console.log', () => {
   })
   it('should parse the vietnamese console.log syntax normally', () => {
     const result = parserNode.parse(`in ra('Chào thế giới')`, ConsoleLogExpression)
-    console.log(JSON.stringify(result, null, 2))
     expect(toPlainObject(result)).toStrictEqual({
       type: 'ConsoleLogExpression',
       body: [

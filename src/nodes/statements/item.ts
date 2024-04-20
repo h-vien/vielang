@@ -13,7 +13,6 @@ export class StatementItem {
         break
       }
       case Keyword.FUNCTION: {
-        console.log('go here')
         Object.assign(this, new FunctionDeclaration(parser))
         break
       }

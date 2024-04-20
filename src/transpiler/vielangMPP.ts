@@ -17,10 +17,8 @@ export class VieLangMPP {
   }
   compile(program: any) {
     const abstractSyntaxTree = parserNode.parse(program, ConsoleLogExpression)
-    console.log(abstractSyntaxTree, 'abstractSyntaxTree')
 
     const target = this.transpiler.transpile(abstractSyntaxTree)
-    console.log(target)
     this.saveToFile('compiler/build/index.js', target)
 
     return {
