@@ -12,8 +12,9 @@ export class Tokenizer {
     this.cursor = 0
   }
   private match(regexp: RegExp, syntax: string) {
-    const formattedSyntax = syntax.split('\n').filter((item) => item !== '')
-    const matched = regexp.exec(formattedSyntax[0])
+    const formattedSyntax = syntax.split(';')
+    const matched = regexp.exec(formattedSyntax[0].concat(';'))
+
     if (matched === null) {
       return null
     }

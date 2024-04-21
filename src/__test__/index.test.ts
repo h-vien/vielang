@@ -1,14 +1,88 @@
 import parser from '@parser'
 import { Program } from '@parser/program'
+import toPlainObject from '@parser/utils/toPlainObject'
 
 describe('Test for program', () => {
-  it('Should return a program object', () => {
+  it('Should return a program with multiple constant declaration', () => {
     const result = parser.parse(
-      `   khai báo tuổi = 25;
-          khai báo tên = "Tú Nguyễn";
+      `   hằng số tuổi = 20; hằng số địa chỉ = "Đà Nẵng";
+          hằng số tên = "Viên Huỳnh";
         `,
       Program
     )
-    console.log(JSON.stringify(result, null, 2), 'result')
+    expect(toPlainObject(result)).toStrictEqual({
+      type: 'Program',
+      body: [
+        {
+          type: 'VariableDeclaration',
+          declarations: [
+            {
+              type: 'VariableDeclarator',
+              init: {
+                type: 'NumericLiteral',
+                value: 20,
+                extra: {
+                  rawValue: 20,
+                  raw: '20'
+                },
+                start: 18,
+                end: 20
+              },
+              id: {
+                type: 'Identifier',
+                name: 'tu7893i'
+              }
+            }
+          ],
+          kind: 'const'
+        },
+        {
+          type: 'VariableDeclaration',
+          declarations: [
+            {
+              type: 'VariableDeclarator',
+              init: {
+                type: 'StringLiteral',
+                value: 'Đà Nẵng',
+                extra: {
+                  rawValue: 'Đà Nẵng',
+                  raw: '"Đà Nẵng"'
+                },
+                start: 40,
+                end: 49
+              },
+              id: {
+                type: 'Identifier',
+                name: '2737883a_ch7881'
+              }
+            }
+          ],
+          kind: 'const'
+        },
+        {
+          type: 'VariableDeclaration',
+          declarations: [
+            {
+              type: 'VariableDeclarator',
+              init: {
+                type: 'StringLiteral',
+                value: 'Viên Huỳnh',
+                extra: {
+                  rawValue: 'Viên Huỳnh',
+                  raw: '"Viên Huỳnh"'
+                },
+                start: 75,
+                end: 87
+              },
+              id: {
+                type: 'Identifier',
+                name: 't234n'
+              }
+            }
+          ],
+          kind: 'const'
+        }
+      ]
+    })
   })
 })
