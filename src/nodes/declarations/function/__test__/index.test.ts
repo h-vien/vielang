@@ -15,7 +15,7 @@ describe('Test for function declaration', () => {
       type: 'FunctionDeclaration',
       id: {
         type: 'Identifier',
-        name: 'th7921c_thi'
+        name: 'th_7921c_thi'
       },
       params: [],
       body: {

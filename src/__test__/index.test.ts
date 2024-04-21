@@ -4,12 +4,11 @@ import toPlainObject from '@parser/utils/toPlainObject'
 
 describe('Test for program', () => {
   it('Should return a program with multiple constant declaration', () => {
-    const result = parser.parse(
-      `   hằng số tuổi = 20; hằng số địa chỉ = "Đà Nẵng";
-          hằng số tên = "Viên Huỳnh";
-        `,
-      Program
-    )
+    const code = `   hằng số tuổi = 20; hằng số địa chỉ = "Đà Nẵng";
+    hằng số tên = "Viên Huỳnh";
+  `
+    const result = parser.parse(code, Program)
+
     expect(toPlainObject(result)).toStrictEqual({
       type: 'Program',
       body: [
@@ -30,7 +29,7 @@ describe('Test for program', () => {
               },
               id: {
                 type: 'Identifier',
-                name: 'tu7893i'
+                name: 'tu_7893i'
               }
             }
           ],
@@ -53,7 +52,7 @@ describe('Test for program', () => {
               },
               id: {
                 type: 'Identifier',
-                name: '2737883a_ch7881'
+                name: '_273_7883a_ch_7881'
               }
             }
           ],
@@ -71,12 +70,12 @@ describe('Test for program', () => {
                   rawValue: 'Viên Huỳnh',
                   raw: '"Viên Huỳnh"'
                 },
-                start: 75,
-                end: 87
+                start: 69,
+                end: 81
               },
               id: {
                 type: 'Identifier',
-                name: 't234n'
+                name: 't_234n'
               }
             }
           ],

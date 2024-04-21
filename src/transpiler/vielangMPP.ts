@@ -1,7 +1,6 @@
 import parser from '@parser'
 import fs from 'fs'
-import { DeclarationTranspiler } from './declarations'
-import { ExpressionTranspiler } from './expressions'
+import { transpiler } from '.'
 
 /**
  *  VietLang MPP is Message-Passing processes to transpile to JavaScript code
@@ -10,10 +9,9 @@ import { ExpressionTranspiler } from './expressions'
 
 export class VieLangMPP {
   compile(program: any) {
-    const _program = new DeclarationTranspiler()
     const abstractSyntaxTree = parser.parse(program)
 
-    const target = _program.transpile(abstractSyntaxTree)
+    const target = transpiler(abstractSyntaxTree).code
     this.saveToFile('compiler/build/index.js', target)
 
     return {

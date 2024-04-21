@@ -12,7 +12,7 @@ describe('Test for numeric declaration', () => {
           type: 'VariableDeclarator',
           id: {
             type: 'Identifier',
-            name: 'bi7871n_a'
+            name: 'bi_7871n_a'
           },
           init: {
             type: 'NumericLiteral',
@@ -93,7 +93,7 @@ describe('Test for string declaration', () => {
           type: 'VariableDeclarator',
           id: {
             type: 'Identifier',
-            name: 't234n_con_v7853t'
+            name: 't_234n_con_v_7853t'
           },
           init: {
             type: 'StringLiteral',

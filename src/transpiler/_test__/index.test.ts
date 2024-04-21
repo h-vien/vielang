@@ -1,19 +1,21 @@
+import toPlainObject from '@parser/utils/toPlainObject'
 import { VieLangMPP } from '../vielangMPP'
 
 describe('Run Test', () => {
   it('should generate the code', () => {
     const vielang = new VieLangMPP()
 
-    const { ast, target } = vielang.compile(`
-      hằng số tên = "Viên Huỳnh";
-      hằng số tuổi = 22;`)
-    console.log('`\n------------`')
-    console.log('Compile to AST:')
-    console.log(JSON.stringify(ast, null, 2))
+    const { target } = vielang.compile(`
+      hằng số tên = "Viên Huỳnh";khai báo địa chỉ = 'Đà Nẵng';
+      khai báo tuổi = 22;
 
-    console.log('Compile to Target:')
+      hàm a (){
+        khai báo b = 1
+      }
+      `)
 
-    console.log(JSON.stringify(target, null, 2))
-    expect(1).toBe(1)
+    expect(toPlainObject(target)).toBe(
+      'const t_234n = "Viên Huỳnh";\nlet _273_7883a_ch_7881 = "Đà Nẵng";\nlet tu_7893i = 22;\nfunction a() {\n  let b = 1;\n}'
+    )
   })
 })
