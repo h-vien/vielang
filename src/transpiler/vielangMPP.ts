@@ -1,8 +1,6 @@
-import { VariableDeclaration } from '@parser/nodes/declarations/variable/declaration'
-import { parserNode } from '@parser/test'
-import { DeclarationTranspiler } from './declarations'
+import parser from '@parser'
 import fs from 'fs'
-import { ConsoleLogExpression } from '@parser/nodes/declarations/log/console'
+import { DeclarationTranspiler } from './declarations'
 import { ExpressionTranspiler } from './expressions'
 
 /**
@@ -11,14 +9,11 @@ import { ExpressionTranspiler } from './expressions'
  */
 
 export class VieLangMPP {
-  transpiler: DeclarationTranspiler
-  constructor() {
-    this.transpiler = new ExpressionTranspiler()
-  }
   compile(program: any) {
-    const abstractSyntaxTree = parserNode.parse(program, ConsoleLogExpression)
+    const _program = new DeclarationTranspiler()
+    const abstractSyntaxTree = parser.parse(program)
 
-    const target = this.transpiler.transpile(abstractSyntaxTree)
+    const target = _program.transpile(abstractSyntaxTree)
     this.saveToFile('compiler/build/index.js', target)
 
     return {

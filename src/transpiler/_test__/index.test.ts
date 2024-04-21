@@ -4,7 +4,10 @@ describe('Run Test', () => {
   it('should generate the code', () => {
     const vielang = new VieLangMPP()
 
-    const { ast, target } = vielang.compile('console.log("Xin chào Việt Nam!")')
+    const { ast, target } = vielang.compile(`
+      khai báo tuổi = 20;
+      khai báo tên = "Nhàn Nguyễn";
+    `)
     console.log('`\n------------`')
     console.log('Compile to AST:')
     console.log(JSON.stringify(ast, null, 2))

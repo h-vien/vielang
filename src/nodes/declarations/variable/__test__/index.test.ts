@@ -1,18 +1,18 @@
-import parser from '@parser'
 import toPlainObject from '@parser/utils/toPlainObject'
 import { VariableDeclaration } from '../declaration'
+import { parserNode } from '@parser/test'
 
 describe('Test for numeric declaration', () => {
   it('should parse the let declaration syntax normally', () => {
-    const result = parser.parse(`khai báo a = 1`)
-    expect(toPlainObject(result.body)).toStrictEqual({
+    const result = parserNode.parse(`khai báo biến a = 1`, VariableDeclaration)
+    expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [
         {
           type: 'VariableDeclarator',
           id: {
             type: 'Identifier',
-            name: 'a'
+            name: 'bi7871n_a'
           },
           init: {
             type: 'NumericLiteral',
@@ -21,8 +21,8 @@ describe('Test for numeric declaration', () => {
               rawValue: 1,
               raw: '1'
             },
-            start: 13,
-            end: 14
+            start: 18,
+            end: 19
           }
         }
       ],
@@ -30,8 +30,8 @@ describe('Test for numeric declaration', () => {
     } as VariableDeclaration)
   })
   it('should parse the const declaration syntax normally', () => {
-    const result = parser.parse(`hằng số a = 1`)
-    expect(toPlainObject(result.body)).toStrictEqual({
+    const result = parserNode.parse(`hằng số a = 1`, VariableDeclaration)
+    expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [
         {
@@ -59,8 +59,8 @@ describe('Test for numeric declaration', () => {
 
 describe('Test for string declaration', () => {
   it('should parse the string syntax normally', () => {
-    const result = parser.parse(`khai báo a = '1'`)
-    expect(toPlainObject(result.body)).toStrictEqual({
+    const result = parserNode.parse(`khai báo a = '1'`, VariableDeclaration)
+    expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [
         {
@@ -85,15 +85,15 @@ describe('Test for string declaration', () => {
     } as VariableDeclaration)
   })
   it('should parse the string syntax normally', () => {
-    const result = parser.parse(`khai báo tên con vật = 'Nhím'`)
-    expect(toPlainObject(result.body)).toStrictEqual({
+    const result = parserNode.parse(`khai báo tên con vật = 'Nhím'`, VariableDeclaration)
+    expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [
         {
           type: 'VariableDeclarator',
           id: {
             type: 'Identifier',
-            name: 'tên con vật'
+            name: 't234n_con_v7853t'
           },
           init: {
             type: 'StringLiteral',
@@ -111,7 +111,7 @@ describe('Test for string declaration', () => {
     } as VariableDeclaration)
   })
   it('should throw error', () => {
-    expect(() => parser.parse(`Khai báo a = '1'`)).toThrow(
+    expect(() => parserNode.parse(`Khai báo a = '1'`, VariableDeclaration)).toThrow(
       new SyntaxError('Unexpected token: "Khai báo a", expected a variable declarator!')
     )
   })
@@ -119,8 +119,8 @@ describe('Test for string declaration', () => {
 
 describe('Test for null declaration', () => {
   it('should parse the null syntax normally', () => {
-    const result = parser.parse(`khai báo a = null`)
-    expect(toPlainObject(result.body)).toStrictEqual({
+    const result = parserNode.parse(`khai báo a = null`, VariableDeclaration)
+    expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [
         {
@@ -140,8 +140,8 @@ describe('Test for null declaration', () => {
     } as VariableDeclaration)
   })
   it('should parse the vietnamse null syntax normally', () => {
-    const result = parser.parse(`khai báo a = vô giá trị`)
-    expect(toPlainObject(result.body)).toStrictEqual({
+    const result = parserNode.parse(`khai báo a = vô giá trị`, VariableDeclaration)
+    expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [
         {

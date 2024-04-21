@@ -1,10 +1,11 @@
 import { Parser } from '@parser/parser'
-import { VariableDeclaration } from './nodes/declarations/variable/declaration'
+import { Statement } from './nodes/statements'
+import { StatementTree } from './nodes/statements/tree'
 
 export class Program {
   type = 'Program'
-  body: any
+  body: Array<Statement>
   constructor(parser: Parser) {
-    this.body = new VariableDeclaration(parser)
+    this.body = new StatementTree(parser).body
   }
 }
