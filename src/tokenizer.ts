@@ -12,13 +12,12 @@ export class Tokenizer {
     this.cursor = 0
   }
   private match(regexp: RegExp, syntax: string) {
-    const matched = regexp.exec(syntax)
-
+    const formattedSyntax = syntax.split('\n').filter((item) => item !== '')
+    const matched = regexp.exec(formattedSyntax[0])
     if (matched === null) {
       return null
     }
     this.cursor += matched[0].length
-
     return matched[0]
   }
 
@@ -35,7 +34,6 @@ export class Tokenizer {
       return null
     }
     const string = this.parser.syntax.slice(this.cursor)
-
     //Todo: handle this with regex later
     for (const [tokenValue, tokenType] of EdgeCaseSpecs) {
       if (tokenValue !== string) continue

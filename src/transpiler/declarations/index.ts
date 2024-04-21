@@ -11,7 +11,6 @@ export class DeclarationTranspiler {
           this.body.push(
             `${node.kind} ${node.declarations
               .map((declaration: any) => {
-                console.log(declaration, 'declaration')
                 return `${declaration.id.name} = ${declaration.init.extra.raw}`
               })
               .join(', ')}`

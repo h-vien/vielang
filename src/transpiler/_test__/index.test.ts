@@ -5,9 +5,8 @@ describe('Run Test', () => {
     const vielang = new VieLangMPP()
 
     const { ast, target } = vielang.compile(`
-      khai báo tuổi = 20;
-      khai báo tên = "Nhàn Nguyễn";
-    `)
+      hằng số tên = "Viên Huỳnh";
+      hằng số tuổi = 22;`)
     console.log('`\n------------`')
     console.log('Compile to AST:')
     console.log(JSON.stringify(ast, null, 2))
