@@ -5,7 +5,6 @@ import { Declaration } from '../declarations'
 
 export class StatementItem {
   constructor(parser: Parser) {
-    console.log(parser.nextToken?.type, 'parser.nextToken?.type')
     switch (parser.nextToken?.type) {
       case Keyword.LET:
       case Keyword.CONST:
@@ -14,7 +13,8 @@ export class StatementItem {
         Object.assign(this, new Declaration(parser))
         break
       }
-      case Keyword.IDENTIFIER: {
+      case Keyword.IDENTIFIER:
+      case Keyword.RETURN: {
         Object.assign(this, new Statement(parser))
         break
       }
