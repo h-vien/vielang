@@ -1,12 +1,16 @@
-import useRouteElements from './useRoutesElement'
+import Editor from '@monaco-editor/react'
+import { Card } from 'antd'
+import { useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
-import Editor, { DiffEditor, useMonaco, loader } from '@monaco-editor/react'
-import { Card } from 'antd'
+import vl from 'vielang-v1'
 
 function App() {
-  const routeElements = useRouteElements()
+  useEffect(() => {
+    const test = `khai báo a =1`
+    const ast = vl.parse(test)
+    console.log(ast)
+  }, [])
   return (
     <Card>
       {/* {routeElements} */}
