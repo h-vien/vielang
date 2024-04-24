@@ -1,20 +1,40 @@
 import Editor from '@monaco-editor/react'
-import { Card } from 'antd'
-import { useEffect } from 'react'
+import { Button, Card, Col, Row } from 'antd'
+import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import vl from 'vielang-v1'
+import vl from 'vielang'
 
 function App() {
-  useEffect(() => {
-    const test = `khai báo a =1`
-    const ast = vl.parse(test)
-    console.log(ast)
-  }, [])
+  const [program, setProgram] = useState('')
+  const [result, setResult] = useState('')
+  const onCompile = () => {
+    const _program = vl.compile(program)
+    console.log(_program)
+    setResult(_program.target)
+  }
+  function handleEditorChange(value: any, event: any) {
+    setProgram(value)
+    // here is the current value
+  }
+
   return (
     <Card>
+      <Row>
+        <Col span={12}>
+          <Editor
+            onChange={handleEditorChange}
+            height='90vh'
+            defaultLanguage='javascript'
+            defaultValue='// some comment'
+          />
+        </Col>
+        <Col span={2}>
+          <Button onClick={onCompile}>compile</Button>
+        </Col>
+        <Col span={10}>{JSON.parse(JSON.stringify(result))}</Col>
+      </Row>
       {/* {routeElements} */}
-      <Editor height='90vh' defaultLanguage='javascript' defaultValue='// some comment' />
       <ToastContainer
         position='top-right'
         autoClose={5000}

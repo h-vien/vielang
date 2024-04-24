@@ -1,5 +1,5 @@
-import { Parser } from './parser'
+import { VieLangMPP } from './transpiler/vielangMPP'
 
-const parser = new Parser()
+const transpiler = new VieLangMPP()
 
-export default parser
+export default transpiler
