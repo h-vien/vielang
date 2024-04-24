@@ -1,5 +1,5 @@
 {
-  "name": "vielang",
+  "name": "@vielang/parser",
   "version": "1.0.0",
   "description": "Vietnamese program language",
   "main": "./dist/index.js",
