@@ -1,7 +1,7 @@
 {
   "name": "vietlang",
   "version": "1.0.0",
-  "description": "Vietnamese programing language",
+  "description": "Vietnamese program language",
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon",
