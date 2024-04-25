@@ -156,7 +156,7 @@ export const Specs: Array<Spec> = [
   SpecIdentifier
 ]
 
-export const EdgeCaseSpecs: Array<[String, Keyword | Operator | null]> = [
+export const EdgeCaseSpecs: Array<[string, Keyword | Operator | null]> = [
   ['vô giá trị', Keyword.NULL],
   ['không xác định', Keyword.UNDEFINED]
 ]

@@ -2,9 +2,12 @@
   "name": "@vielang/parser",
   "version": "1.0.0",
   "description": "Vietnamese program language",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index",
+  "module": "./dist/index",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "npx nodemon",
     "test": "vitest run",
@@ -13,7 +16,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "copy-typescript-definitions": "copyfiles -u 1 \"src/**/*.d.ts\" dist"
   },
   "repository": {
     "type": "git",
@@ -34,9 +38,10 @@
     "@types/babel__generator": "^7.6.8",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.30",
+    "copyfiles": "^2.4.1",
     "typescript": "^5.4.3",
     "vite": "^5.2.6",
-    "vite-plugin-dts": "^3.7.3",
+    "vite-plugin-dts": "^3.9.0",
     "vitest": "^1.4.0"
   },
   "dependencies": {
