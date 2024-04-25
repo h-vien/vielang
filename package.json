@@ -1,0 +1,29 @@
+{
+  "name": "vielang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "nx run-many --target=build --all --exclude=playground,vielang",
+    "dev:playground": "nx run playground:dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N3iV/vietlang.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N3iV/vietlang/issues"
+  },
+  "homepage": "https://github.com/N3iV/vietlang#readme",
+  "devDependencies": {
+    "nx": "^18.3.3"
+  },
+  "nx": {},
+  "dependencies": {
+    "plugin": "link:@nx/eslint/plugin"
+  }
+}

@@ -3,13 +3,13 @@ import { Button, Card, Col, Row } from 'antd'
 import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import vl from 'vielang'
+import vielang from '@vielang/parser'
 
 function App() {
   const [program, setProgram] = useState('')
   const [result, setResult] = useState('')
   const onCompile = () => {
-    const _program = vl.compile(program)
+    const _program = vielang.compile(program)
     console.log(_program)
     setResult(_program.target)
   }

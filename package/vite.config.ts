@@ -10,7 +10,7 @@ export default defineConfig({
   build: {
     emptyOutDir: false,
     lib: {
-      name: '@vietscript/parser',
+      name: 'vielang',
       entry: path.resolve('./src/index.ts'),
       formats: ['es', 'cjs', 'umd'],
       fileName: 'index'
