@@ -35,11 +35,13 @@ export class Tokenizer {
       return null
     }
     const string = this.parser.syntax.slice(this.cursor)
+    console.log(string, 'string')
     //Todo: handle this with regex later
     for (const [tokenValue, tokenType] of EdgeCaseSpecs) {
       if (tokenValue !== string) continue
       if (tokenType === null) return this.getNextToken()
 
+      console.log('vo day')
       return {
         type: tokenType,
         value: tokenType,
@@ -52,6 +54,7 @@ export class Tokenizer {
       if (tokenValue === null) continue
       if (tokenType === null) return this.getNextToken()
 
+      console.log('vo day2')
       return {
         type: tokenType,
         value: tokenValue,
