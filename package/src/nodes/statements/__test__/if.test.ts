@@ -1,5 +1,5 @@
-import { IfStatement } from '@parser/nodes/if'
 import { parserNode } from '@parser/test'
+import { IfStatement } from '../if'
 import toPlainObject from '@parser/utils/toPlainObject'
 
 describe('Test for if statement ', () => {
@@ -7,7 +7,7 @@ describe('Test for if statement ', () => {
     const result = parserNode.parse('nếu(điều kiện a){return 1;}', IfStatement)
     expect(toPlainObject(result)).toStrictEqual({
       type: 'IfStatement',
-      condition: {
+      test: {
         type: 'Identifier',
         name: '_273i_7873u_ki_7879n_a'
       },
@@ -30,5 +30,9 @@ describe('Test for if statement ', () => {
         ]
       }
     })
+  })
+  it('Should parse if else syntax correctly', () => {
+    const result = parserNode.parse('nếu(a == 2){return 1;} else {return 2;}', IfStatement)
+    console.log(JSON.stringify(result, null, 2))
   })
 })

@@ -14,7 +14,8 @@ export class StatementItem {
         break
       }
       case Keyword.IDENTIFIER:
-      case Keyword.RETURN: {
+      case Keyword.RETURN:
+      case Keyword.IF: {
         Object.assign(this, new Statement(parser))
         break
       }
