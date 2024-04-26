@@ -1,5 +1,5 @@
-import parser from '@parser'
 import { Program } from '@parser/program'
+import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
 
 describe('Test for program', () => {
@@ -7,7 +7,7 @@ describe('Test for program', () => {
     const code = `   hằng số tuổi = 20; hằng số địa chỉ = "Đà Nẵng";
     hằng số tên = "Viên Huỳnh";
   `
-    const result = parser.parse(code, Program)
+    const result = parserNode.parse(code, Program)
 
     expect(toPlainObject(result)).toStrictEqual({
       type: 'Program',
