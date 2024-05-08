@@ -2,6 +2,7 @@
 import * as monaco from 'monaco-editor-core'
 import IRichLanguageConfiguration = monaco.languages.LanguageConfiguration
 import ILanguage = monaco.languages.IMonarchLanguage
+import { KEYWORDS } from './autocomplete'
 
 export const richLanguageConfiguration: IRichLanguageConfiguration = {
   // If we want to support code folding, brackets ... ( [], (), {}....), we can override some properties here
@@ -10,7 +11,7 @@ export const richLanguageConfiguration: IRichLanguageConfiguration = {
 
 export const monarchLanguage = <ILanguage>{
   // Set defaultToken to invalid to see what you do not tokenize yet
-  keywords: ['khai báo', 'hàm', 'trả về', 'in ra', 'đúng', 'sai'],
+  keywords: KEYWORDS,
   typeKeywords: ['boolean', 'double', 'byte', 'int', 'short', 'char', 'void', 'long', 'float'],
   operators: [
     '=',
@@ -71,7 +72,7 @@ export const monarchLanguage = <ILanguage>{
 
       // identifiers and keywords
       [
-        /(hàm|trả\s+về|khai\s+báo|in\s+ra)/g,
+        /(khai\s+báo|hàm|trường\s+hợp|trả\s+về|duyệt|ngược\s+lại|nếu|bắt\s+lỗi|tạo\s+mới|cuối\s+cùng|trả\s+về|tiếp\s+tục|lặp|khi\s+mà|hàm|mặc\s+định|báo\s+lỗi|xoá|trong|từ)/g,
         {
           cases: {
             '@typeKeywords': 'keyword',

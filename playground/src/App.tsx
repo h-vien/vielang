@@ -50,6 +50,7 @@ function App() {
       monaco?.languages.setLanguageConfiguration(languageID, richLanguageConfiguration)
       console.log('this log', monaco.languages.getLanguages(), 'logo day?')
     })
+
     monaco?.languages.registerCompletionItemProvider(languageID, {
       provideCompletionItems: function (model, position) {
         const word = model.getWordUntilPosition(position)
@@ -74,7 +75,7 @@ function App() {
     <Card>
       <Row>
         <Col span={12}>
-          <Editor height='90vh' value={program} language='vielang' onChange={handleEditorChange} theme='vs-dark' />
+          <Editor height='90vh' value={program} theme='vs-dark' language='vielang' onChange={handleEditorChange} />
         </Col>
         <Col span={10} className='p-8 text-white'>
           <Button onClick={onCompile} shape='default'>
