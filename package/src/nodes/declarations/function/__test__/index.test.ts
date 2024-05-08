@@ -11,6 +11,7 @@ describe('Test for function declaration', () => {
       FunctionDeclaration
     )
     expect(toPlainObject(result)).toStrictEqual({
+      async: false,
       type: 'FunctionDeclaration',
       id: {
         type: 'Identifier',

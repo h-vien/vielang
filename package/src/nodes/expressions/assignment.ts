@@ -18,6 +18,6 @@ export class AssignmentExpression {
 
     this.operator = String(parser.validate('=').value)
 
-    this.right = parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser)
+    this.right = new Expression(parser)
   }
 }

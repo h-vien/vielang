@@ -13,7 +13,6 @@ export class Statement {
         break
       }
       case Keyword.IF: {
-        console.log('go here?')
         Object.assign(this, new IfStatement(parser))
         break
       }

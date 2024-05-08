@@ -17,8 +17,6 @@ export class Tokenizer {
     if (matched === null) {
       return null
     }
-    console.log('=============')
-    console.log(syntax, 'syntax', matched[0])
     this.cursor += matched[0].length
     return matched[0]
   }
@@ -46,7 +44,6 @@ export class Tokenizer {
       if (tokenValue !== string) continue
       if (tokenType === null) return this.getNextToken()
 
-      console.log('vo day')
       return {
         type: tokenType,
         value: tokenType,

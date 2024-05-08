@@ -34,7 +34,6 @@ export class Expression {
       }
       case Keyword.IDENTIFIER: {
         const identifier = new Identifier(parser)
-        console.log(identifier, parser.nextToken)
         switch (parser.nextToken?.type as string) {
           case '+':
           case '-':
@@ -69,7 +68,6 @@ export class Expression {
                 break
               }
               case '(': {
-                console.log('go here')
                 Object.assign(this, new CallExpression(parser, memberExpression))
                 break
               }

@@ -17,7 +17,6 @@ export class IfStatement {
     parser.validate(')')
 
     this.consequent = parser.nextToken?.type === '{' ? new BlockStatement(parser) : new Statement(parser)
-    console.log(parser.nextToken)
     if (parser.nextToken?.type === Keyword.ELSE) {
       parser.validate(Keyword.ELSE)
       this.alternate = parser.nextToken?.type === '{' ? new BlockStatement(parser) : new Statement(parser)
