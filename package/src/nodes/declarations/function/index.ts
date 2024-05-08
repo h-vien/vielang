@@ -6,6 +6,7 @@ import { Parameter } from './parameter'
 
 export class FunctionDeclaration {
   type = 'FunctionDeclaration'
+  async = false
 
   id: Identifier
 
@@ -14,6 +15,10 @@ export class FunctionDeclaration {
   body: BlockStatement
 
   constructor(parser: Parser) {
+    if (parser.nextToken?.type === Keyword.ASYNC) {
+      parser.validate(Keyword.ASYNC)
+      this.async = true
+    }
     parser.validate(Keyword.FUNCTION)
     const name = String(new Identifier(parser).name)
     parser.validate('(')

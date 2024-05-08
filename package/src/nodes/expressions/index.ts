@@ -1,10 +1,9 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
-import { Literal } from '../literal'
 import { Identifier } from '../identifier'
-import { BinaryExpression } from './binary'
+import { Literal } from '../literal'
 import { AssignmentExpression } from './assignment'
-import { FunctionDeclaration } from '../declarations/function'
+import { BinaryExpression } from './binary'
 import { CallExpression } from './call'
 import { MemberExpression } from './member'
 
@@ -12,7 +11,6 @@ export class Expression {
   [key: string]: any
 
   constructor(parser: Parser) {
-    console.log(parser.nextToken, 'this is fucking log')
     switch (parser.nextToken?.type as string) {
       case Keyword.NUMBER:
       case Keyword.STRING:
@@ -21,10 +19,6 @@ export class Expression {
       case Keyword.NULL:
       case Keyword.UNDEFINED: {
         Object.assign(this, new Literal(parser))
-        break
-      }
-      case Keyword.FUNCTION: {
-        Object.assign(this, new FunctionDeclaration(parser))
         break
       }
 
@@ -76,7 +70,10 @@ export class Expression {
             }
             break
           }
-
+          case '(': {
+            Object.assign(this, new CallExpression(parser, identifier))
+            break
+          }
           default: {
             Object.assign(this, identifier)
             break

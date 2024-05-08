@@ -14,10 +14,11 @@ export class Tokenizer {
   private match(regexp: RegExp, syntax: string) {
     const formattedSyntax = syntax.split(';')
     const matched = regexp.exec(formattedSyntax[0].concat(';'))
-
     if (matched === null) {
       return null
     }
+    console.log('=============')
+    console.log(syntax, 'syntax', matched[0])
     this.cursor += matched[0].length
     return matched[0]
   }
@@ -34,8 +35,11 @@ export class Tokenizer {
     if (!this.hasMoreTokens()) {
       return null
     }
+    if (this.parser.syntax.includes('in ra')) {
+      this.parser.syntax = this.parser.syntax.replace('in ra', 'console.log')
+    }
     const string = this.parser.syntax.slice(this.cursor)
-    console.log(string, 'string')
+
     //Todo: handle this with regex later
     for (const [tokenValue, tokenType] of EdgeCaseSpecs) {
       if (tokenValue !== string) continue
@@ -54,7 +58,6 @@ export class Tokenizer {
       if (tokenValue === null) continue
       if (tokenType === null) return this.getNextToken()
 
-      console.log('vo day2')
       return {
         type: tokenType,
         value: tokenValue,
