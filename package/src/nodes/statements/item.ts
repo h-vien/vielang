@@ -18,7 +18,9 @@ export class StatementItem {
       case Keyword.RETURN:
       case Keyword.SWITCH:
       case Keyword.BREAK:
-      case Keyword.IF: {
+      case Keyword.IF:
+      case '++':
+      case '--': {
         Object.assign(this, new Statement(parser))
         break
       }

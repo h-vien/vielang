@@ -30,7 +30,6 @@ export class Statement {
       case Keyword.WHILE:
       case Keyword.FOR:
       case Keyword.SWITCH: {
-        console.log('go here?')
         Object.assign(this, new BreakableStatement(parser))
         break
       }

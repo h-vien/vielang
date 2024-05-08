@@ -7,6 +7,8 @@ import { BinaryExpression } from './binary'
 import { CallExpression } from './call'
 import { MemberExpression } from './member'
 import { UnaryExpression } from './unary'
+import { PrefixUpdateExpression } from './update-expression/prefix-update'
+import { SuffixUpdateExpression } from './update-expression/suffix-update'
 
 export class Expression {
   [key: string]: any
@@ -20,6 +22,11 @@ export class Expression {
       case Keyword.NULL:
       case Keyword.UNDEFINED: {
         Object.assign(this, new Literal(parser))
+        break
+      }
+      case '++':
+      case '--': {
+        Object.assign(this, new PrefixUpdateExpression(parser))
         break
       }
       case 'delete':
@@ -55,6 +62,11 @@ export class Expression {
             Object.assign(this, new BinaryExpression(parser, identifier))
             break
           }
+          case '++':
+          case '--': {
+            Object.assign(this, new SuffixUpdateExpression(parser, identifier))
+            break
+          }
           case '=': {
             Object.assign(this, new AssignmentExpression(parser, identifier))
             break
@@ -88,6 +100,9 @@ export class Expression {
           }
         }
 
+        break
+      }
+      default: {
         break
       }
     }

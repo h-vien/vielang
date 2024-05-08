@@ -6,10 +6,8 @@ export class StatementTree {
 
   constructor(parser: Parser, stopTokens?: Array<string>) {
     const statements: Array<StatementItem> = []
-
     while (parser.tokenizer.isEOF() === false && !stopTokens?.includes(String(parser.nextToken?.type))) {
       const statement = new StatementItem(parser)
-
       if (statement !== undefined) {
         statements.push(statement)
       }
