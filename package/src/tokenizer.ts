@@ -35,12 +35,13 @@ export class Tokenizer {
     if (!this.hasMoreTokens()) {
       return null
     }
+    //TODO: Handle this
     if (this.parser.syntax.includes('in ra')) {
       this.parser.syntax = this.parser.syntax.replace('in ra', 'console.log')
     }
     const string = this.parser.syntax.slice(this.cursor)
 
-    //Todo: handle this with regex later
+    //TODO: handle this with regex later
     for (const [tokenValue, tokenType] of EdgeCaseSpecs) {
       if (tokenValue !== string) continue
       if (tokenType === null) return this.getNextToken()

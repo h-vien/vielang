@@ -6,6 +6,7 @@ import { AssignmentExpression } from './assignment'
 import { BinaryExpression } from './binary'
 import { CallExpression } from './call'
 import { MemberExpression } from './member'
+import { UnaryExpression } from './unary'
 
 export class Expression {
   [key: string]: any
@@ -21,7 +22,16 @@ export class Expression {
         Object.assign(this, new Literal(parser))
         break
       }
-
+      case 'delete':
+      case 'void':
+      case 'typeof':
+      case '+':
+      case '-':
+      case '~':
+      case '!': {
+        Object.assign(this, new UnaryExpression(parser))
+        break
+      }
       case Keyword.IDENTIFIER: {
         const identifier = new Identifier(parser)
         console.log(identifier, parser.nextToken)
