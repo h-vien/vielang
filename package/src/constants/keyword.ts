@@ -63,6 +63,5 @@ export enum Keyword {
   INSTANCEOF = 'Instanceof',
   WITH = 'With',
   DEBUGGER = 'Debugger',
-  IDENTIFIER = 'Identifier',
-  LOG = 'Log'
+  IDENTIFIER = 'Identifier'
 }

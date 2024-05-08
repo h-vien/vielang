@@ -1,4 +1,3 @@
-import parser from '@parser'
 import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
 import { FunctionDeclaration } from '..'

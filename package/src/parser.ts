@@ -6,11 +6,11 @@ import { Token } from './types/token'
 export class Parser {
   syntax: string
   tokenizer: Tokenizer
-  nextToken: any
+  nextToken: Token | null
   constructor() {
     this.syntax = ''
     this.tokenizer = new Tokenizer(this)
-    this.nextToken = this.tokenizer.getNextToken()
+    this.nextToken = null
   }
 
   //Overload function
