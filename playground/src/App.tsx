@@ -13,11 +13,13 @@ import { monarchLanguage, richLanguageConfiguration } from './editor/vielang'
 function App() {
   const [program, setProgram] = useState('')
   const [result, setResult] = useState('')
+
   const monaco = useMonaco()
 
   const [isLoading, setIsLoading] = useState(false)
   const onCompile = async () => {
     const _program = transpiler.compile(program)
+    setResult(_program.target)
     try {
       setIsLoading(true)
       const res = await axios.post('https://emkc.org/api/v2/piston/execute', {
@@ -86,10 +88,11 @@ function App() {
           ) : (
             <>
               {' '}
+              {}
               <Divider />
               <h2>Result</h2>
               <div className='border min-h-32 w-full p-4 mt-1 border-solid'>
-                {result ? result : 'Click "Run" to compile code'}
+                {result ? JSON.parse(JSON.stringify(result)) : 'Click "Run" to compile code'}
               </div>
             </>
           )}

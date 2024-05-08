@@ -2,8 +2,9 @@ import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { BlockStatement } from './block'
 import { ExpressionStatement } from './expression'
-import { ReturnStatement } from './return'
+import { ForStatement } from './for'
 import { IfStatement } from './if'
+import { ReturnStatement } from './return'
 
 export class Statement {
   constructor(parser: Parser) {
@@ -18,6 +19,10 @@ export class Statement {
       }
       case Keyword.RETURN: {
         Object.assign(this, new ReturnStatement(parser))
+        break
+      }
+      case Keyword.FOR: {
+        Object.assign(this, new ForStatement(parser))
         break
       }
       default: {
