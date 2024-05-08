@@ -1,0 +1,70 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "jsx": "preserve",
+      "target": "es2018",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "types": [
+        "node",
+        "jsdom"
+      ],
+      "strict": true,
+      "allowJs": true,
+      "checkJs": false,
+      "sourceMap": true,
+      "skipLibCheck": true,
+      "noUnusedLocals": true,
+      "noImplicitAny": false,
+      "resolveJsonModule": true,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "removeComments": false,
+      "declaration": true,
+      "emitDeclarationOnly": true,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": [
+        "dom",
+        "es2017",
+        "ES2018",
+        "DOM",
+        "DOM.Iterable"
+      ],
+      "noEmitOnError": true,
+      "noImplicitReturns": true,
+      "noUnusedParameters": true,
+      "composite": true,
+      "paths": {
+        "@@": [
+          "./index"
+        ],
+        "@@/*": [
+          "./*"
+        ],
+        "@vielang/*": [
+          "package/*"
+        ]
+      }
+    },
+    "exclude": [
+      "**/.vscode/**",
+      ".github",
+      "**/.build/**",
+      "**/.widget/**",
+      "**/.nuxt/**",
+      "**/.output/**",
+      "**/.eslint-loader-cache/**",
+      "**/env/**",
+      "**/docs/**",
+      "**/dist/**",
+      "**/node_modules/**",
+      "**/static/**",
+      "**/logs/**",
+      "**/tmpl/**",
+      "**/poetry_scripts/**",
+      "**/requirements/**",
+      "**/ai/**"
+    ]
+  }

@@ -1,5 +1,5 @@
 {
-  "name": "react-typescript-tailwindcss-template",
+  "name": "playground",
   "homepage": "https://N3iV.github.io/react-ts-poilerplate",
   "private": true,
   "version": "0.0.0",
@@ -32,8 +32,6 @@
     "react-router-dom": "^6.9.0",
     "react-toastify": "^9.1.2",
     "rollup-plugin-visualizer": "^5.9.0",
-    "vielang": "file:../package",
-    "vielang-v1": "^1.0.0",
     "vitest": "^0.29.8"
   },
   "pre-commit": [
@@ -43,6 +41,7 @@
     "test"
   ],
   "devDependencies": {
+    "@vielang/parser": "workspace:*",
     "@babel/generator": "^7.24.4",
     "@types/lodash": "^4.14.192",
     "@types/node": "^18.15.11",
