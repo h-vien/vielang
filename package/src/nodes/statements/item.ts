@@ -16,10 +16,13 @@ export class StatementItem {
       case Keyword.IDENTIFIER:
       case Keyword.FOR:
       case Keyword.RETURN:
+      case Keyword.SWITCH:
+      case Keyword.BREAK:
       case Keyword.IF: {
         Object.assign(this, new Statement(parser))
         break
       }
+
       default: {
         throw new SyntaxError(`Unexpected token: "${parser.nextToken?.value}"`)
       }

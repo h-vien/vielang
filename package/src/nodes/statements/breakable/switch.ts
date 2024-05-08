@@ -15,6 +15,7 @@ export class SwitchStatement {
     consequent: Array<Statement>
   }> = []
 
+  // TODO: handle break statement
   constructor(parser: Parser) {
     parser.validate(Keyword.SWITCH)
     parser.validate('(')

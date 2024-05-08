@@ -5,6 +5,7 @@ import { ExpressionStatement } from './expression'
 import { ForStatement } from './breakable/iteration/for'
 import { IfStatement } from './if'
 import { ReturnStatement } from './return'
+import { BreakableStatement } from './breakable'
 
 export class Statement {
   constructor(parser: Parser) {
@@ -21,8 +22,16 @@ export class Statement {
         Object.assign(this, new ReturnStatement(parser))
         break
       }
-      case Keyword.FOR: {
-        Object.assign(this, new ForStatement(parser))
+      case Keyword.BREAK: {
+        Object.assign(this, new BreakableStatement(parser))
+        break
+      }
+      case Keyword.DO:
+      case Keyword.WHILE:
+      case Keyword.FOR:
+      case Keyword.SWITCH: {
+        console.log('go here?')
+        Object.assign(this, new BreakableStatement(parser))
         break
       }
       default: {
