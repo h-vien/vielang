@@ -1,4 +1,4 @@
-import { Specs } from './constants/specs'
+import { EdgeCaseSpecs, Specs } from './constants/specs'
 import { Parser } from './parser'
 import { Token } from './types/token'
 
@@ -36,12 +36,23 @@ export class Tokenizer {
     if (this.parser.syntax.includes('in ra')) {
       this.parser.syntax = this.parser.syntax.replace('in ra', 'console.log')
     }
+
     const string = this.parser.syntax.slice(this.cursor)
+    for (const [tokenValue, tokenType] of EdgeCaseSpecs) {
+      if (tokenValue !== string) continue
+      if (tokenType === null) return this.getNextToken()
+
+      return {
+        type: tokenType,
+        value: tokenType,
+        start: this.cursor,
+        end: this.cursor + String(tokenValue).length
+      }
+    }
     for (const [regexp, tokenType] of Specs) {
       const tokenValue = this.match(regexp, string)
       if (tokenValue === null) continue
       if (tokenType === null) return this.getNextToken()
-
       return {
         type: tokenType,
         value: tokenValue,

@@ -146,8 +146,6 @@ export const Specs: Array<Spec> = [
   // Literal with Keyword:
 
   [/^\bNaN\b/, Keyword.NAN],
-  [/\u0076\u00F4\u0020\u0067\u0069\u00E1\u0020\u0074\u0072\u1ECB/g, Keyword.NULL],
-  [/\kh\u00F4ng x\u00E1c \u0111\u1ECBnh/g, Keyword.UNDEFINED],
   [/(true|false|\u0111\u00FAng|sai)\b/, Keyword.BOOLEAN],
 
   // --------------------------------------
@@ -155,9 +153,7 @@ export const Specs: Array<Spec> = [
   SpecIdentifier
 ]
 
-// export const EdgeCaseSpecs: Array<Spec> = [
-//   [/\u0076\u00F4\u0020\u0067\u0069\u00E1\u0020\u0074\u0072\u1ECB/g, Keyword.NULL],
-//   [/\kh\u00F4ng x\u00E1c \u0111\u1ECBnh/g, Keyword.UNDEFINED],
-//   [/\u0074\u0068\u1EF1\u0063\u0020\u0068\u0069\u1EC7\u006E/g, Keyword.DO], // thực hiện
-//   [/\u006B\u0068\u0069\u0020\u006D\u00E0/g, Keyword.WHILE] // khi mà
-// ]
+export const EdgeCaseSpecs: Array<[string, Keyword | Operator | null]> = [
+  ['vô giá trị', Keyword.NULL],
+  ['không xác định', Keyword.UNDEFINED]
+]

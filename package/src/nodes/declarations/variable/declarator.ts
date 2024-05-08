@@ -14,7 +14,6 @@ export class VariableDeclarator {
 
   constructor(parser: Parser, isConstant = false) {
     const identifier = new Identifier(parser)
-
     if (isConstant || parser.nextToken?.type === '=') {
       parser.validate('=')
       this.init = new Expression(parser)
