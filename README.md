@@ -1,4 +1,4 @@
-[![VieLang banner]()]()
+[![VieLang banner](./assets/og-vielang.png)](banner)
 
 # Vielang - Vietnamese programing language
 
@@ -20,7 +20,7 @@ Vielang hỗ trợ các tính năng bao gồm:
 - 🚀 [Bắt đầu](#getting-started)
 - 💻 [Cú pháp](#syntax)
 - 📖 [Tài liệu](#documentation)
-- 🔗 [Follow us](#follow-us)
+- 🔗 [Follow me](#follow-me)
 - ⚖️ [License](#license)
 
 ---
@@ -61,8 +61,9 @@ Bạn có thể xem thêm tài liệu tại [Vielang Documentation](https://viel
 
 Follow the docs to [Set Up Your Local Development Environment](https://nuxt.com/docs/community/framework-contribution#setup) to contribute to the framework and documentation.
 
-## <a name="follow-us">🔗 Follow us</a>
-
+## <a name="follow-me">🔗 Follow me</a>
+  - Website: https://vienhuynh.dev
+  - Facebook: https://www.facebook.com/vienhoang133/
 <p valign="center">
   
 </p>
