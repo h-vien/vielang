@@ -91,7 +91,7 @@ export const Specs: Array<Spec> = [
   [/^\b(return|tr\u1EA3 v\u1EC1)/, Keyword.RETURN], // trả về
   [/^\bvoid\b/, Keyword.VOID],
   [/^\b(continue|ti\u1EBFp t\u1EE5c)\b/, Keyword.CONTINUE], // tiếp tục
-  [/^\bfor\b/, Keyword.FOR], // lặp
+  [/^\b(for|\u006C\u1EB7\u0070)\b/, Keyword.FOR], // lặp
   [/\u006B\u0068\u0069\u0020\u006D\u00E0/g, Keyword.WHILE], // khi mà
   [/^\bdebugger\b/, Keyword.DEBUGGER],
   [/^\b(function|h\u00E0m)\b/, Keyword.FUNCTION], // hàm
