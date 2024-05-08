@@ -9,6 +9,7 @@ import { MemberExpression } from './member'
 import { UnaryExpression } from './unary'
 import { PrefixUpdateExpression } from './update-expression/prefix-update'
 import { SuffixUpdateExpression } from './update-expression/suffix-update'
+import { ArrayExpression } from './array'
 
 export class Expression {
   [key: string]: any
@@ -22,6 +23,10 @@ export class Expression {
       case Keyword.NULL:
       case Keyword.UNDEFINED: {
         Object.assign(this, new Literal(parser))
+        break
+      }
+      case '[': {
+        Object.assign(this, new ArrayExpression(parser))
         break
       }
       case '++':
