@@ -4,14 +4,6 @@ import { Literal } from '..'
 import { NullLiteral } from '../null'
 
 describe('Test for null literal', () => {
-  it('should parse the null', () => {
-    const result = parserNode.parse(`null`, Literal)
-    expect(toPlainObject(result)).toStrictEqual({
-      type: 'NullLiteral',
-      start: 0,
-      end: 4
-    } as NullLiteral)
-  })
   it('should parse the vietnamse null', () => {
     const result = parserNode.parse('vô giá trị', Literal)
     expect(toPlainObject(result)).toStrictEqual({

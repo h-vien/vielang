@@ -78,7 +78,7 @@ export const Specs: Array<Spec> = [
   // Keywords
   [/^\b(var|khai b\u00E1o)\b/, Keyword.LET], // khai báo
   [/^\b(break|ph\u00E1 v\u00F2ng l\u1EB7p)\b/, Keyword.BREAK], // phá vòng lặp
-  [/^\b(do|th\u1EF1c hi\u1EC7n)\b/, Keyword.DO], // thực hiện
+  [/\u0074\u0068\u1EF1\u0063\u0020\u0068\u0069\u1EC7\u006E/g, Keyword.DO], // thực hiện
   [/^\binstanceof\b/, Keyword.INSTANCEOF],
   [/^\b(typeof|ki\u1EC3u c\u1EE7a)\b/, Keyword.TYPEOF], // kiểu của
   [/^\b(switch|duy\u1EC7t)\b/, Keyword.SWITCH], // duyệt
@@ -92,7 +92,7 @@ export const Specs: Array<Spec> = [
   [/^\bvoid\b/, Keyword.VOID],
   [/^\b(continue|ti\u1EBFp t\u1EE5c)\b/, Keyword.CONTINUE], // tiếp tục
   [/^\bfor\b/, Keyword.FOR], // lặp
-  [/^\b(while|khi m\u00E0)\b/, Keyword.WHILE], // khi mà
+  [/\u006B\u0068\u0069\u0020\u006D\u00E0/g, Keyword.WHILE], // khi mà
   [/^\bdebugger\b/, Keyword.DEBUGGER],
   [/^\b(function|h\u00E0m)\b/, Keyword.FUNCTION], // hàm
   [/^\bthis\b/, Keyword.THIS], // đối tượng này
@@ -145,9 +145,9 @@ export const Specs: Array<Spec> = [
   // --------------------------------------
   // Literal with Keyword:
 
-  [/^\bnull|\u0076\u00f4\u0020\u0067\u0069\u00e1\u0020\u0074\u0072\u1ecb\b/, Keyword.NULL],
   [/^\bNaN\b/, Keyword.NAN],
-  [/^\b(undefined|kh\u00F4ng x\u00E1c \u0111\u1ECBnh)\b/, Keyword.UNDEFINED],
+  [/\u0076\u00F4\u0020\u0067\u0069\u00E1\u0020\u0074\u0072\u1ECB/g, Keyword.NULL],
+  [/\kh\u00F4ng x\u00E1c \u0111\u1ECBnh/g, Keyword.UNDEFINED],
   [/(true|false|\u0111\u00FAng|sai)\b/, Keyword.BOOLEAN],
 
   // --------------------------------------
@@ -155,7 +155,9 @@ export const Specs: Array<Spec> = [
   SpecIdentifier
 ]
 
-export const EdgeCaseSpecs: Array<[string, Keyword | Operator | null]> = [
-  ['vô giá trị', Keyword.NULL],
-  ['không xác định', Keyword.UNDEFINED]
-]
+// export const EdgeCaseSpecs: Array<Spec> = [
+//   [/\u0076\u00F4\u0020\u0067\u0069\u00E1\u0020\u0074\u0072\u1ECB/g, Keyword.NULL],
+//   [/\kh\u00F4ng x\u00E1c \u0111\u1ECBnh/g, Keyword.UNDEFINED],
+//   [/\u0074\u0068\u1EF1\u0063\u0020\u0068\u0069\u1EC7\u006E/g, Keyword.DO], // thực hiện
+//   [/\u006B\u0068\u0069\u0020\u006D\u00E0/g, Keyword.WHILE] // khi mà
+// ]

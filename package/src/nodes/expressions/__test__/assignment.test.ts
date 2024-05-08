@@ -26,7 +26,6 @@ describe('expression-assignment.test', () => {
   })
   it('Should parse the syntax with a complex expression', () => {
     const result = parserNode.parse('a = 12 + 2;', AssignmentExpression)
-    console.log(JSON.stringify(result, null, 2))
     expect(toPlainObject(result)).toStrictEqual({
       type: 'AssignmentExpression',
       left: {
