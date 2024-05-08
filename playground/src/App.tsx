@@ -1,15 +1,18 @@
 import Editor from '@monaco-editor/react'
 import { Button, Card, Col, Row } from 'antd'
+import { parser, transpiler } from '@vielang/parser'
 import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import vielang from '@vielang/parser'
 
 function App() {
   const [program, setProgram] = useState('')
   const [result, setResult] = useState('')
   const onCompile = () => {
-    const _program = vielang.compile(program)
+    const code = 'khai báo tên = "Viên";'
+    const ast = parser.parse(code)
+    console.log(ast, '\n', '=======================')
+    const _program = transpiler.compile(program)
     console.log(_program)
     setResult(_program.target)
   }
