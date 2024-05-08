@@ -1,6 +1,6 @@
 import { parserNode } from '@parser/test'
-import { ForStatement } from '../for'
 import toPlainObject from '@parser/utils/toPlainObject'
+import { ForStatement } from '../iteration/for'
 
 describe('For statement test', () => {
   it('Should parse for statement correctly', () => {

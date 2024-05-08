@@ -1,11 +1,11 @@
 // import { ForInOfStatement } from "./ForInOfStatement";
 
 import { Parser } from '@parser/parser'
-import { Statement } from '.'
-import { VariableDeclaration } from '../declarations/variable/declaration'
-import { Expression } from '../expressions'
-import { Identifier } from '../identifier'
-import { BlockStatement } from './block'
+import { Statement } from '../..'
+import { VariableDeclaration } from '../../../declarations/variable/declaration'
+import { Expression } from '../../../expressions'
+import { Identifier } from '../../../identifier'
+import { BlockStatement } from '../../block'
 import { Keyword } from '@parser/constants/keyword'
 
 export class ForStatement {
@@ -35,7 +35,6 @@ export class ForStatement {
       switch (parser.nextToken?.type) {
         case Keyword.VAR:
         case Keyword.LET: {
-          console.log('go here')
           this.init = new VariableDeclaration(parser)
           break
         }
@@ -52,16 +51,11 @@ export class ForStatement {
       parser.validate(';')
 
       this.test = new Expression(parser)
-      console.log(this.test, 'this.test')
-      console.log(parser.nextToken?.type, 'before')
       if (parser.nextToken?.type === ';') {
         parser.validate(';')
       }
-      console.log(parser.nextToken?.type, 'after')
 
-      console.log(parser.nextToken?.type, ' log type---')
       if (parser.nextToken?.type !== ')') {
-        console.log('vo day')
         this.update = new Expression(parser)
       }
     } else {

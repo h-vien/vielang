@@ -2,7 +2,7 @@ import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { BlockStatement } from './block'
 import { ExpressionStatement } from './expression'
-import { ForStatement } from './for'
+import { ForStatement } from './breakable/iteration/for'
 import { IfStatement } from './if'
 import { ReturnStatement } from './return'
 
