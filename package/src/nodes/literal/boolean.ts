@@ -13,11 +13,10 @@ export class BooleanLiteral implements Node {
 
   constructor(parser: Parser) {
     const token = parser.validate(Keyword.BOOLEAN)
-
     this.start = token.start
     this.end = token.end
 
-    if (token.value === 'true' || token.value === 'đúng') {
+    if (token.value === 'đúng') {
       this.value = true
     } else {
       this.value = false

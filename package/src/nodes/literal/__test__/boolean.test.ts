@@ -14,27 +14,6 @@ describe('Test for boolean literal', () => {
       end: 3
     } as BooleanLiteral)
   })
-  it('should parse the syntax normally', () => {
-    const result = parserNode.parse('false', Literal)
-
-    expect(toPlainObject(result)).toStrictEqual({
-      type: 'BooleanLiteral',
-      value: false,
-      start: 0,
-      end: 5
-    } as BooleanLiteral)
-  })
-
-  it('should parse the syntax normally', () => {
-    const result = parserNode.parse('true', Literal)
-
-    expect(toPlainObject(result)).toStrictEqual({
-      type: 'BooleanLiteral',
-      value: true,
-      start: 0,
-      end: 4
-    } as BooleanLiteral)
-  })
 
   it('should parse the syntax normally', () => {
     const result = parserNode.parse(`đúng`, Literal)

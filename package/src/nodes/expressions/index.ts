@@ -17,7 +17,6 @@ export class Expression {
   [key: string]: any
 
   constructor(parser: Parser) {
-    console.log(parser.nextToken)
     switch (parser.nextToken?.type as string) {
       case Keyword.NUMBER:
       case Keyword.STRING:
