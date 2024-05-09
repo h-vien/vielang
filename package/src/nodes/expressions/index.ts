@@ -10,11 +10,14 @@ import { UnaryExpression } from './unary'
 import { PrefixUpdateExpression } from './update-expression/prefix-update'
 import { SuffixUpdateExpression } from './update-expression/suffix-update'
 import { ArrayExpression } from './array'
+import { LabelledStatement } from '../statements/label'
+import { ObjectExpression } from './object'
 
 export class Expression {
   [key: string]: any
 
   constructor(parser: Parser) {
+    console.log(parser.nextToken)
     switch (parser.nextToken?.type as string) {
       case Keyword.NUMBER:
       case Keyword.STRING:
@@ -23,6 +26,10 @@ export class Expression {
       case Keyword.NULL:
       case Keyword.UNDEFINED: {
         Object.assign(this, new Literal(parser))
+        break
+      }
+      case '{': {
+        Object.assign(this, new ObjectExpression(parser))
         break
       }
       case '[': {
@@ -67,6 +74,10 @@ export class Expression {
             Object.assign(this, new BinaryExpression(parser, identifier))
             break
           }
+          case ':': {
+            Object.assign(this, new LabelledStatement(parser, identifier))
+            break
+          }
           case '++':
           case '--': {
             Object.assign(this, new SuffixUpdateExpression(parser, identifier))
@@ -76,6 +87,7 @@ export class Expression {
             Object.assign(this, new AssignmentExpression(parser, identifier))
             break
           }
+          case '[':
           case '.': {
             const memberExpression = new MemberExpression(parser, identifier)
 
