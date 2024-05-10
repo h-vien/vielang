@@ -84,4 +84,200 @@ describe('Test for program', () => {
       ]
     })
   })
+
+  it('Should parse prime check number correctly', () => {
+    const code = `
+    hàm primeCheck(số)
+    {
+        nếu (số < 2)
+            trả về sai;
+        lặp (khai báo i = 2; i < số; ++i){
+            khai báo test = số % i
+            nếu ( test == 0){
+                trả về sai
+            }
+            trả về đúng;
+        }
+
+    }
+
+    `
+
+    const result = parserNode.parse(code, Program)
+    expect(toPlainObject(result)).toStrictEqual({
+      type: 'Program',
+      body: [
+        {
+          type: 'FunctionDeclaration',
+          async: false,
+          id: {
+            type: 'Identifier',
+            name: 'primeCheck'
+          },
+          params: [
+            {
+              type: 'Identifier',
+              name: 's_7889'
+            }
+          ],
+          body: {
+            type: 'BlockStatement',
+            body: [
+              {
+                type: 'IfStatement',
+                test: {
+                  type: 'BinaryExpression',
+                  left: {
+                    type: 'Identifier',
+                    name: 's_7889'
+                  },
+                  operator: '<',
+                  right: {
+                    type: 'NumericLiteral',
+                    value: 2,
+                    extra: {
+                      rawValue: 2,
+                      raw: '2'
+                    },
+                    start: 48,
+                    end: 49
+                  }
+                },
+                consequent: {
+                  type: 'ReturnStatement',
+                  argument: {
+                    type: 'BooleanLiteral',
+                    value: false,
+                    start: 70,
+                    end: 73
+                  }
+                }
+              },
+              {
+                type: 'ForStatement',
+                init: {
+                  type: 'VariableDeclaration',
+                  declarations: [
+                    {
+                      type: 'VariableDeclarator',
+                      init: {
+                        type: 'NumericLiteral',
+                        value: 2,
+                        extra: {
+                          rawValue: 2,
+                          raw: '2'
+                        },
+                        start: 101,
+                        end: 102
+                      },
+                      id: {
+                        type: 'Identifier',
+                        name: 'i'
+                      }
+                    }
+                  ],
+                  kind: 'let'
+                },
+                test: {
+                  type: 'BinaryExpression',
+                  left: {
+                    type: 'Identifier',
+                    name: 'i'
+                  },
+                  operator: '<',
+                  right: {
+                    type: 'Identifier',
+                    name: 's_7889'
+                  }
+                },
+                update: {
+                  type: 'UpdateExpression',
+                  operator: '++',
+                  argument: {
+                    type: 'Identifier',
+                    name: 'i'
+                  },
+                  prefix: true
+                },
+                body: {
+                  type: 'BlockStatement',
+                  body: [
+                    {
+                      type: 'VariableDeclaration',
+                      declarations: [
+                        {
+                          type: 'VariableDeclarator',
+                          init: {
+                            type: 'BinaryExpression',
+                            left: {
+                              type: 'Identifier',
+                              name: 's_7889'
+                            },
+                            operator: '%',
+                            right: {
+                              type: 'Identifier',
+                              name: 'i'
+                            }
+                          },
+                          id: {
+                            type: 'Identifier',
+                            name: 'test'
+                          }
+                        }
+                      ],
+                      kind: 'let'
+                    },
+                    {
+                      type: 'IfStatement',
+                      test: {
+                        type: 'BinaryExpression',
+                        left: {
+                          type: 'Identifier',
+                          name: 'test'
+                        },
+                        operator: '==',
+                        right: {
+                          type: 'NumericLiteral',
+                          value: 0,
+                          extra: {
+                            rawValue: 0,
+                            raw: '0'
+                          },
+                          start: 179,
+                          end: 180
+                        }
+                      },
+                      consequent: {
+                        type: 'BlockStatement',
+                        body: [
+                          {
+                            type: 'ReturnStatement',
+                            argument: {
+                              type: 'BooleanLiteral',
+                              value: false,
+                              start: 206,
+                              end: 209
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      type: 'ReturnStatement',
+                      argument: {
+                        type: 'BooleanLiteral',
+                        value: true,
+                        start: 243,
+                        end: 247
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    })
+  })
 })
