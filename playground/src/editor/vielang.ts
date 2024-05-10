@@ -72,7 +72,7 @@ export const monarchLanguage = <ILanguage>{
 
       // identifiers and keywords
       [
-        /(khai\s+báo|hàm|trường\s+hợp|trả\s+về|duyệt|ngược\s+lại|nếu|bắt\s+lỗi|tạo\s+mới|cuối\s+cùng|trả\s+về|tiếp\s+tục|lặp|khi\s+mà|hàm|mặc\s+định|báo\s+lỗi|xoá|trong|từ)/g,
+        /(khai\s+báo|hàm|trường\s+hợp|trả\s+về|duyệt|ngược\s+lại|nếu|bắt\s+lỗi|tạo\s+mới|cuối\s+cùng|trả\s+về|tiếp\s+tục|lặp|khi\s+mà|hàm|mặc\s+định|báo\s+lỗi|xoá|trong|từ|in\s+ra)/g,
         {
           cases: {
             '@typeKeywords': 'keyword',

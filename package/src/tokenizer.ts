@@ -13,11 +13,11 @@ export class Tokenizer {
   private match(regexp: RegExp, syntax: string) {
     const formattedSyntax = syntax.split(';')
     const matched = regexp.exec(formattedSyntax[0].concat(';'))
-    if (matched === null) {
-      return null
+    if (matched && matched.index === 0) {
+      this.cursor += matched[0].length
+      return matched[0]
     }
-    this.cursor += matched[0].length
-    return matched[0]
+    return null
   }
 
   public isEOF() {
@@ -36,23 +36,28 @@ export class Tokenizer {
     if (this.parser.syntax.includes('in ra')) {
       this.parser.syntax = this.parser.syntax.replace('in ra', 'console.log')
     }
-
     const string = this.parser.syntax.slice(this.cursor)
     for (const [tokenValue, tokenType] of EdgeCaseSpecs) {
-      if (tokenValue !== string) continue
-      if (tokenType === null) return this.getNextToken()
+      const regex = /^(.*?)(?=\n)/
 
+      // Use match method to extract the text
+      const match = string.match(regex)
+      const _string = match ? match[1] : string
+      if (tokenValue !== _string.trim()) continue
+      if (tokenType === null) return this.getNextToken()
+      this.cursor += String(tokenValue).length
       return {
         type: tokenType,
-        value: tokenType,
-        start: this.cursor,
-        end: this.cursor + String(tokenValue).length
+        value: tokenValue,
+        start: this.cursor - String(tokenValue).length,
+        end: this.cursor
       }
     }
     for (const [regexp, tokenType] of Specs) {
       const tokenValue = this.match(regexp, string)
       if (tokenValue === null) continue
       if (tokenType === null) return this.getNextToken()
+
       return {
         type: tokenType,
         value: tokenValue,

@@ -147,6 +147,8 @@ export const Specs: Array<Spec> = [
 
   [/^\bNaN\b/, Keyword.NAN],
 
+  [/(true|false|\u0111\u00FAng|sai)\b/, Keyword.BOOLEAN],
+
   // --------------------------------------
   // Identifier
   SpecIdentifier
@@ -154,7 +156,5 @@ export const Specs: Array<Spec> = [
 
 export const EdgeCaseSpecs: Array<[string, Keyword | Operator | null]> = [
   ['vô giá trị', Keyword.NULL],
-  ['không xác định', Keyword.UNDEFINED],
-  ['đúng', Keyword.BOOLEAN],
-  ['sai', Keyword.BOOLEAN]
+  ['không xác định', Keyword.UNDEFINED]
 ]

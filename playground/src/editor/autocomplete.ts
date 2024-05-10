@@ -29,7 +29,8 @@ export const KEYWORDS = [
   'báo lỗi',
   'xoá',
   'trong',
-  'từ'
+  'từ',
+  'in ra'
 ]
 
 export function createDependencyProposals(range: any, monaco: any) {
