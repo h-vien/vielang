@@ -1,7 +1,7 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { ForStatement } from './for'
-import { DoWhileStatement } from './dowhile'
+import { WhileStatement } from './while'
 
 export class IterationStatement {
   [key: string]: any
@@ -13,7 +13,7 @@ export class IterationStatement {
         break
       }
       case Keyword.WHILE: {
-        Object.assign(this, new DoWhileStatement(parser))
+        Object.assign(this, new WhileStatement(parser))
         break
       }
     }

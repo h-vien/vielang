@@ -1,18 +1,18 @@
 import { parserNode } from '@parser/test'
-import { DoWhileStatement } from '../iteration/dowhile'
+import { WhileStatement } from '../iteration/while'
 import toPlainObject from '@parser/utils/toPlainObject'
 
-describe('Do While statement test', () => {
-  it('Should parse do-while statement correctly', () => {
+describe('While statement test', () => {
+  it('Should parse while statement correctly', () => {
     const result = parserNode.parse(
-      `thực hiện{
+      `khi mà(a > 4){
         in ra("Xin chào");
-    } khi mà(a > 4)`,
-      DoWhileStatement
+    } `,
+      WhileStatement
     )
 
     expect(toPlainObject(result)).toStrictEqual({
-      type: 'DoWhileStatement',
+      type: 'WhileStatement',
       body: {
         type: 'BlockStatement',
         body: [
@@ -41,8 +41,8 @@ describe('Do While statement test', () => {
                     rawValue: 'Xin chào',
                     raw: '"Xin chào"'
                   },
-                  start: 31,
-                  end: 41
+                  start: 35,
+                  end: 45
                 }
               ],
               optional: false
@@ -64,8 +64,8 @@ describe('Do While statement test', () => {
             rawValue: 4,
             raw: '4'
           },
-          start: 61,
-          end: 62
+          start: 11,
+          end: 12
         }
       }
     })

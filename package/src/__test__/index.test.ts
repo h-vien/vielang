@@ -280,4 +280,26 @@ describe('Test for program', () => {
       ]
     })
   })
+  it('Should parse bubble sort algorithm correctly', () => {
+    const code = `hàm sắp xếp(arr) {
+        khai báo độ dài  = 4
+        khai báo test = 3
+        lặp (khai báo i = 0; i < độ dài; i++) {
+            
+            lặp (khai báo j = 0; j < test - i ; j++) {
+    
+                nếu (arr[j] > arr[j + 1]) {
+    
+                    khai báo temp = arr[j]
+                    arr[j] = arr[j + 1]
+                    arr[j + 1] = temp
+                }
+            }
+        }
+    
+        in ra(arr);
+    }`
+    const result = parserNode.parse(code, Program)
+    console.log(JSON.stringify(result, null, 2))
+  })
 })
