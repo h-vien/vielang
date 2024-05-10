@@ -1,6 +1,6 @@
 import { Keyword } from '@parser/constants/keyword'
-import { ObjectMethod } from './method'
 import { Parser } from '@parser/parser'
+import { ObjectMethod } from './method'
 import { ObjectProperty } from './property'
 
 export class ObjectPropertyList {
