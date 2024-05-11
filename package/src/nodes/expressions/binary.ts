@@ -15,7 +15,6 @@ export class BinaryExpression {
   constructor(parser: Parser, identifier?: Identifier) {
     this.left =
       identifier ?? (parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser))
-
     switch (parser.nextToken?.type) {
       case '+':
       case '-':
@@ -39,6 +38,13 @@ export class BinaryExpression {
       }
     }
 
-    this.right = parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser)
+    const hasMoreOperator = parser.tokenizer.hasMoreOperator()
+    if (hasMoreOperator && parser.nextToken?.type !== ')') {
+      this.right = new BinaryExpression(parser)
+      return
+    } else {
+      this.right = new Expression(parser)
+      return
+    }
   }
 }

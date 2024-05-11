@@ -68,4 +68,9 @@ export class Tokenizer {
 
     throw new SyntaxError(`Unexpected token: "${string[0]}"`)
   }
+
+  public hasMoreOperator() {
+    const parts = this.parser.syntax.slice(this.cursor).split('{')[0]
+    return /[+\-*/%<>=!&|^]+/.test(parts)
+  }
 }

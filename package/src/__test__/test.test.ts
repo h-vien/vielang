@@ -4,10 +4,9 @@ import { parserNode } from '@parser/test'
 describe('Test every thing', () => {
   it('Should parse correctly', () => {
     const code = `
-    hàm kiểm tra (số)
-    {
-      trả về sai
-
+    khi mà( a > 3 -1){
+        in ra(a)
+        a ++
     }
 
     `

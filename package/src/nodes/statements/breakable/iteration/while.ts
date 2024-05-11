@@ -16,7 +16,6 @@ export class WhileStatement {
     parser.validate('(')
 
     this.test = new Expression(parser)
-
     parser.validate(')')
     this.body = new BlockStatement(parser)
   }
