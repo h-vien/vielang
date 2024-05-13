@@ -20,4 +20,8 @@ describe('expression-binary.test', () => {
       }
     } as BinaryExpression)
   })
+  it('should parse the syntax normally', () => {
+    const res = parserNode.parse('a % i === 0', Expression)
+    console.log(JSON.stringify(res, null, 2))
+  })
 })

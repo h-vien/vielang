@@ -2,6 +2,7 @@ import { Parser } from '@parser/parser'
 import { Identifier } from '../identifier'
 import { Expression } from '.'
 import { Keyword } from '@parser/constants/keyword'
+import { CLIENT_RENEG_LIMIT } from 'tls'
 
 export class BinaryExpression {
   type = 'BinaryExpression'
@@ -13,6 +14,9 @@ export class BinaryExpression {
   right: Identifier | Expression
 
   constructor(parser: Parser, identifier?: Identifier) {
+    const hasMoreOperator = parser.tokenizer.hasMoreOperator()
+
+    console.log('parser.nextToken?.type', parser.nextToken)
     this.left =
       identifier ?? (parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser))
     switch (parser.nextToken?.type) {
@@ -38,13 +42,6 @@ export class BinaryExpression {
       }
     }
 
-    const hasMoreOperator = parser.tokenizer.hasMoreOperator()
-    if (hasMoreOperator && parser.nextToken?.type !== ')') {
-      this.right = new BinaryExpression(parser)
-      return
-    } else {
-      this.right = new Expression(parser)
-      return
-    }
+    this.right = new Expression(parser)
   }
 }

@@ -70,7 +70,10 @@ export class Tokenizer {
   }
 
   public hasMoreOperator() {
-    const parts = this.parser.syntax.slice(this.cursor).split('{')[0]
+    // const operators = ["<", ">", "=", "!=", "===", "!=="];
+    // const parts = expression.split(new RegExp(`([${operators.join("")}])`, "g"));
+    const parts = this.parser.syntax.split('{')[0]
+    console.log(parts)
     return /[+\-*/%<>=!&|^]+/.test(parts)
   }
 }
