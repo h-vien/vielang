@@ -1,7 +1,7 @@
 import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
-import { Literal } from '..'
 import { NullLiteral } from '../null'
+import { Literal } from '../index'
 
 describe('Test for null literal', () => {
   it('should parse the vietnamse null', () => {

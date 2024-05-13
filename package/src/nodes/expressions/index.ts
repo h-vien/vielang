@@ -1,7 +1,5 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
-import { Identifier } from '../identifier'
-import { Literal } from '../literal'
 import { AssignmentExpression } from './assignment'
 import { BinaryExpression } from './binary'
 import { CallExpression } from './call'
@@ -12,6 +10,8 @@ import { SuffixUpdateExpression } from './update-expression/suffix-update'
 import { ArrayExpression } from './array'
 import { LabelledStatement } from '../statements/label'
 import { ObjectExpression } from './object'
+import { Literal } from '../literal/index'
+import { Identifier } from '../identifier/index'
 
 export class Expression {
   [key: string]: any

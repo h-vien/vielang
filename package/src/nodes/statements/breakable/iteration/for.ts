@@ -1,12 +1,12 @@
 // import { ForInOfStatement } from "./ForInOfStatement";
 
 import { Parser } from '@parser/parser'
-import { Statement } from '../..'
 import { VariableDeclaration } from '../../../declarations/variable/declaration'
-import { Expression } from '../../../expressions'
-import { Identifier } from '../../../identifier'
 import { BlockStatement } from '../../block'
 import { Keyword } from '@parser/constants/keyword'
+import { Identifier } from '@parser/nodes/identifier/index'
+import { Expression } from '@parser/nodes/expressions/index'
+import { Statement } from '../../index'
 
 export class ForStatement {
   type = 'ForStatement'

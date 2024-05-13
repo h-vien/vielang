@@ -1,7 +1,7 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
-import { Statement } from '.'
-import { Declaration } from '../declarations'
+import { Declaration } from '../declarations/index'
+import { Statement } from './index'
 
 export class StatementItem {
   constructor(parser: Parser) {

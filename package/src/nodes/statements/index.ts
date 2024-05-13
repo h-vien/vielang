@@ -1,10 +1,10 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { BlockStatement } from './block'
-import { BreakableStatement } from './breakable'
 import { ExpressionStatement } from './expression'
 import { IfStatement } from './if'
 import { ReturnStatement } from './return'
+import { BreakableStatement } from './breakable/index'
 
 export class Statement {
   constructor(parser: Parser) {

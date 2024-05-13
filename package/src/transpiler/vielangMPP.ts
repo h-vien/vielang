@@ -1,5 +1,5 @@
-import { transpiler } from '.'
 import parser from '@parser/init-parser'
+import { transpiler } from './index'
 
 /**
  *  VietLang MPP is Message-Passing processes to transpile to JavaScript code

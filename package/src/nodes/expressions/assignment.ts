@@ -1,7 +1,7 @@
 import { Parser } from '@parser/parser'
-import { Identifier } from '../identifier'
-import { Expression } from '.'
 import { Keyword } from '@parser/constants/keyword'
+import { Identifier } from '../identifier/index'
+import { Expression } from './index'
 
 export class AssignmentExpression {
   type = 'AssignmentExpression'

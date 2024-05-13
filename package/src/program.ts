@@ -1,6 +1,6 @@
 import { Parser } from '@parser/parser'
-import { Statement } from './nodes/statements'
 import { StatementTree } from './nodes/statements/tree'
+import { Statement } from './nodes/statements/index'
 
 export class Program {
   type = 'Program'

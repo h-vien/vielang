@@ -1,5 +1,5 @@
 import { Parser } from '@parser/parser'
-import { Expression } from '../expressions'
+import { Expression } from '../expressions/index'
 
 export class ArrayElementList {
   type = 'ArrayElementList'

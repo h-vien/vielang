@@ -1,8 +1,8 @@
-import { Expression } from '@parser/nodes/expressions'
-import { Statement } from '..'
 import { Parser } from '@parser/parser'
 import { Keyword } from '@parser/constants/keyword'
 import { StatementTree } from '../tree'
+import { Expression } from '@parser/nodes/expressions/index'
+import { Statement } from '../index'
 
 export class SwitchStatement {
   type = 'SwitchStatement'

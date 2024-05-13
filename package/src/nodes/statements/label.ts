@@ -1,6 +1,6 @@
 import { Parser } from '@parser/parser'
-import { IterationStatement } from './breakable/iteration'
-import { Identifier } from '../identifier'
+import { Identifier } from '../identifier/index'
+import { IterationStatement } from './breakable/iteration/index'
 
 export class LabelledStatement {
   type = 'LabelledStatement'

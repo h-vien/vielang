@@ -1,6 +1,6 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
-import { Expression } from '../expressions'
+import { Expression } from '../expressions/index'
 
 export class ReturnStatement {
   type = 'ReturnStatement'

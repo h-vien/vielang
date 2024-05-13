@@ -1,5 +1,5 @@
 import { Parser } from '@parser/parser'
-import { Identifier } from '../identifier'
+import { Identifier } from '../identifier/index'
 import { BlockStatement } from '../statements/block'
 import { Keyword } from '@parser/constants/keyword'
 

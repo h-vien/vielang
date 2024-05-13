@@ -23,8 +23,7 @@ export default defineConfig({
       fileName: 'index'
     },
     rollupOptions: {
-      external: [],
-
+      external: ['@babel/generator'],
       output: {
         exports: 'named',
         globals: {}

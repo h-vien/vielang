@@ -8,10 +8,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), visualizer(), nodePolyfills()] as any,
-  define: {
-    'process.env': {},
-    global: 'globalThis'
-  },
+  define: {},
   test: {
     environment: 'jsdom',
     setupFiles: path.resolve(__dirname, './vitest.setup.js')

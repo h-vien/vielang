@@ -1,6 +1,6 @@
 import { Parser } from '@parser/parser'
-import { Identifier } from '../identifier'
-import { Expression } from '.'
+import { Identifier } from '../identifier/index'
+import { Expression } from './index'
 
 export class CallExpression {
   type = 'CallExpression'

@@ -1,7 +1,7 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
-import { IterationStatement } from './iteration'
 import { SwitchStatement } from './switch'
+import { IterationStatement } from './iteration/index'
 
 export class BreakableStatement {
   [key: string]: any

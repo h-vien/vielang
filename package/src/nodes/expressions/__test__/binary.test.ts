@@ -1,7 +1,7 @@
 import { parserNode } from '@parser/test'
-import { Expression } from '..'
 import toPlainObject from '@parser/utils/toPlainObject'
 import { BinaryExpression } from '../binary'
+import { Expression } from '../index'
 
 describe('expression-binary.test', () => {
   it('should parse the syntax normally', () => {
@@ -19,5 +19,9 @@ describe('expression-binary.test', () => {
         name: 'hello'
       }
     } as BinaryExpression)
+  })
+  it('should parse the syntax normally', () => {
+    const res = parserNode.parse('a % i === 0', Expression)
+    console.log(JSON.stringify(res, null, 2))
   })
 })

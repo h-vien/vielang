@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "nx run-many --target=build --all --exclude=playground,vielang",
+    "build": "nx run-many --target=build --all --exclude=vielang",
     "dev:playground": "nx run playground:dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

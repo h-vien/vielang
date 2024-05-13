@@ -1,5 +1,5 @@
 import { Parser } from '@parser/parser'
-import { Expression } from '.'
+import { Expression } from './index'
 
 export class UnaryExpression {
   type = 'UnaryExpression'

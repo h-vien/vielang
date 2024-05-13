@@ -1,7 +1,7 @@
 import { Parser } from '@parser/parser'
 import { BlockStatement } from '../../block'
-import { Expression } from '@parser/nodes/expressions'
 import { Keyword } from '@parser/constants/keyword'
+import { Expression } from '@parser/nodes/expressions/index'
 
 export class DoWhileStatement {
   type = 'DoWhileStatement'

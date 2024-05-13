@@ -1,6 +1,6 @@
 import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
-import { FunctionDeclaration } from '..'
+import { FunctionDeclaration } from '../index'
 
 describe('Test for function declaration', () => {
   it('should parse the function declaration syntax normally', () => {

@@ -1,8 +1,8 @@
 import { Keyword } from '@parser/constants/keyword'
-import { Identifier } from '@parser/nodes/identifier'
 import { BlockStatement } from '@parser/nodes/statements/block'
 import { Parser } from '@parser/parser'
 import { Parameter } from './parameter'
+import { Identifier } from '@parser/nodes/identifier/index'
 
 export class FunctionDeclaration {
   type = 'FunctionDeclaration'
