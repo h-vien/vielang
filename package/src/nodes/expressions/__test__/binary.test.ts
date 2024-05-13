@@ -1,7 +1,7 @@
 import { parserNode } from '@parser/test'
-import { Expression } from '..'
 import toPlainObject from '@parser/utils/toPlainObject'
 import { BinaryExpression } from '../binary'
+import { Expression } from '../index'
 
 describe('expression-binary.test', () => {
   it('should parse the syntax normally', () => {

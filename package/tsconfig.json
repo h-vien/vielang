@@ -1,9 +1,8 @@
 {
     "compilerOptions": {
-      "module": "NodeNext",
-      "moduleResolution": "NodeNext",
+      "module": "ESNext",
       "allowJs": false,
-      "target": "ES2022", 
+      "target": "ES2015", 
       "outDir": "dist", 
       "esModuleInterop": true,
       "strict": true ,

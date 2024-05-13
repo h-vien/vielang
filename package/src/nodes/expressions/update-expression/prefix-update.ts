@@ -1,6 +1,5 @@
+import { Identifier } from '@parser/nodes/identifier/index'
 import { Parser } from '@parser/parser'
-import { Keyword } from '@parser/constants/keyword'
-import { Identifier } from '@parser/nodes/identifier'
 
 export class PrefixUpdateExpression {
   type = 'UpdateExpression'

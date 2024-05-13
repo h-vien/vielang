@@ -1,6 +1,6 @@
 import { Parser } from '@parser/parser'
-import { Expression } from '../expressions'
 import { ArrayElementList } from '../initializers/array'
+import { Expression } from '../expressions/index'
 
 export class ArrayLiteral {
   type = 'ArrayLiteral'

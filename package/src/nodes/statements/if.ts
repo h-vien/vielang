@@ -1,9 +1,9 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
-import { Identifier } from '../identifier'
-import { Expression } from '../expressions'
 import { BlockStatement } from './block'
-import { Statement } from '.'
+import { Identifier } from '../identifier/index'
+import { Expression } from '../expressions/index'
+import { Statement } from './index'
 
 export class IfStatement {
   type = 'IfStatement'

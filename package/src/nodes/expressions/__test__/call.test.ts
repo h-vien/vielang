@@ -1,6 +1,6 @@
 import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
-import { Expression } from '..'
+import { Expression } from '../index'
 
 describe('expression-call.test', () => {
   it('should parse the syntax normally', () => {

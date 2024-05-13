@@ -1,7 +1,7 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { VariableDeclaration } from './variable/declaration'
-import { FunctionDeclaration } from './function'
+import { FunctionDeclaration } from './function/index'
 
 export class Declaration {
   [key: string]: any

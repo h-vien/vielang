@@ -1,7 +1,7 @@
 import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
-import { Literal } from '..'
 import { StringLiteral } from '../string'
+import { Literal } from '../index'
 
 describe('Test for string literal', () => {
   it('should parse the string with double quote', () => {

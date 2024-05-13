@@ -1,8 +1,7 @@
-import { Parser } from '@parser/parser'
-import { Identifier } from '../identifier'
-import { Expression } from '.'
 import { Keyword } from '@parser/constants/keyword'
-import { CLIENT_RENEG_LIMIT } from 'tls'
+import { Parser } from '@parser/parser'
+import { Identifier } from '../identifier/index'
+import { Expression } from './index'
 
 export class BinaryExpression {
   type = 'BinaryExpression'

@@ -1,7 +1,7 @@
 import { Keyword } from '@parser/constants/keyword'
-import { Expression } from '@parser/nodes/expressions'
 import { FunctionExpression } from '@parser/nodes/expressions/function'
-import { Identifier } from '@parser/nodes/identifier'
+import { Expression } from '@parser/nodes/expressions/index'
+import { Identifier } from '@parser/nodes/identifier/index'
 import { Parser } from '@parser/parser'
 
 export class ObjectMethod {

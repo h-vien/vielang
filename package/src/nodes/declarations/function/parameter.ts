@@ -1,4 +1,4 @@
-import { Identifier } from '@parser/nodes/identifier'
+import { Identifier } from '@parser/nodes/identifier/index'
 import { Parser } from '@parser/parser'
 
 export class Parameter {

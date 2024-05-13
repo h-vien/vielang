@@ -1,6 +1,6 @@
 import { Parser } from '@parser/parser'
-import { Expression } from '.'
-import { Identifier } from '../identifier'
+import { Expression } from './index'
+import { Identifier } from '../identifier/index'
 
 export class MemberExpression {
   type = 'MemberExpression'

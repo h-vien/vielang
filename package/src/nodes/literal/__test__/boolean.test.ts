@@ -1,7 +1,7 @@
 import toPlainObject from '@parser/utils/toPlainObject'
 import { BooleanLiteral } from '../boolean'
 import { parserNode } from '@parser/test'
-import { Literal } from '..'
+import { Literal } from '../index'
 
 describe('Test for boolean literal', () => {
   it('should parse the syntax normally', () => {

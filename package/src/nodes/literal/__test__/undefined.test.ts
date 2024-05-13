@@ -1,7 +1,7 @@
 import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
-import { Literal } from '..'
 import { UndefinedLiteral } from '../undefined'
+import { Literal } from '../index'
 
 describe('Test for undefined literal', () => {
   it('should parse the vietnamse undefined', () => {

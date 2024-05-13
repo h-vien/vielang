@@ -1,6 +1,6 @@
 import { parserNode } from '@parser/test'
-import { Statement } from '..'
 import toPlainObject from '@parser/utils/toPlainObject'
+import { Statement } from '../index'
 
 describe('Test for block', () => {
   it('should parse the block statement', () => {

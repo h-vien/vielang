@@ -1,6 +1,6 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
-import { Identifier } from '../identifier'
+import { Identifier } from '../identifier/index'
 
 export class BreakStatement {
   type = 'BreakStatement'
