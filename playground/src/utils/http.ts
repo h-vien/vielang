@@ -6,7 +6,6 @@ import { ErrorResponse } from 'src/types/utils.type'
 import { AuthResponse, RefreshTokenResponse } from 'src/types/auth.type'
 import { URL_LOGIN, URL_LOGOUT, URL_REFRESH_TOKEN, URL_REGISTER } from 'src/apis/auth.api'
 import { isAxiosExpiredTokenError, isAxiosUnauthorizedError } from './utils'
-import { SECONDS_IN_DAY } from 'src/shared/constant'
 
 export class Http {
   instance: AxiosInstance
@@ -22,8 +21,8 @@ export class Http {
       timeout: 10000,
       headers: {
         'Content-Type': 'application/json',
-        'expire-access-token': SECONDS_IN_DAY,
-        'expire-refresh-token': SECONDS_IN_DAY * 160
+        'expire-access-token': 864000,
+        'expire-refresh-token': 864000 * 160
       }
     })
     this.instance.interceptors.request.use(

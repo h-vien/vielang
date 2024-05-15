@@ -15,7 +15,7 @@ export class MemberExpression {
 
   constructor(parser: Parser, object: Expression) {
     this.object = object
-
+    console.log(object, 'this log')
     do {
       switch (parser.nextToken?.type) {
         case '[': {
