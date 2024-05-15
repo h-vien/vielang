@@ -4,18 +4,16 @@ import { createClient } from '@supabase/supabase-js'
 import { transpiler } from '@vielang/parser'
 import { Button, Card, Col, Divider, Drawer, Row, Tag } from 'antd'
 import axios from 'axios'
+import { sortBy } from 'lodash'
 import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import config from './configs'
 import { createDependencyProposals } from './editor/autocomplete'
 import { languageExtensionPoint, languageID } from './editor/config'
 import { monarchLanguage, richLanguageConfiguration } from './editor/vielang'
-import { sortBy } from 'lodash'
 
-const supabase = createClient(
-  'https://inkryqrjlvcrdegmzhwi.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlua3J5cXJqbHZjcmRlZ216aHdpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU2OTM2MDMsImV4cCI6MjAzMTI2OTYwM30.yRNvV1M8deeQbJf1dZXBlLSla22G0TC7c6gux8qCVlw'
-)
+const supabase = createClient('https://inkryqrjlvcrdegmzhwi.supabase.co', config.supabaseKey)
 
 function App() {
   const [problems, setProblems] = useState<any[]>([])
