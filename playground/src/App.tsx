@@ -1,15 +1,16 @@
-import { CaretRightOutlined, LoadingOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { CaretRightOutlined, CheckOutlined, CopyOutlined, LoadingOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import Editor, { useMonaco } from '@monaco-editor/react'
 import { createClient } from '@supabase/supabase-js'
 import { transpiler } from '@vielang/parser'
 import { Button, Card, Col, Divider, Drawer, Row, Tag } from 'antd'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { createDependencyProposals } from './editor/autocomplete'
 import { languageExtensionPoint, languageID } from './editor/config'
 import { monarchLanguage, richLanguageConfiguration } from './editor/vielang'
+import { sortBy } from 'lodash'
 
 const supabase = createClient(
   'https://inkryqrjlvcrdegmzhwi.supabase.co',
@@ -18,17 +19,13 @@ const supabase = createClient(
 
 function App() {
   const [problems, setProblems] = useState<any[]>([])
-  const getProblems = async () => {
-    const { data: problems, error } = await supabase.from('problems').select('*')
-    if (problems) setProblems(problems)
-  }
-  useEffect(() => {
-    getProblems()
-  }, [])
   const [program, setProgram] = useState('')
   const [selectedProblem, setSelectedProblem] = useState<any>()
   const [result, setResult] = useState('')
   const [open, setOpen] = useState(false)
+  const [isCopy, setIsCopy] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const monaco = useMonaco()
 
   const showDrawer = () => {
     setOpen(true)
@@ -38,13 +35,8 @@ function App() {
     setOpen(false)
   }
 
-  const monaco = useMonaco()
-
-  const [isLoading, setIsLoading] = useState(false)
   const onCompile = async () => {
     const _program = transpiler.compile(program)
-
-    setResult(_program.target)
     try {
       setIsLoading(true)
       const res = await axios.post('https://emkc.org/api/v2/piston/execute', {
@@ -63,6 +55,17 @@ function App() {
       setIsLoading(false)
     }
   }
+  const getProblems = async () => {
+    const { data: problems, error } = await supabase.from('problems').select('*')
+    if (problems) {
+      setProblems(problems)
+      setSelectedProblem(problems.find((problem) => problem.serial === 1))
+    }
+    if (error) toast(error.message, { type: 'error' })
+  }
+  useEffect(() => {
+    getProblems()
+  }, [])
   function handleEditorChange(value: any) {
     setProgram(value)
     // here is the current value
@@ -100,7 +103,7 @@ function App() {
 
   return (
     <Card>
-      <div className='flex items-center w-full justify-center mb-5'>
+      <div className='flex z-30 items-center w-full justify-center mb-5'>
         <Button size='small' onClick={showDrawer} className='mr-2'>
           <MenuUnfoldOutlined size={10} /> Bài tập
         </Button>
@@ -108,7 +111,7 @@ function App() {
           <CaretRightOutlined size={10} /> Thực thi
         </Button>
       </div>
-      <Row>
+      <Row className='pt-3'>
         <Col span={12}>
           <div className='bg-zinc-100 text-xl w-full p-12 h-full rounded-lg '>
             <h3>
@@ -125,11 +128,28 @@ function App() {
             <p className='mt-12 text-xl'>{selectedProblem?.meta_data.description}</p>
             <div className='my-12'>
               <p className='font-bold text-xl'> Đầu vào</p>
-              <p>{selectedProblem?.meta_data.input}</p>
+              <p className='border rounded-lg bg-gray-200 p-5 mt-2'>{selectedProblem?.meta_data.input}</p>
             </div>
             <div className='my-12'>
               <p className='font-bold text-xl'> Đầu ra</p>
-              <p>{selectedProblem?.meta_data.output}</p>
+              <p className='border rounded-lg bg-gray-200 p-5 mt-2'>{selectedProblem?.meta_data.output}</p>
+            </div>
+            <div>
+              <p className='font-bold'>Code mẫu</p>
+              <div className='border rounded-lg bg-gray-200 mt-4 relative'>
+                <Button
+                  size='small'
+                  className='absolute right-2 top-2'
+                  onClick={() => {
+                    setIsCopy(true)
+                    navigator.clipboard.writeText(selectedProblem?.code)
+                    setTimeout(() => setIsCopy(false), 2000)
+                  }}
+                >
+                  {isCopy ? <CheckOutlined /> : <CopyOutlined />}
+                </Button>
+                <pre className='block p-5'>{JSON.parse(JSON.stringify(selectedProblem?.code ?? '', null, 2))}</pre>
+              </div>
             </div>
           </div>
         </Col>
@@ -150,7 +170,7 @@ function App() {
         </Col>
       </Row>
       <Drawer title='Danh sách bài tập' placement='left' onClose={onClose} open={open}>
-        {problems.map((problem) => (
+        {sortBy(problems, 'serial').map((problem) => (
           <button
             key={problem.id}
             onClick={() => {

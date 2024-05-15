@@ -73,7 +73,6 @@ export class Tokenizer {
     // const operators = ["<", ">", "=", "!=", "===", "!=="];
     // const parts = expression.split(new RegExp(`([${operators.join("")}])`, "g"));
     const parts = this.parser.syntax.split('{')[0]
-    console.log(parts)
     return /[+\-*/%<>=!&|^]+/.test(parts)
   }
 }

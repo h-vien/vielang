@@ -22,6 +22,5 @@ describe('expression-binary.test', () => {
   })
   it('should parse the syntax normally', () => {
     const res = parserNode.parse('a % i === 0', Expression)
-    console.log(JSON.stringify(res, null, 2))
   })
 })

@@ -15,7 +15,6 @@ export class BinaryExpression {
   constructor(parser: Parser, identifier?: Identifier) {
     const hasMoreOperator = parser.tokenizer.hasMoreOperator()
 
-    console.log('parser.nextToken?.type', parser.nextToken)
     this.left =
       identifier ?? (parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser))
     switch (parser.nextToken?.type) {
