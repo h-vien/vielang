@@ -9,6 +9,5 @@ describe('expression-member.test', () => {
     `,
       Expression
     )
-    console.log(JSON.stringify(result, null, 2))
   })
 })

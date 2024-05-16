@@ -17,6 +17,27 @@ describe('Test every thing', () => {
   in ra (tính giai thừa(4)) // 4 * 3 * 2
     `
 
+    const switch_case = `khai báo tuổi tác = 12
+
+    duyệt(tuổi tác){
+        trường hợp 20: 
+            in ra("bạn 20 tuổi")
+        trường hợp 12: 
+            in ra("bạn 12 tuổi")
+        mặc định: 
+            in ra("mặc định ở ")
+    } `
+
+    const for_statement = `lặp(khai báo i = 0 ;i < 5 ; i++){
+      in ra(i)
+  }`
+
+    const while_statement = `khai báo a = 0;
+  khi mà (a < 4){
+      in ra (a)
+      a++
+  }`
+
     const result = parserNode.parse(code, Program)
     console.log(JSON.stringify(result, null, 2))
   })

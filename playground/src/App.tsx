@@ -2,7 +2,7 @@ import { CaretRightOutlined, CheckOutlined, CopyOutlined, LoadingOutlined, MenuU
 import Editor, { useMonaco } from '@monaco-editor/react'
 import { createClient } from '@supabase/supabase-js'
 import { transpiler } from '@vielang/parser'
-import { Button, Card, Col, Divider, Drawer, Row, Tag } from 'antd'
+import { Button, Card, Col, Collapse, Divider, Drawer, Row, Tag } from 'antd'
 import axios from 'axios'
 import { sortBy } from 'lodash'
 import { useEffect, useState } from 'react'
@@ -46,6 +46,9 @@ function App() {
           }
         ]
       })
+      if (res.data.run.stderr && res.data.run.stderr.includes('Assignment to constant variable')) {
+        setResult('Không thể gán giá trị cho biến hằng')
+      }
       setResult(res.data.run.output)
     } catch (err) {
       console.log(err)
@@ -133,21 +136,35 @@ function App() {
               <p className='border rounded-lg bg-gray-200 p-5 mt-2'>{selectedProblem?.meta_data.output}</p>
             </div>
             <div>
-              <p className='font-bold'>Code mẫu</p>
-              <div className='border rounded-lg bg-gray-200 mt-4 relative'>
-                <Button
-                  size='small'
-                  className='absolute right-2 top-2'
-                  onClick={() => {
-                    setIsCopy(true)
-                    navigator.clipboard.writeText(selectedProblem?.code)
-                    setTimeout(() => setIsCopy(false), 2000)
-                  }}
-                >
-                  {isCopy ? <CheckOutlined /> : <CopyOutlined />}
-                </Button>
-                <pre className='block p-5'>{JSON.parse(JSON.stringify(selectedProblem?.code ?? '', null, 2))}</pre>
-              </div>
+              <p className='font-bold text-xl mb-4'> Code mẫu</p>
+
+              <Collapse
+                size='small'
+                items={[
+                  {
+                    key: '1',
+                    label: 'Xem đáp án',
+                    children: (
+                      <div className='border rounded-lg overflow-auto bg-gray-200 mt-4 relative'>
+                        <Button
+                          size='small'
+                          className='absolute right-2 top-2'
+                          onClick={() => {
+                            setIsCopy(true)
+                            navigator.clipboard.writeText(selectedProblem?.code)
+                            setTimeout(() => setIsCopy(false), 2000)
+                          }}
+                        >
+                          {isCopy ? <CheckOutlined /> : <CopyOutlined />}
+                        </Button>
+                        <pre className='block p-5'>
+                          {JSON.parse(JSON.stringify(selectedProblem?.code ?? '', null, 2))}
+                        </pre>
+                      </div>
+                    )
+                  }
+                ]}
+              />
             </div>
           </div>
         </Col>
@@ -172,6 +189,8 @@ function App() {
           <button
             key={problem.id}
             onClick={() => {
+              setResult('')
+              setProgram('')
               setSelectedProblem(problem)
               onClose()
             }}
