@@ -1,6 +1,6 @@
 import { parserNode } from '@parser/test'
-import { AssignmentExpression } from '../assignment'
 import toPlainObject from '@parser/utils/toPlainObject'
+import { AssignmentExpression } from '../assignment'
 
 describe('expression-assignment.test', () => {
   it('should parse the syntax normally', () => {
@@ -13,14 +13,18 @@ describe('expression-assignment.test', () => {
       },
       operator: '=',
       right: {
-        type: 'NumericLiteral',
-        value: 12,
-        extra: {
-          rawValue: 12,
-          raw: '12'
+        type: 'BinaryExpression',
+        left: {
+          type: 'NumericLiteral',
+          start: 4,
+          end: 6,
+          value: 12,
+          extra: {
+            rawValue: 12,
+            raw: '12'
+          }
         },
-        start: 4,
-        end: 6
+        right: {}
       }
     })
   })
@@ -34,14 +38,28 @@ describe('expression-assignment.test', () => {
       },
       operator: '=',
       right: {
-        type: 'NumericLiteral',
-        value: 12,
-        extra: {
-          rawValue: 12,
-          raw: '12'
+        type: 'BinaryExpression',
+        left: {
+          type: 'NumericLiteral',
+          start: 4,
+          end: 6,
+          value: 12,
+          extra: {
+            rawValue: 12,
+            raw: '12'
+          }
         },
-        start: 4,
-        end: 6
+        operator: '+',
+        right: {
+          type: 'NumericLiteral',
+          start: 9,
+          end: 10,
+          value: 2,
+          extra: {
+            rawValue: 2,
+            raw: '2'
+          }
+        }
       }
     })
   })

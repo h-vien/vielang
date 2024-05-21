@@ -13,8 +13,6 @@ export class BinaryExpression {
   right: Identifier | Expression
 
   constructor(parser: Parser, identifier?: Identifier) {
-    const hasMoreOperator = parser.tokenizer.hasMoreOperator()
-
     this.left =
       identifier ?? (parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser))
     switch (parser.nextToken?.type) {

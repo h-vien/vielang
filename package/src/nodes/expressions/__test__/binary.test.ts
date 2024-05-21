@@ -21,6 +21,6 @@ describe('expression-binary.test', () => {
     } as BinaryExpression)
   })
   it('should parse the syntax normally', () => {
-    const res = parserNode.parse('a % i === 0', Expression)
+    const res = parserNode.parse('a = 1 + 2 ', Expression)
   })
 })
