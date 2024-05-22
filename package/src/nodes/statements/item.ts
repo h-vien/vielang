@@ -5,6 +5,7 @@ import { Statement } from './index'
 
 export class StatementItem {
   constructor(parser: Parser) {
+    console.log(parser.nextToken?.type)
     switch (parser.nextToken?.type) {
       case Keyword.LET:
       case Keyword.CONST:

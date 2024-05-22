@@ -37,7 +37,7 @@ describe('Test every thing', () => {
       in ra (a)
       a++
   }`
-    const test = ` test = 2 % i `
+    const test = ` test = 2 + i -1`
     const result = parserNode.parse(test, Program)
     console.log(JSON.stringify(result, null, 2))
   })

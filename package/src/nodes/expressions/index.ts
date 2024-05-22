@@ -1,7 +1,6 @@
 import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { AssignmentExpression } from './assignment'
-import { BinaryExpression } from './binary'
 import { CallExpression } from './call'
 import { MemberExpression } from './member'
 import { UnaryExpression } from './unary'
@@ -12,6 +11,7 @@ import { LabelledStatement } from '../statements/label'
 import { ObjectExpression } from './object'
 import { Literal } from '../literal/index'
 import { Identifier } from '../identifier/index'
+import { BinaryExpression } from './binary/index'
 
 export class Expression {
   [key: string]: any
@@ -90,7 +90,7 @@ export class Expression {
 
             switch (parser.nextToken?.type) {
               case '=': {
-                Object.assign(this, AssignmentExpression(parser, memberExpression))
+                Object.assign(this, new AssignmentExpression(parser, memberExpression))
                 break
               }
               case '(': {

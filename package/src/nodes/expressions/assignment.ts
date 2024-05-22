@@ -2,7 +2,7 @@ import { Parser } from '@parser/parser'
 import { Keyword } from '@parser/constants/keyword'
 import { Identifier } from '../identifier/index'
 import { Expression } from './index'
-import { BinaryExpression } from './binary'
+import { BinaryExpression } from './binary/index'
 
 export class AssignmentExpression {
   type = 'AssignmentExpression'
