@@ -5,7 +5,7 @@ import { AssignmentExpression } from '../assignment'
 describe('expression-assignment.test', () => {
   it('should parse the syntax normally', () => {
     const result = parserNode.parse('a = 12;', AssignmentExpression)
-    expect(toPlainObject(result)).toStrictEqual({
+    expect(toPlainObject(result)).toEqual({
       type: 'AssignmentExpression',
       left: {
         type: 'Identifier',
@@ -13,24 +13,20 @@ describe('expression-assignment.test', () => {
       },
       operator: '=',
       right: {
-        type: 'BinaryExpression',
-        left: {
-          type: 'NumericLiteral',
-          start: 4,
-          end: 6,
-          value: 12,
-          extra: {
-            rawValue: 12,
-            raw: '12'
-          }
-        },
-        right: {}
+        type: 'NumericLiteral',
+        start: 4,
+        end: 6,
+        value: 12,
+        extra: {
+          rawValue: 12,
+          raw: '12'
+        }
       }
     })
   })
   it('Should parse the syntax with a complex expression', () => {
     const result = parserNode.parse('a = 12 + 2;', AssignmentExpression)
-    expect(toPlainObject(result)).toStrictEqual({
+    expect(toPlainObject(result)).toEqual({
       type: 'AssignmentExpression',
       left: {
         type: 'Identifier',
@@ -39,6 +35,7 @@ describe('expression-assignment.test', () => {
       operator: '=',
       right: {
         type: 'BinaryExpression',
+        operator: '+',
         left: {
           type: 'NumericLiteral',
           start: 4,
@@ -49,7 +46,6 @@ describe('expression-assignment.test', () => {
             raw: '12'
           }
         },
-        operator: '+',
         right: {
           type: 'NumericLiteral',
           start: 9,

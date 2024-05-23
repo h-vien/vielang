@@ -49,7 +49,6 @@ export class ForStatement {
       }
 
       parser.validate(';')
-
       this.test = new Expression(parser)
       if (parser.nextToken?.type === ';') {
         parser.validate(';')

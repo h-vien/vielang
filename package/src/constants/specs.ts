@@ -16,6 +16,14 @@ export const Specs: Array<Spec> = [
   // Skip multi-line comments:
   [/^\/\*[\S\s]*?\*\//, null],
 
+  [/^\+\+/, '++'], // PlusPlus
+
+  // --------------------------------------
+  // Math operators: +, -, *, /
+  [/^[+\-]/, Keyword.ADDITIVE_OPERATOR],
+  [/^[*\/\%]/, Keyword.MULTIPLICATIVE_OPERATOR],
+  // Relational operators: >, >=, <, <=
+  [/^(<=|>=|<|>|==)/, Keyword.RELATIONAL_OPERATOR],
   // --------------------------------------
   // Symbols and delimiters:
   [/^\[/, '['], // OpenBracket
@@ -36,7 +44,6 @@ export const Specs: Array<Spec> = [
   [/^:/, ':'], // Colon
   [/^\.{3}/, '...'], // Ellipsis
   [/^\./, '.'], // Dot
-  [/^\+\+/, '++'], // PlusPlus
   [/^\+/, '+'], // Plus
   [/^--/, '--'], // MinusMinus
   [/^-/, '-'], // Minus

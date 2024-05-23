@@ -7,10 +7,11 @@ export class Identifier {
   name: string
 
   constructor(parser: Parser) {
-    this.name = String(parser.validate(Keyword.IDENTIFIER)?.value)
+    const res = parser.validate(Keyword.IDENTIFIER)?.value
+    this.name = String(res)
       .replace(/[^\sA-Za-z]/g, (match) => {
         // Find vietnamese character and replace
-        return `_${match.codePointAt(0)}`
+        return `_${match?.codePointAt(0)}`
       })
       .replace(/\s/g, '_')
   }
