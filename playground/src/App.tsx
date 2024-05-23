@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js'
 import { transpiler } from '@vielang/parser'
 import { Button, Card, Col, Collapse, Divider, Drawer, Row, Tag } from 'antd'
 import axios from 'axios'
-import { sortBy } from 'lodash'
+import _, { sortBy } from 'lodash'
 import { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -12,6 +12,7 @@ import config from './configs'
 import { createDependencyProposals } from './editor/autocomplete'
 import { languageExtensionPoint, languageID } from './editor/config'
 import { monarchLanguage, richLanguageConfiguration } from './editor/vielang'
+import { ERRORS } from './constants/error.const'
 
 const supabase = createClient('https://inkryqrjlvcrdegmzhwi.supabase.co', config.supabaseKey)
 
@@ -33,8 +34,38 @@ function App() {
     setOpen(false)
   }
 
+  const executeCode = () => {
+    let capturedOutput = ''
+    const originalConsoleLog = console.log
+
+    console.log = (output) => {
+      capturedOutput += output
+    }
+
+    try {
+      const _program = transpiler.compile(program)
+
+      eval(_program.target)
+      setResult(capturedOutput)
+    } catch (error) {
+      setResult(`Lỗi: ${ERRORS[error as keyof typeof ERRORS] || error}`)
+    } finally {
+      // Restore original console.log
+      console.log = originalConsoleLog
+    }
+  }
+
   const onCompile = async () => {
+    let capturedOutput = ''
+    console.log('vo day')
+    const originalConsoleLog = console.log
+    originalConsoleLog('Hello, World!')
+    // Override console.log to capture the output
+    console.log = (output) => {
+      capturedOutput += output
+    }
     const _program = transpiler.compile(program)
+    return
     try {
       setIsLoading(true)
       const res = await axios.post('https://emkc.org/api/v2/piston/execute', {
@@ -76,6 +107,19 @@ function App() {
     // do conditional chaining
     monaco?.languages.typescript.javascriptDefaults.setEagerModelSync(true)
     monaco?.languages.register(languageExtensionPoint)
+    monaco?.editor.defineTheme('myCoolTheme', {
+      base: 'vs',
+      inherit: false,
+      rules: [
+        { token: 'string.invalid', foreground: '808080' },
+        { token: 'custom-error', foreground: 'ff0000', fontStyle: 'bold' },
+        { token: 'custom-notice', foreground: 'FFA500' },
+        { token: 'custom-date', foreground: '008800' }
+      ],
+      colors: {
+        'editor.foreground': '#000000'
+      }
+    })
     monaco?.languages.onLanguage(languageID, () => {
       monaco?.languages.setMonarchTokensProvider(languageID, monarchLanguage)
       monaco?.languages.setLanguageConfiguration(languageID, richLanguageConfiguration)
@@ -108,7 +152,7 @@ function App() {
         <Button size='small' onClick={showDrawer} className='mr-2'>
           <MenuUnfoldOutlined size={10} /> Bài tập
         </Button>
-        <Button size='small' onClick={onCompile} shape='default'>
+        <Button size='small' onClick={executeCode} shape='default'>
           <CaretRightOutlined size={10} /> Thực thi
         </Button>
       </div>
