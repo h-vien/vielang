@@ -67,7 +67,10 @@ export class Expression {
           case '>=':
           case '<=':
           case '==':
-          case '===': {
+          case '===':
+          case Keyword.ADDITIVE_OPERATOR:
+          case Keyword.MULTIPLICATIVE_OPERATOR:
+          case Keyword.RELATIONAL_OPERATOR: {
             Object.assign(this, new BinaryExpression(parser, identifier))
             break
           }

@@ -1,3 +1,5 @@
+import { transpiler } from '@parser'
+import { Expression } from '@parser/nodes/expressions/index'
 import { Program } from '@parser/program'
 import { parserNode } from '@parser/test'
 
@@ -37,8 +39,11 @@ describe('Test every thing', () => {
       in ra (a)
       a++
   }`
-    const test = ` test = 2 + i -1`
+    const test = `khai báo a = {
+      a: 1
+    }
+      in ra(a.a)
+    `
     const result = parserNode.parse(test, Program)
-    console.log(JSON.stringify(result, null, 2))
   })
 })

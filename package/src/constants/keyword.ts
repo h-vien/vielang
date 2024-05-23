@@ -63,5 +63,8 @@ export enum Keyword {
   INSTANCEOF = 'Instanceof',
   WITH = 'With',
   DEBUGGER = 'Debugger',
-  IDENTIFIER = 'Identifier'
+  IDENTIFIER = 'Identifier',
+  RELATIONAL_OPERATOR = 'RelationalOperator',
+  ADDITIVE_OPERATOR = 'AdditiveOperator',
+  MULTIPLICATIVE_OPERATOR = 'MultiplicativeOperator'
 }
