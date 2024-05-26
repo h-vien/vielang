@@ -44,6 +44,7 @@ export class Expression {
       case 'void':
       case 'typeof':
       case '~':
+      case '-':
       case '!': {
         Object.assign(this, new UnaryExpression(parser))
         break
@@ -90,7 +91,7 @@ export class Expression {
 
             switch (parser.nextToken?.type) {
               case '=': {
-                Object.assign(this, AssignmentExpression(parser, memberExpression))
+                Object.assign(this, new AssignmentExpression(parser, memberExpression))
                 break
               }
               case '(': {
