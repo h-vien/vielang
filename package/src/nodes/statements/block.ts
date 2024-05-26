@@ -1,5 +1,4 @@
 import { Parser } from '@parser/parser'
-import { VariableDeclaration } from '../declarations/variable/declaration'
 import { StatementTree } from './tree'
 
 export class BlockStatement {

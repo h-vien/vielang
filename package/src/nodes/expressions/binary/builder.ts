@@ -4,7 +4,6 @@ import { Literal } from '@parser/nodes/literal/index'
 import { Parser } from '@parser/parser'
 import { Token } from '@parser/types/token'
 import { Expression } from '../index'
-import { AssignmentExpression } from '../assignment'
 
 export class BinaryExpressionBuilder {
   parser: Parser
@@ -14,10 +13,10 @@ export class BinaryExpressionBuilder {
     this.identifier = _identifier
   }
   BuilderExpression(builderName: string, operatorToken: Token['type']) {
-    let left = this[builderName]?.()
+    let left = (this as Expression)[builderName]?.()
     while (this.parser.nextToken?.type === operatorToken) {
       const operator = this.parser.validate(operatorToken).value
-      const right = this[builderName]()
+      const right = (this as Expression)[builderName]()
       left = {
         type: 'BinaryExpression',
         operator,

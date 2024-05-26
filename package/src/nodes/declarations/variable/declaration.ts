@@ -7,19 +7,13 @@ export class VariableDeclaration {
 
   declarations: Array<VariableDeclarator>
 
-  kind: 'var' | 'let' | 'const'
+  kind: 'let' | 'const'
 
   constructor(parser: Parser) {
-    let kind: 'var' | 'let' | 'const' = 'var'
+    let kind: 'let' | 'const' = 'let'
     let isConstant = false
 
     switch (parser.nextToken?.type) {
-      case Keyword.VAR: {
-        parser.validate(Keyword.VAR)
-        kind = 'var'
-
-        break
-      }
       case Keyword.LET: {
         parser.validate(Keyword.LET)
         kind = 'let'
@@ -43,7 +37,7 @@ export class VariableDeclaration {
 
     do {
       declarations.push(new VariableDeclarator(parser, isConstant))
-    } while (parser.nextToken?.type === ',' && parser.validate(','))
+    } while (String(parser.nextToken?.type) === ',' && parser.validate(','))
 
     this.declarations = declarations
     this.kind = kind

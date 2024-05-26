@@ -1,5 +1,5 @@
-import { parserNode } from '@parser/test'
 import toPlainObject from '@parser/utils/toPlainObject'
+import { parserNode } from '@parser/test'
 import { Expression } from '../index'
 
 describe('expression-call.test', () => {
