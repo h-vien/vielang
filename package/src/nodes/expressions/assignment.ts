@@ -1,9 +1,9 @@
-import { Parser } from '@parser/parser'
 import { Keyword } from '@parser/constants/keyword'
+import { Parser } from '@parser/parser'
 import { Identifier } from '../identifier/index'
-import { Expression } from './index'
-import { BinaryExpression } from './binary/index'
 import { BinaryExpressionBuilder } from './binary/builder'
+import { Expression } from './index'
+import { UnaryExpression } from './unary'
 
 export class AssignmentExpression {
   type = 'AssignmentExpression'
@@ -17,8 +17,13 @@ export class AssignmentExpression {
   constructor(parser: Parser, identifier?: Identifier | Expression) {
     this.left =
       identifier ?? (parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser))
-    while (parser.nextToken?.type === '=') {
+    if (parser.nextToken?.type === '=') {
       this.operator = String(parser.validate(parser.nextToken?.type as any).value)
+
+      if (String(parser.nextToken?.type) === Keyword.ADDITIVE_OPERATOR) {
+        this.right = new UnaryExpression(parser)
+        return
+      }
       const binaryBuilder = new BinaryExpressionBuilder(parser, identifier as Identifier)
       this.right = binaryBuilder.RelationalExpression()
     }

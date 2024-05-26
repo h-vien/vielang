@@ -12,7 +12,7 @@ import config from './configs'
 import { createDependencyProposals } from './editor/autocomplete'
 import { languageExtensionPoint, languageID } from './editor/config'
 import { monarchLanguage, richLanguageConfiguration } from './editor/vielang'
-import { ERRORS } from './constants/error.const'
+import { ERRORS, RESULTS } from './constants/error.const'
 
 const supabase = createClient('https://inkryqrjlvcrdegmzhwi.supabase.co', config.supabaseKey)
 
@@ -46,7 +46,7 @@ function App() {
       const _program = transpiler.compile(program)
 
       eval(_program.target)
-      setResult(capturedOutput)
+      setResult(RESULTS[capturedOutput as keyof typeof RESULTS] || capturedOutput)
     } catch (error) {
       setResult(`Lỗi: ${ERRORS[error as keyof typeof ERRORS] || error}`)
     } finally {

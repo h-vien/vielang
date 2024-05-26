@@ -1,10 +1,10 @@
 import { Keyword } from '@parser/constants/keyword'
+import { Identifier } from '@parser/nodes/identifier/index'
+import { Literal } from '@parser/nodes/literal/index'
 import { Parser } from '@parser/parser'
 import { Token } from '@parser/types/token'
-import { UnaryExpression } from '../unary'
-import { Literal } from '@parser/nodes/literal/index'
 import { Expression } from '../index'
-import { Identifier } from '@parser/nodes/identifier/index'
+import { AssignmentExpression } from '../assignment'
 
 export class BinaryExpressionBuilder {
   parser: Parser
@@ -33,8 +33,27 @@ export class BinaryExpressionBuilder {
     return res
   }
   MultiplicativeExpression() {
-    const res = this.BuilderExpression('PrimaryExpression', Keyword.MULTIPLICATIVE_OPERATOR)
+    const res = this.BuilderExpression('UnaryExpression', Keyword.MULTIPLICATIVE_OPERATOR)
     return res
+  }
+  UnaryExpression(): any {
+    let operator
+    switch (this.parser.nextToken?.type) {
+      case Keyword.ADDITIVE_OPERATOR:
+        operator = this.parser.validate(Keyword.ADDITIVE_OPERATOR).value
+        break
+      case '!':
+        operator = this.parser.validate('!').value
+        break
+    }
+    if (operator != null) {
+      return {
+        type: 'UnaryExpression',
+        operator,
+        argument: new Literal(this.parser)
+      }
+    }
+    return new Expression(this.parser)
   }
   RelationalExpression() {
     const res = this.BuilderExpression('AdditiveExpression', Keyword.RELATIONAL_OPERATOR)

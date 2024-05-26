@@ -44,8 +44,8 @@ export class Expression {
       case 'void':
       case 'typeof':
       case '~':
-      case '-':
-      case '!': {
+      case '!':
+      case Keyword.ADDITIVE_OPERATOR: {
         Object.assign(this, new UnaryExpression(parser))
         break
       }

@@ -1,5 +1,6 @@
 import { Parser } from '@parser/parser'
 import { Expression } from './index'
+import { Keyword } from '@parser/constants/keyword'
 
 export class UnaryExpression {
   type = 'UnaryExpression'
@@ -11,14 +12,16 @@ export class UnaryExpression {
   argument: Expression
 
   constructor(parser: Parser) {
+    console.log(parser.nextToken?.type, 'this log binary')
     switch (parser.nextToken?.type) {
       case 'delete':
       case 'void':
       case 'typeof':
-      case '+':
-      case '-':
       case '~':
-      case '!': {
+      case '!':
+      case '-':
+      case '+':
+      case Keyword.ADDITIVE_OPERATOR: {
         this.operator = String(parser.validate(parser.nextToken?.type).value)
         this.prefix = true
         this.argument = new Expression(parser)

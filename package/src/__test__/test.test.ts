@@ -39,7 +39,8 @@ describe('Test every thing', () => {
       in ra (a)
       a++
   }`
-    const test = `khai báo a = -12 `
+    const test = `a = a < -24`
     const result = parserNode.parse(test, Program)
+    console.log(JSON.stringify(result, null, 2))
   })
 })
