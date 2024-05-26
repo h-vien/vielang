@@ -12,7 +12,6 @@ export class UnaryExpression {
   argument: Expression
 
   constructor(parser: Parser) {
-    console.log(parser.nextToken?.type, 'this log binary')
     switch (parser.nextToken?.type) {
       case 'delete':
       case 'void':

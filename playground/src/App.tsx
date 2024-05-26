@@ -44,7 +44,6 @@ function App() {
 
     try {
       const _program = transpiler.compile(program)
-
       eval(_program.target)
       setResult(RESULTS[capturedOutput as keyof typeof RESULTS] || capturedOutput)
     } catch (error) {
