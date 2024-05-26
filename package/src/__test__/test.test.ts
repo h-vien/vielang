@@ -39,11 +39,7 @@ describe('Test every thing', () => {
       in ra (a)
       a++
   }`
-    const test = `khai báo a = {
-      a: 1
-    }
-      in ra(a.a)
-    `
+    const test = `khai báo a = -12 `
     const result = parserNode.parse(test, Program)
   })
 })

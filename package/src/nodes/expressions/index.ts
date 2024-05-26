@@ -44,6 +44,7 @@ export class Expression {
       case 'void':
       case 'typeof':
       case '~':
+      case '-':
       case '!': {
         Object.assign(this, new UnaryExpression(parser))
         break
