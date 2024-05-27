@@ -21,17 +21,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/N3iV/vietlang.git"
+    "url": "git+ssh://git@github.com/h-vien/vielang.git"
   },
   "keywords": [
-    "vietlang"
+    "vielang"
   ],
   "author": "vienhuynh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/N3iV/vietlang/issues"
+    "url": "https://github.com/h-vien/vielang/issues"
   },
-  "homepage": "https://github.com/N3iV/vietlang#readme",
+  "homepage": "https://github.com/h-vien/vielang#readme",
   "devDependencies": {
     "@types/babel__generator": "^7.6.8",
     "@types/jest": "^29.5.12",

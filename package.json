@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/N3iV/vietlang.git"
+    "url": "git+https://github.com/h-vien/vietlang.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/N3iV/vietlang/issues"
+    "url": "https://github.com/h-vien/vietlang/issues"
   },
-  "homepage": "https://github.com/N3iV/vietlang#readme",
+  "homepage": "https://github.com/h-vien/vietlang#readme",
   "devDependencies": {
     "nx": "^18.3.3"
   },
