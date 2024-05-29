@@ -11,6 +11,7 @@ const genKeywords = (keywords: string[], kind: any, range: any) => {
 
 export const KEYWORDS = [
   'khai báo',
+  'hằng số',
   'hàm',
   'trường hợp',
   'trả về',

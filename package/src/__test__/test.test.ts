@@ -40,7 +40,7 @@ describe('Test every thing', () => {
       a++
   }`
     const test = `khai báo tên = "Viên Huỳnh"`
-    const result = parserNode.parse(test, Program)
+    const result = parserNode.parse(while_statement, Program)
     console.log(JSON.stringify(result, null, 2))
   })
 })
