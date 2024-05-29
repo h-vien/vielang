@@ -84,7 +84,7 @@ export const Specs: Array<Spec> = [
   // --------------------------------------
   // Keywords
   [/^\b(var|khai b\u00E1o)\b/, Keyword.LET], // khai báo
-  [/^\b(break|ph\u00E1 v\u00F2ng l\u1EB7p)\b/, Keyword.BREAK], // phá vòng lặp
+  [/\u0070\u0068\u00E1\u0020\u0068\u0075\u1EF7/g, Keyword.BREAK], // phá huỷ
   [/\u0074\u0068\u1EF1\u0063\u0020\u0068\u0069\u1EC7\u006E/g, Keyword.DO], // thực hiện
   [/^\binstanceof\b/, Keyword.INSTANCEOF],
   [/^\b(typeof|ki\u1EC3u c\u1EE7a)\b/, Keyword.TYPEOF], // kiểu của

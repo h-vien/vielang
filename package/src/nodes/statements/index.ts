@@ -5,6 +5,7 @@ import { ExpressionStatement } from './expression'
 import { IfStatement } from './if'
 import { ReturnStatement } from './return'
 import { BreakableStatement } from './breakable/index'
+import { BreakStatement } from './break'
 
 export class Statement {
   constructor(parser: Parser) {
@@ -22,7 +23,7 @@ export class Statement {
         break
       }
       case Keyword.BREAK: {
-        Object.assign(this, new BreakableStatement(parser))
+        Object.assign(this, new BreakStatement(parser))
         break
       }
       case Keyword.DO:
