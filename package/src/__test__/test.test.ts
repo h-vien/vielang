@@ -39,8 +39,18 @@ describe('Test every thing', () => {
       in ra (a)
       a++
   }`
-    const test = `khai báo tên = "Viên Huỳnh"`
-    const result = parserNode.parse(while_statement, Program)
+
+    const test = `
+    hàm kiểm tra(a){
+      nếu (a < 5){
+          trả về
+      }
+      in ra(a)
+  }
+  
+  
+  `
+    const result = transpiler.compile(test)
     console.log(JSON.stringify(result, null, 2))
   })
 })

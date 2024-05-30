@@ -4,12 +4,13 @@ import { Expression } from '../expressions/index'
 
 export class ReturnStatement {
   type = 'ReturnStatement'
-  argument: Expression
+  argument: Expression | null
 
   constructor(parser: Parser) {
     parser.validate(Keyword.RETURN)
 
     const expression = new Expression(parser)
-    this.argument = expression
+
+    this.argument = Object.keys(expression).length === 0 ? null : expression
   }
 }
