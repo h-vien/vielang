@@ -74,4 +74,39 @@ describe('expression-binary.test', () => {
       }
     })
   })
+  it('should parse the syntax normally', () => {
+    const res = parserNode.parse('a + 1 + 2 ', BinaryExpression)
+    expect(toPlainObject(res)).toStrictEqual({
+      type: 'BinaryExpression',
+      left: {
+        type: 'BinaryExpression',
+        operator: '-',
+        left: {
+          type: 'Identifier',
+          name: 'a'
+        },
+        right: {
+          type: 'NumericLiteral',
+          start: 5,
+          end: 6,
+          value: 1,
+          extra: {
+            rawValue: 1,
+            raw: '1'
+          }
+        }
+      },
+      operator: '+',
+      right: {
+        type: 'NumericLiteral',
+        start: 8,
+        end: 9,
+        value: 2,
+        extra: {
+          rawValue: 2,
+          raw: '2'
+        }
+      }
+    })
+  })
 })

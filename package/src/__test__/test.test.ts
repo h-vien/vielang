@@ -1,4 +1,5 @@
 import { transpiler } from '@parser'
+import { BinaryExpression } from '@parser/nodes/expressions/binary/index'
 import { Expression } from '@parser/nodes/expressions/index'
 import { Program } from '@parser/program'
 import { parserNode } from '@parser/test'
@@ -40,17 +41,8 @@ describe('Test every thing', () => {
       a++
   }`
 
-    const test = `
-    hàm kiểm tra(a){
-      nếu (a < 5){
-          trả về
-      }
-      in ra(a)
-  }
-  
-  
-  `
-    const result = transpiler.compile(test)
+    const test = `a - 2 + 1 `
+    const result = parserNode.parse(test, BinaryExpression)
     console.log(JSON.stringify(result, null, 2))
   })
 })

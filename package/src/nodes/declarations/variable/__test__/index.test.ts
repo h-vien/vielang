@@ -4,30 +4,31 @@ import { parserNode } from '@parser/test'
 
 describe('Test for numeric declaration', () => {
   it('should parse the let declaration syntax normally', () => {
-    const result = parserNode.parse(`khai báo biến a = 1`, VariableDeclaration)
+    const result = parserNode.parse(`khai báo tên = "Viên Huỳnh"`, VariableDeclaration)
+    console.log(JSON.stringify(result, null, 2))
     expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [
         {
           type: 'VariableDeclarator',
+          init: {
+            type: 'StringLiteral',
+            start: 15,
+            end: 27,
+            value: 'Viên Huỳnh',
+            extra: {
+              rawValue: 'Viên Huỳnh',
+              raw: '"Viên Huỳnh"'
+            }
+          },
           id: {
             type: 'Identifier',
-            name: 'bi_7871n_a'
-          },
-          init: {
-            type: 'NumericLiteral',
-            value: 1,
-            extra: {
-              rawValue: 1,
-              raw: '1'
-            },
-            start: 18,
-            end: 19
+            name: 't_234n'
           }
         }
       ],
       kind: 'let'
-    } as VariableDeclaration)
+    })
   })
   it('should parse the const declaration syntax normally', () => {
     const result = parserNode.parse(`hằng số a = 1`, VariableDeclaration)
