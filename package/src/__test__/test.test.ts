@@ -34,15 +34,15 @@ describe('Test every thing', () => {
     const for_statement = `lặp(khai báo i = 0 ;i < 5 ; i++){
       in ra(i)
   }`
-
     const while_statement = `khai báo a = 0;
   khi mà (a < 4){
-      in ra (a)
-      a++
+    in ra (a)
+    a++
   }`
 
-    const test = `a - 2 + 1 `
-    const result = parserNode.parse(test, BinaryExpression)
+    console.log(JSON.stringify(while_statement, null, 2))
+    const test = `khai báo a = -12 `
+    const result = parserNode.parse(test, Program)
     console.log(JSON.stringify(result, null, 2))
   })
 })

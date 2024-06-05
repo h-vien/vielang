@@ -6,6 +6,7 @@ import { Suspense, lazy } from 'react'
 import { Route } from './interface/app'
 import NotFoundPage from './pages/not-found'
 import DefaultRoute from './routes/DefaultRoutes'
+import Register from './pages/Register'
 
 export const DEFAULT_ROUTE: Route[] = [
   {
@@ -47,6 +48,10 @@ export default function useRouteElements() {
       path: '*',
       element: <NotFoundPage />
     },
+    // {
+    //   path: '/register',
+    //   element: <Register />
+    // },
 
     {
       path: '/',

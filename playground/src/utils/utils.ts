@@ -21,3 +21,11 @@ export function isAxiosExpiredTokenError<UnauthorizedError>(error: unknown): err
     error.response?.data?.data?.name === 'EXPIRED_TOKEN'
   )
 }
+
+export const formatFunctionName = (name: string) =>
+  name
+    .replace(/[^\sA-Za-z]/g, (match) => {
+      // Find vietnamese character and replace
+      return `_${match?.codePointAt(0)}`
+    })
+    .replace(/\s/g, '_')
