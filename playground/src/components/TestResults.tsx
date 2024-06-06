@@ -43,53 +43,27 @@ export default function TestResults({ results }: Props) {
       {activeTab && (
         <div className='mt-4'>
           <span>Đầu vào</span>
-          <div className='border rounded-md bg-gray-200 p-4'>
+          <div className='border rounded-md bg-gray-100 p-4'>
             <pre>{results[Number(activeTab) - 1]?.input}</pre>
           </div>
           <br />
           <span>Kết quả</span>
-          <div className='border rounded-md bg-gray-200 p-4'>
+          <div
+            className={`border font-bold rounded-md bg-gray-100 p-4 ${
+              String(results[Number(activeTab) - 1]?.result) === results[Number(activeTab) - 1]?.expectedOutput
+                ? 'text-emerald-600'
+                : 'text-red-500'
+            }`}
+          >
             <pre>{results[Number(activeTab) - 1]?.result}</pre>
           </div>
           <br />
           <span>Kết quả mong muốn</span>
-          <div className='border rounded-md bg-gray-200 p-4'>
+          <div className='border rounded-md bg-gray-100 p-4'>
             <pre>{results[Number(activeTab) - 1]?.expectedOutput}</pre>
           </div>
         </div>
       )}
     </div>
   )
-}
-
-{
-  /* <Tabs
-defaultActiveKey='1'
-style={{ marginBottom: 32 }}
-items={results.map((result, i) => {
-  const id = String(i + 1)
-  return {
-    label: `Kiểm thử ${id}`,
-    key: id,
-    children: (
-      <>
-        <span>Đầu vào</span>
-        <div className='border rounded-md bg-gray-200 p-4'>
-          <pre>{result.input}</pre>
-        </div>
-        <br />
-        <span>Kết quả</span>
-        <div className='border rounded-md bg-gray-200 p-4'>
-          <pre>{result.result}</pre>
-        </div>
-        <br />
-        <span>Kết quả mong muốn</span>
-        <div className='border rounded-md bg-gray-200 p-4'>
-          <pre>{result.expectedOutput}</pre>
-        </div>
-      </>
-    )
-  }
-})}
-/> */
 }

@@ -13,7 +13,7 @@ interface Props {
   fnName: string
 }
 export default function Results({ id, program, fnName }: Props) {
-  console.log(fnName, 'fnName')
+  console.log(fnName, 'fnName', id)
   const [testCases, setTestCases] = useState([{ input: '', expectedOutput: '' }])
 
   const [activeTab, setActiveTab] = useState('1')

@@ -38,7 +38,6 @@ const MOCK_DATA = [
 
 export default function Home() {
   const [problems, setProblems] = useState<any[]>([])
-  const [isDev, setIsDev] = useState(false)
   const [program, setProgram] = useState('')
   const [selectedProblem, setSelectedProblem] = useState<any>()
   const [result, setResult] = useState('')
@@ -63,10 +62,8 @@ export default function Home() {
     if (error) toast(error.message, { type: 'error' })
   }
   useEffect(() => {
-    if (!isDev) {
-      getProblems()
-    }
-  }, [isDev])
+    getProblems()
+  }, [])
 
   function handleEditorChange(value: any) {
     setProgram(value)
@@ -76,14 +73,6 @@ export default function Home() {
   useEffect(() => {
     setProgram(`hàm ${selectedProblem?.meta_data.functionName} ${selectedProblem?.meta_data.params}{ \n \n \n}`)
   }, [selectedProblem])
-
-  const handleChangeEnv = (checked: boolean) => {
-    setIsDev(checked)
-    if (checked) {
-      setSelectedProblem(MOCK_DATA[0])
-      setProblems(MOCK_DATA)
-    }
-  }
 
   useEffect(() => {
     // do conditional chaining
@@ -134,106 +123,86 @@ export default function Home() {
         <Button size='small' onClick={showDrawer} className='mr-2'>
           <MenuUnfoldOutlined size={10} /> Bài tập
         </Button>
-
-        <Switch
-          className='absolute top-0 right-12'
-          checkedChildren='Dev'
-          onChange={handleChangeEnv}
-          unCheckedChildren='Prod'
-        />
       </div>
       <Row className='pt-3'>
         <Col span={12}>
-          <div className='bg-zinc-100 text-xl w-full p-12 h-full rounded-lg '>
-            {!isDev ? (
-              <>
-                {' '}
-                <h3>
-                  {selectedProblem?.serial}. {selectedProblem?.title}
-                </h3>
-                <div className='my-5'>
-                  <Tag className='rounded-full capitalize cursor-pointer' color='blue'>
-                    {selectedProblem?.difficulty}
-                  </Tag>
-                  <Tag className='rounded-full capitalize cursor-pointer' color='green'>
-                    {selectedProblem?.tag}
-                  </Tag>
-                </div>
-                <p className='mt-12 text-xl'>{selectedProblem?.meta_data?.description}</p>
-                <div className='my-12'>
-                  <p className='font-bold text-xl'> Đầu vào</p>
-                  <p className='border rounded-lg bg-gray-200 p-5 mt-2'>{selectedProblem?.meta_data?.input}</p>
-                </div>
-                <div className='my-12'>
-                  <p className='font-bold text-xl'> Đầu ra</p>
-                  <p className='border rounded-lg bg-gray-200 p-5 mt-2'>{selectedProblem?.meta_data?.output}</p>
-                </div>
-                <div>
-                  <p className='font-bold text-xl mb-4'> Code mẫu</p>
+          <div className='bg-zinc-100 text-lg w-full p-12 h-full rounded-lg '>
+            <>
+              {' '}
+              <h3>
+                {selectedProblem?.serial}. {selectedProblem?.title}
+              </h3>
+              <div className='my-5'>
+                <Tag className='rounded-full capitalize cursor-pointer' color='blue'>
+                  {selectedProblem?.difficulty}
+                </Tag>
+                <Tag className='rounded-full capitalize cursor-pointer' color='green'>
+                  {selectedProblem?.tag}
+                </Tag>
+              </div>
+              <p className='mt-12 text-lg'>{selectedProblem?.meta_data?.description}</p>
+              <div className='my-12'>
+                <p className='font-bold text-lg'> Đầu vào</p>
+                <p className='border rounded-lg bg-gray-200 p-5 mt-2'>{selectedProblem?.meta_data?.input}</p>
+              </div>
+              <div className='my-12'>
+                <p className='font-bold text-lg'> Đầu ra</p>
+                <p className='border rounded-lg bg-gray-200 p-5 mt-2'>{selectedProblem?.meta_data?.output}</p>
+              </div>
+              <div>
+                <p className='font-bold text-lg mb-4'> Code mẫu</p>
 
-                  <Collapse
-                    size='small'
-                    items={[
-                      {
-                        key: '1',
-                        label: 'Xem đáp án',
-                        children: (
-                          <div className='border rounded-lg overflow-auto bg-gray-200 mt-4 relative'>
-                            <Button
-                              size='small'
-                              className='absolute right-2 top-2'
-                              onClick={() => {
-                                setIsCopy(true)
-                                navigator.clipboard.writeText(selectedProblem?.code)
-                                setTimeout(() => setIsCopy(false), 2000)
-                              }}
-                            >
-                              {isCopy ? <CheckOutlined /> : <CopyOutlined />}
-                            </Button>
-                            <pre className='block p-5'>
-                              {JSON.parse(JSON.stringify(selectedProblem?.code ?? '', null, 2))}
-                            </pre>
-                          </div>
-                        )
-                      }
-                    ]}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <h3>{selectedProblem?.title}</h3>
-                <div className='border rounded-lg overflow-auto bg-gray-200 mt-4 relative'>
-                  <Button
-                    size='small'
-                    className='absolute right-2 top-2'
-                    onClick={() => {
-                      setIsCopy(true)
-                      navigator.clipboard.writeText(selectedProblem?.code)
-                      setTimeout(() => setIsCopy(false), 2000)
-                    }}
-                  >
-                    {isCopy ? <CheckOutlined /> : <CopyOutlined />}
-                  </Button>
-                  <pre className='block p-5'>{JSON.parse(JSON.stringify(selectedProblem?.code ?? '', null, 2))}</pre>
-                </div>
-              </>
-            )}
+                <Collapse
+                  size='small'
+                  items={[
+                    {
+                      key: '1',
+                      label: 'Xem đáp án',
+                      children: (
+                        <div className='border rounded-lg overflow-auto bg-gray-200 mt-4 relative'>
+                          <Button
+                            size='small'
+                            className='absolute right-2 top-2'
+                            onClick={() => {
+                              setIsCopy(true)
+                              navigator.clipboard.writeText(selectedProblem?.code)
+                              setTimeout(() => setIsCopy(false), 2000)
+                            }}
+                          >
+                            {isCopy ? <CheckOutlined /> : <CopyOutlined />}
+                          </Button>
+                          <pre className='block p-5'>
+                            {JSON.parse(JSON.stringify(selectedProblem?.code ?? '', null, 2))}
+                          </pre>
+                        </div>
+                      )
+                    }
+                  ]}
+                />
+              </div>
+            </>
           </div>
         </Col>
         <Col span={12} className='px-8 h-screen '>
-          <Editor height='50vh' value={program} language='vielang' onChange={handleEditorChange} />
           <Card>
+            <Editor
+              height='50vh'
+              value={program}
+              options={{
+                scrollBeyondLastLine: false,
+                fontSize: 16
+              }}
+              language='vielang'
+              onChange={handleEditorChange}
+            />
+          </Card>
+
+          <Card className='mt-2'>
             <Results id={selectedProblem?.id} program={program} fnName={selectedProblem?.meta_data.functionName} />
           </Card>
         </Col>
       </Row>
-      <Drawer
-        title={isDev ? 'Danh sách demo code' : ' Danh sách bài tập'}
-        placement='left'
-        onClose={onClose}
-        open={open}
-      >
+      <Drawer title='Danh sách bài tập' placement='left' onClose={onClose} open={open}>
         {sortBy(problems, 'serial').map((problem) => (
           <button
             key={problem.id}
