@@ -4,6 +4,7 @@ import { Identifier } from '../identifier/index'
 import { BinaryExpressionBuilder } from './binary/builder'
 import { Expression } from './index'
 import { UnaryExpression } from './unary'
+import { SizeArray } from '../built-in/size'
 
 export class AssignmentExpression {
   type = 'AssignmentExpression'
@@ -19,7 +20,10 @@ export class AssignmentExpression {
       identifier ?? (parser.nextToken?.type === Keyword.IDENTIFIER ? new Identifier(parser) : new Expression(parser))
     if (parser.nextToken?.type === '=') {
       this.operator = String(parser.validate(parser.nextToken?.type as any).value)
-
+      if (String(parser.nextToken?.type) === Keyword.SIZE) {
+        this.right = new SizeArray(parser)
+        return
+      }
       if (String(parser.nextToken?.type) === Keyword.ADDITIVE_OPERATOR) {
         this.right = new UnaryExpression(parser)
         return

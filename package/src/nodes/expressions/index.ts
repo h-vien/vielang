@@ -12,6 +12,7 @@ import { ObjectExpression } from './object'
 import { Literal } from '../literal/index'
 import { Identifier } from '../identifier/index'
 import { BinaryExpression } from './binary/index'
+import { SizeArray } from '../built-in/size'
 
 export class Expression {
   [key: string]: any
@@ -25,6 +26,10 @@ export class Expression {
       case Keyword.NULL:
       case Keyword.UNDEFINED: {
         Object.assign(this, new Literal(parser))
+        break
+      }
+      case Keyword.SIZE: {
+        Object.assign(this, new SizeArray(parser))
         break
       }
       case '{': {

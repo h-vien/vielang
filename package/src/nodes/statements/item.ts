@@ -2,6 +2,8 @@ import { Keyword } from '@parser/constants/keyword'
 import { Parser } from '@parser/parser'
 import { Declaration } from '../declarations/index'
 import { Statement } from './index'
+import { Identifier } from '../identifier/index'
+import { SizeArray } from '../built-in/size'
 
 export class StatementItem {
   constructor(parser: Parser) {
@@ -23,6 +25,10 @@ export class StatementItem {
       case '++':
       case '--': {
         Object.assign(this, new Statement(parser))
+        break
+      }
+      case Keyword.SIZE: {
+        Object.assign(this, new SizeArray(parser))
         break
       }
 

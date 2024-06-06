@@ -9,6 +9,8 @@ export const Specs: Array<Spec> = [
   // Whitespace:
   [/^\s+/, null],
 
+  [/^\u0063\u0068\u0069\u1EC1\u0075\u0020\u0064\u00E0\u0069\u0020\u006D\u1EA3\u006E\u0067/g, Keyword.SIZE],
+
   // --------------------------------------
   // Comments:
   // Skip single-line comments:
@@ -155,6 +157,7 @@ export const Specs: Array<Spec> = [
   [/^\bNaN\b/, Keyword.NAN],
 
   [/(true|false|\u0111\u00FAng|sai)\b/, Keyword.BOOLEAN],
+  // eslint-disable-next-line no-control-regex
 
   // --------------------------------------
   // Identifier

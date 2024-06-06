@@ -66,5 +66,6 @@ export enum Keyword {
   IDENTIFIER = 'Identifier',
   RELATIONAL_OPERATOR = 'RelationalOperator',
   ADDITIVE_OPERATOR = 'AdditiveOperator',
-  MULTIPLICATIVE_OPERATOR = 'MultiplicativeOperator'
+  MULTIPLICATIVE_OPERATOR = 'MultiplicativeOperator',
+  SIZE = 'Size'
 }

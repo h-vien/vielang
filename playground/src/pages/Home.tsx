@@ -44,7 +44,6 @@ export default function Home() {
   const [open, setOpen] = useState(false)
   const [isCopy, setIsCopy] = useState(false)
   const monaco = useMonaco()
-  console.log(selectedProblem, 'selectedProblem')
   const showDrawer = () => {
     setOpen(true)
   }
@@ -94,7 +93,6 @@ export default function Home() {
     monaco?.languages.onLanguage(languageID, () => {
       monaco?.languages.setMonarchTokensProvider(languageID, monarchLanguage)
       monaco?.languages.setLanguageConfiguration(languageID, richLanguageConfiguration)
-      console.log('this log', monaco.languages.getLanguages(), 'logo day?')
     })
 
     monaco?.languages.registerCompletionItemProvider(languageID, {

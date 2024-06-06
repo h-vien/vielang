@@ -13,7 +13,6 @@ interface Props {
   fnName: string
 }
 export default function Results({ id, program, fnName }: Props) {
-  console.log(fnName, 'fnName', id)
   const [testCases, setTestCases] = useState([{ input: '', expectedOutput: '' }])
 
   const [activeTab, setActiveTab] = useState('1')
@@ -32,8 +31,6 @@ export default function Results({ id, program, fnName }: Props) {
     getTestCases()
   }, [id])
 
-  console.log({ testCases })
-
   const runTests = () => {
     const results = testCases.slice(0, 4).map((testCase) => {
       let result
@@ -42,14 +39,14 @@ export default function Results({ id, program, fnName }: Props) {
 
         // eslint-disable-next-line no-new-func
         const func = new Function('input', _program.target + `\nreturn ${formatFunctionName(fnName)}(input);`)
-        const output = func(testCase.input)
+
+        const output = func(JSON.parse(testCase.input))
         result = String(output)
       } catch (error) {
         result = `Error: ${error}`
       }
       return { ...testCase, result }
     })
-    console.log(results, 'results')
     setResults(results)
     setActiveTab('2')
   }

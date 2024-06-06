@@ -40,9 +40,22 @@ describe('Test every thing', () => {
     a++
   }`
 
-    console.log(JSON.stringify(while_statement, null, 2))
-    const test = `khai báo a = -12 `
+    const test = `
+    hàm số lớn nhất trong mảng (mảng){ 
+      khai báo độ dài = chiều dài mảng(mảng);
+      trả về độ dài
+      khai báo số lớn nhất = 0;
+      lặp (khai báo i = 0; i< độ dài; i++){
+           khai báo tạm = mảng[i]
+           nếu(tạm > số lớn nhất){
+              số lớn nhất = tạm;
+           }
+      }
+      trả về số lớn nhất;
+  }
+    `
+
     const result = parserNode.parse(test, Program)
-    console.log(JSON.stringify(result, null, 2))
+    const _test = transpiler.compile(test)
   })
 })
