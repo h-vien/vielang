@@ -25,9 +25,11 @@ export default function Results({ id, program, fnName }: Props) {
   >()
   const getTestCases = async () => {
     const { data, error } = await supabase.from('test_cases').select('*').eq('problem_id', id)
+    console.log(data, 'data')
     setTestCases(data?.[0].test_cases)
   }
   useEffect(() => {
+    setActiveTab('1')
     getTestCases()
   }, [id])
 
