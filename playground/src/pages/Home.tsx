@@ -117,13 +117,6 @@ export default function Home() {
 
   return (
     <Card>
-      <div className='fixed top-4 left-5 w-full h-24'>
-        <div className='flex items-end'>
-          <img src='./logo.png' className='w-12 h-16' alt='' />
-          <span className='font-bold text-2xl font-mono mb-2 text-[#2c856f]'>VieLang</span>
-        </div>
-      </div>
-      <div className='flex relative z-30 items-center w-full justify-center mb-12'></div>
       <Row className='pt-3'>
         <Col span={12}>
           <div className='bg-zinc-100 text-lg w-full px-12 py-4 h-full rounded-lg '>
