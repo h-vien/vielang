@@ -1,8 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/playground/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/playground/$1" }
   ]
 }
