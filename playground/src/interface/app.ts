@@ -1,4 +1,5 @@
 import { UploadProps } from 'antd'
+import { iteratee } from 'lodash'
 
 export interface ReactWithChild {
   children?: React.ReactNode
@@ -21,4 +22,11 @@ export interface UploadRef extends UploadProps {
   onReset: () => void
   imageUrl: string | null
   setImageUrl: (url: string) => void
+}
+
+export interface Profile {
+  user_name: string
+  email: string
+  id: string
+  created_at: string
 }

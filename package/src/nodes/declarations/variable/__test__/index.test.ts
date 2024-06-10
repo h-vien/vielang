@@ -5,7 +5,6 @@ import { parserNode } from '@parser/test'
 describe('Test for numeric declaration', () => {
   it('should parse the let declaration syntax normally', () => {
     const result = parserNode.parse(`khai báo tên = "Viên Huỳnh"`, VariableDeclaration)
-    console.log(JSON.stringify(result, null, 2))
     expect(toPlainObject(result)).toStrictEqual({
       type: 'VariableDeclaration',
       declarations: [

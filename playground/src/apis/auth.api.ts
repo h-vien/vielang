@@ -1,5 +1,4 @@
-import { AuthResponse } from 'src/types/auth.type'
-import http from 'src/utils/http'
+import { supabase } from 'src/utils/supabase'
 
 export const URL_LOGIN = 'login'
 export const URL_REGISTER = 'register'
@@ -7,14 +6,50 @@ export const URL_LOGOUT = 'logout'
 export const URL_REFRESH_TOKEN = 'refresh-access-token'
 
 const authApi = {
-  registerAccount(body: { email: string; password: string }) {
-    return http.post<AuthResponse>(URL_REGISTER, body)
+  async registerAccount(body: { user_name: string; password: string }) {
+    const { data, error } = await supabase.from('users').insert([body]).select()
+
+    return {
+      data,
+      error
+    }
   },
-  login(body: { email: string; password: string }) {
-    return http.post<AuthResponse>(URL_LOGIN, body)
+  async login(body: { user_name: string; password: string }) {
+    const { data, error } = await supabase
+      .from('users')
+      .select()
+      .eq('user_name', body.user_name)
+      .eq('password', body.password)
+      .maybeSingle()
+    return {
+      data,
+      error
+    }
   },
-  logout() {
-    return http.post(URL_LOGOUT)
+  async submit(body: any) {
+    const { data, error } = await supabase.from('user_problems').insert([body]).select()
+    return {
+      data,
+      error
+    }
+  },
+  async getProblems(userID: string) {
+    const { data, error } = await supabase.from('problems').select('*')
+    const { data: userProblems, error: userProblemsError } = await supabase
+      .from('user_problems')
+      .select('*')
+      .eq('user_id', userID)
+
+    if (data) {
+      data.forEach((problem: any) => {
+        const isSubmitted = userProblems?.find((userProblem: any) => userProblem.problem_id === problem.id)
+        problem.isSubmitted = !!isSubmitted
+      })
+    }
+    return {
+      data,
+      error
+    }
   }
 }
 

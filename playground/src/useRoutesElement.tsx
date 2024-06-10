@@ -8,6 +8,7 @@ import NotFoundPage from './pages/not-found'
 import DefaultRoute from './routes/DefaultRoutes'
 import Register from './pages/Register'
 import Dev from './pages/Dev'
+import Login from './pages/Login'
 
 export const DEFAULT_ROUTE: Route[] = [
   {
@@ -52,6 +53,10 @@ export default function useRouteElements() {
     {
       path: '/register',
       element: <Register />
+    },
+    {
+      path: '/login',
+      element: <Login />
     },
     {
       path: '/dev-mode',

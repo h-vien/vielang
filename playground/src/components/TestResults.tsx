@@ -1,4 +1,5 @@
-import { Segmented, Tabs } from 'antd'
+import { ClockCircleOutlined } from '@ant-design/icons'
+import { Button, Segmented, Tabs } from 'antd'
 import { useState } from 'react'
 
 interface Props {
@@ -7,18 +8,23 @@ interface Props {
     expectedOutput: string
     result: string
   }[]
+  time?: number
+  memory?: number
 }
 
-export default function TestResults({ results }: Props) {
+export default function TestResults({ results, time, memory }: Props) {
   const [activeTab, setActiveTab] = useState('1')
   return (
     <div>
-      <div className='mb-4'>
+      <div className='mb-4 flex items-center justify-between'>
         {results.every((result) => String(result.result) === result.expectedOutput) ? (
-          <span className='font-bold text-xl text-emerald-600'>Thành công</span>
+          <p className='font-bold text-xl text-emerald-600'>Thành công</p>
         ) : (
-          <span className='font-bold text-xl text-red-500'>Thất bại</span>
+          <p className='font-bold text-xl text-red-500'>Thất bại</p>
         )}
+        <Button>
+          <ClockCircleOutlined /> {time?.toFixed(2)} ms
+        </Button>
       </div>
       {results && (
         <Segmented<string>

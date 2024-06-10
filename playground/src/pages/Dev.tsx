@@ -1,8 +1,9 @@
-import { CaretRightOutlined } from '@ant-design/icons'
+import { CaretRightOutlined, MacCommandOutlined } from '@ant-design/icons'
 import Editor, { useMonaco } from '@monaco-editor/react'
 import { transpiler } from '@vielang/parser'
 import { Button, Card, Col, Row } from 'antd'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import { ERRORS, RESULTS } from 'src/constants/error.const'
 import { createDependencyProposals } from 'src/editor/autocomplete'
@@ -84,6 +85,9 @@ function Dev() {
   return (
     <Card>
       <div className='flex z-30 items-center w-full justify-center mb-5'>
+        <Link to='/' className='block'>
+          <Button className='mr-4 '>Trở về</Button>
+        </Link>
         <Button onClick={executeCode} shape='default'>
           <CaretRightOutlined size={10} /> Thực thi
         </Button>

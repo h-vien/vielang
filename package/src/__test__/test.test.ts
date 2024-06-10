@@ -41,21 +41,23 @@ describe('Test every thing', () => {
   }`
 
     const test = `
-    hàm số lớn nhất trong mảng (mảng){ 
-      khai báo độ dài = chiều dài mảng(mảng);
-      trả về độ dài
+    hàm số lớn nhất trong mảng (mảng){
       khai báo số lớn nhất = 0;
+      khai báo độ dài = chiều dài mảng(mảng)
       lặp (khai báo i = 0; i< độ dài; i++){
            khai báo tạm = mảng[i]
            nếu(tạm > số lớn nhất){
-              số lớn nhất = tạm;
+              số lớn nhất = tạm
            }
       }
-      trả về số lớn nhất;
+      trả về số lớn nhất
   }
+  
     `
 
     const result = parserNode.parse(test, Program)
+    console.log(result)
     const _test = transpiler.compile(test)
+    console.log(_test)
   })
 })

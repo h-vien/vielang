@@ -1,16 +1,17 @@
-import { CheckOutlined, CopyOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { CheckOutlined, CopyOutlined, MacCommandOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { Editor, useMonaco } from '@monaco-editor/react'
-import { Button, Card, Col, Collapse, Drawer, Row, Switch, Tag } from 'antd'
+import { Button, Card, Col, Collapse, Drawer, Row, Tag } from 'antd'
 import { sortBy } from 'lodash'
-import { useEffect, useState } from 'react'
-import { flushSync } from 'react-dom'
+import { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import authApi from 'src/apis/auth.api'
 import Results from 'src/components/Results'
+import { AppContext } from 'src/context/app'
 import { createDependencyProposals } from 'src/editor/autocomplete'
 import { languageExtensionPoint, languageID } from 'src/editor/config'
 import { monarchLanguage, richLanguageConfiguration } from 'src/editor/vielang'
-import { supabase } from 'src/utils/supabase'
 
 const MOCK_DATA = [
   {
@@ -40,10 +41,13 @@ export default function Home() {
   const [problems, setProblems] = useState<any[]>([])
   const [program, setProgram] = useState('')
   const [selectedProblem, setSelectedProblem] = useState<any>()
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [result, setResult] = useState('')
   const [open, setOpen] = useState(false)
   const [isCopy, setIsCopy] = useState(false)
   const monaco = useMonaco()
+
+  const { profile } = useContext(AppContext)
   const showDrawer = () => {
     setOpen(true)
   }
@@ -53,16 +57,17 @@ export default function Home() {
   }
 
   const getProblems = async () => {
-    const { data: problems, error } = await supabase.from('problems').select('*')
+    const { data: problems, error } = await authApi.getProblems(profile?.id ?? '')
     if (problems) {
       setProblems(problems)
       setSelectedProblem(problems.find((problem) => problem.serial === 1))
     }
     if (error) toast(error.message, { type: 'error' })
   }
+
   useEffect(() => {
     getProblems()
-  }, [])
+  }, [isSubmitted])
 
   function handleEditorChange(value: any) {
     setProgram(value)
@@ -124,6 +129,12 @@ export default function Home() {
               <Button onClick={showDrawer} className='mr-2 mb-5'>
                 <MenuUnfoldOutlined size={10} /> Bài tập
               </Button>
+
+              <Link to='/dev-mode'>
+                <Button onClick={showDrawer} className='mr-2 mb-5'>
+                  <MacCommandOutlined size={10} /> Chế độ phát triển
+                </Button>
+              </Link>
               <h3>
                 {selectedProblem?.serial}. {selectedProblem?.title}
               </h3>
@@ -193,7 +204,12 @@ export default function Home() {
           </Card>
 
           <Card className='mt-2'>
-            <Results id={selectedProblem?.id} program={program} fnName={selectedProblem?.meta_data.functionName} />
+            <Results
+              id={selectedProblem?.id}
+              setIsSubmitted={setIsSubmitted}
+              program={program}
+              fnName={selectedProblem?.meta_data.functionName}
+            />
           </Card>
         </Col>
       </Row>
@@ -209,9 +225,12 @@ export default function Home() {
             }}
             className='block p-2 border-none w-full text-left bg-transparent outline-none my-8 hover:bg-gray-200 cursor-pointer'
           >
-            <p>
-              {problem.serial}. {problem.title}
-            </p>
+            <div className='flex items-center justify-between'>
+              <p>
+                {problem.serial}. {problem.title}
+              </p>
+              {problem.isSubmitted && <CheckOutlined size={20} className='block font-bold text-emerald-500' />}
+            </div>
           </button>
         ))}
       </Drawer>
