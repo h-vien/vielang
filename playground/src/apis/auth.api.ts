@@ -40,7 +40,7 @@ const authApi = {
       .select('*')
       .eq('user_id', userID)
 
-    if (data) {
+    if (data && userProblems) {
       data.forEach((problem: any) => {
         const isSubmitted = userProblems?.find((userProblem: any) => userProblem.problem_id === problem.id)
         problem.isSubmitted = !!isSubmitted

@@ -35,5 +35,13 @@ export const KEYWORDS = [
 ]
 
 export function createDependencyProposals(range: any, monaco: any) {
-  return [...genKeywords(KEYWORDS, monaco.languages.CompletionItemKind.Keyword, range)]
+  return [
+    ...genKeywords(KEYWORDS, monaco.languages.CompletionItemKind.Keyword, range),
+    {
+      label: 'chiều dài mảng',
+      kind: monaco.languages.CompletionItemKind.Function,
+      insertText: 'chiều dài mảng',
+      range
+    }
+  ]
 }
