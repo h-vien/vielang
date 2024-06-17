@@ -55,8 +55,11 @@ describe('Test every thing', () => {
   
     `
 
-    const expression_test = `a = a - 4 + 2`
-    const res = parserNode.parse(expression_test, Expression)
+    const expression_test = `
+    khai báo a = -1
+    a = a -2 * 4
+    `
+    const res = parserNode.parse(expression_test, Program)
     console.log(JSON.stringify(res, null, 2), 'this log')
     // const result = parserNode.parse(test, Program)
     // console.log(result)

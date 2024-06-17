@@ -19,6 +19,7 @@ export const Specs: Array<Spec> = [
   [/^\/\*[\S\s]*?\*\//, null],
 
   [/^\+\+/, '++'], // PlusPlus
+  [/^--/, '--'], // MinusMinus
 
   // --------------------------------------
   // Math operators: +, -, *, /
@@ -47,7 +48,6 @@ export const Specs: Array<Spec> = [
   [/^\.{3}/, '...'], // Ellipsis
   [/^\./, '.'], // Dot
   [/^\+/, '+'], // Plus
-  [/^--/, '--'], // MinusMinus
   [/^-/, '-'], // Minus
   [/^~/, '~'], // BitNot
   [/^!/, '!'], // Not
