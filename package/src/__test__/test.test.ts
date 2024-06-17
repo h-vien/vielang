@@ -55,9 +55,12 @@ describe('Test every thing', () => {
   
     `
 
-    const result = parserNode.parse(test, Program)
-    console.log(result)
-    const _test = transpiler.compile(test)
-    console.log(_test)
+    const expression_test = `a = a - 4 + 2`
+    const res = parserNode.parse(expression_test, Expression)
+    console.log(JSON.stringify(res, null, 2), 'this log')
+    // const result = parserNode.parse(test, Program)
+    // console.log(result)
+    // const _test = transpiler.compile(test)
+    // console.log(_test)
   })
 })

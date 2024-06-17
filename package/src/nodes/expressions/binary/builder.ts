@@ -52,7 +52,9 @@ export class BinaryExpressionBuilder {
         argument: new Literal(this.parser)
       }
     }
-    return new Expression(this.parser)
+    return this.parser.nextToken?.type === Keyword.IDENTIFIER
+      ? new Identifier(this.parser)
+      : new Expression(this.parser)
   }
   RelationalExpression() {
     const res = this.BuilderExpression('AdditiveExpression', Keyword.RELATIONAL_OPERATOR)
