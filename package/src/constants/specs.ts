@@ -93,7 +93,7 @@ export const Specs: Array<Spec> = [
   [/^\b(switch|duy\u1EC7t)\b/, Keyword.SWITCH], // duyệt
   [/^\b(case|tr\u01B0\u1EDDng h\u1EE3p)\b/, Keyword.CASE], // trường hợp
   [/^\b(if|n\u1EBFu)\b/, Keyword.IF], // nếu
-  [/^\b(else|kh\u00F4ng th\u00EC)/, Keyword.ELSE], // không thì
+  [/^\b(else|\u006E\u0067\u01B0\u1EE3\u0063\u0020\u006C\u1EA1\u0069)/, Keyword.ELSE], // không thì
   [/^\bnew\b/, Keyword.NEW],
   [/^\b(catch|b\u1EAFt l\u1ED7i)\b/, Keyword.CATCH], // bắt lỗi
   [/^\b(finally|cu\u1ED1i c\u00F9ng)\b/, Keyword.FINALLY], // cuối cùng
