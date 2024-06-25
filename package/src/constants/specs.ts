@@ -22,6 +22,7 @@ export const Specs: Array<Spec> = [
   [/^&/, '&'], // BitAnd
   [/^\^/, '^'], // BitXOr
   [/^\|/, '|'], // BitOr
+  [/^\~/, '~'], // BitNOT
   // --------------------------------------
   // Comments:
   // Skip single-line comments:
@@ -60,7 +61,6 @@ export const Specs: Array<Spec> = [
   [/^\./, '.'], // Dot
   [/^\+/, '+'], // Plus
   [/^-/, '-'], // Minus
-  [/^~/, '~'], // BitNot
   [/^!/, '!'], // Not
   [/^\*/, '*'], // Multiply
   [/^\//, '/'], // Divide

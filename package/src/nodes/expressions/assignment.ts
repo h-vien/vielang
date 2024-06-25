@@ -29,7 +29,6 @@ export class AssignmentExpression {
         return
       }
       const binaryBuilder = new BinaryExpressionBuilder(parser, identifier as Identifier)
-      console.log(binaryBuilder, 'binaryBuilder')
       this.right = binaryBuilder.RelationalExpression()
     }
   }

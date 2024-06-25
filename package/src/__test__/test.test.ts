@@ -40,9 +40,25 @@ describe('Test every thing', () => {
     a++
   }`
 
-    const test = `khai báo a = 1;
-    a  = a >> 2
-  
+    const test = `khai báo and, or, xor , left shift, right shift 
+
+    and = 5 & 1 
+    or = 5 | 1 
+    xor = 5 ^ 1 
+    left shift = 5 >> 1 
+    right shift = 5 << 1 
+    
+    in ra(and)
+    in ra(', ')
+    in ra(or)
+    in ra(', ')
+    in ra(xor)
+    in ra(', ')
+    in ra(left shift)
+    in ra(', ')
+    in ra(right shift)
+    in ra(', ')
+    
     `
 
     const res = parserNode.parse(test, Program)

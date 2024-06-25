@@ -14,8 +14,6 @@ export class BinaryExpressionBuilder {
   }
   BuilderExpression(builderName: string, operatorToken: Token['type']) {
     let left = (this as Expression)[builderName]?.()
-    console.log(left, 'left')
-    console.log(this.parser.nextToken, 'operatorToken', operatorToken)
     while (this.parser.nextToken?.type === operatorToken) {
       const operator = this.parser.validate(operatorToken).value
       const right = (this as Expression)[builderName]()
@@ -28,6 +26,9 @@ export class BinaryExpressionBuilder {
     }
     switch (this.parser.nextToken?.type) {
       case '^':
+      case '~':
+      case '|':
+      case '&':
       case '>>':
       case '>>>':
       case '<<':
@@ -55,7 +56,6 @@ export class BinaryExpressionBuilder {
   }
   UnaryExpression(): any {
     let operator
-    console.log(this.parser.nextToken, 'this.parser.nextToken?.type')
     switch (this.parser.nextToken?.type) {
       case Keyword.ADDITIVE_OPERATOR:
         operator = this.parser.validate(Keyword.ADDITIVE_OPERATOR).value
@@ -65,7 +65,6 @@ export class BinaryExpressionBuilder {
         break
     }
 
-    console.log(operator, 'operator')
     if (operator != null) {
       return {
         type: 'UnaryExpression',
