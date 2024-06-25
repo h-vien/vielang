@@ -20,8 +20,8 @@ describe('Test every thing', () => {
   in ra (tính giai thừa(4)) // 4 * 3 * 2
     `
 
-    const switch_case = `khai báo tuổi tác = 12
-
+    const switch_case = `
+    khai báo tuổi tác = 12
     duyệt(tuổi tác){
         trường hợp 20: 
             in ra("bạn 20 tuổi")
@@ -29,7 +29,7 @@ describe('Test every thing', () => {
             in ra("bạn 12 tuổi")
         mặc định: 
             in ra("mặc định ở ")
-    } `
+    }`
 
     const for_statement = `lặp(khai báo i = 0 ;i < 5 ; i++){
       in ra(i)
@@ -40,26 +40,12 @@ describe('Test every thing', () => {
     a++
   }`
 
-    const test = `
-    hàm số lớn nhất trong mảng (mảng){
-      khai báo số lớn nhất = 0;
-      khai báo độ dài = chiều dài mảng(mảng)
-      lặp (khai báo i = 0; i< độ dài; i++){
-           khai báo tạm = mảng[i]
-           nếu(tạm > số lớn nhất){
-              số lớn nhất = tạm
-           }
-      }
-      trả về số lớn nhất
-  }
+    const test = `khai báo a = 1;
+    a  = a >> 2
   
     `
 
-    const expression_test = `
-    khai báo a = -1
-    a = a -2 * 4
-    `
-    const res = parserNode.parse(expression_test, Program)
+    const res = parserNode.parse(test, Program)
     console.log(JSON.stringify(res, null, 2), 'this log')
     // const result = parserNode.parse(test, Program)
     // console.log(result)

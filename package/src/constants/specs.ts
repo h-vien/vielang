@@ -11,6 +11,17 @@ export const Specs: Array<Spec> = [
 
   [/^\u0063\u0068\u0069\u1EC1\u0075\u0020\u0064\u00E0\u0069\u0020\u006D\u1EA3\u006E\u0067/g, Keyword.SIZE],
 
+  [/^>>>=/, '>>>='], // RightShiftLogicalAssign
+  [/^>>>/, '>>>'], // RightShiftLogical
+  [/^>>/, '>>'], // RightShiftArithmetic
+  [/^>>=/, '>>='], // RightShiftArithmeticAssign
+  [/^<<=/, '<<='], // LeftShiftArithmeticAssign
+  [/^<</, '<<'], // LeftShiftArithmetic
+  [/^&&/, '&&'], // And
+  [/^\|\|/, '||'], // Or
+  [/^&/, '&'], // BitAnd
+  [/^\^/, '^'], // BitXOr
+  [/^\|/, '|'], // BitOr
   // --------------------------------------
   // Comments:
   // Skip single-line comments:
@@ -57,21 +68,7 @@ export const Specs: Array<Spec> = [
   [/^\*\*/, '**'], // Power
   [/^\?\?/, '??'], // NullCoalesce
   [/^#/, '#'], // Hashtag
-  [/^>>>=/, '>>>='], // RightShiftLogicalAssign
-  [/^>>>/, '>>>'], // RightShiftLogical
-  [/^>>/, '>>'], // RightShiftArithmetic
-  [/^>>=/, '>>='], // RightShiftArithmeticAssign
-  [/^<<=/, '<<='], // LeftShiftArithmeticAssign
-  [/^<</, '<<'], // LeftShiftArithmetic
-  [/^<=/, '<='], // LessThanEquals
-  [/^>=/, '>='], // GreaterThanEquals
-  [/^</, '<'], // LessThan
-  [/^>/, '>'], // MoreThan
-  [/^&&/, '&&'], // And
-  [/^\|\|/, '||'], // Or
-  [/^&/, '&'], // BitAnd
-  [/^\^/, '^'], // BitXOr
-  [/^\|/, '|'], // BitOr
+
   [/^\*=/, '*='], // MultiplyAssign
   [/^\//, '/='], // DivideAssign
   [/^%=/, '%='], // ModulusAssign

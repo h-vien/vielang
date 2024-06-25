@@ -56,6 +56,7 @@ export class Expression {
       }
       case Keyword.IDENTIFIER: {
         const identifier = new Identifier(parser)
+        console.log(identifier, 'identifier', parser.nextToken?.type)
         switch (parser.nextToken?.type as string) {
           case '+':
           case '-':
