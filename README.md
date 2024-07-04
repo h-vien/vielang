@@ -46,8 +46,8 @@ Ví dụ:
     khai báo tên = "Vien Huynh"; 
     tên = "Hoàng",
 
-    khai báo hàm inTen(){
-        return tên
+    khai báo hàm in tên(){
+        trả về tên
     }
 ```
 
