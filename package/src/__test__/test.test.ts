@@ -59,6 +59,12 @@ describe('Test every thing', () => {
     in ra(right shift)
     in ra(', ')
     
+// Operation	Result	    Same as	        Result
+// 5 & 1	        1       0101 & 0001	    0001
+// 5 | 1	        5	    0101 | 0001	    0101
+// 5 ^ 1	        4	    0101 ^ 0001	    0100
+// 5 >> 1	        2	    0101 >> 1	    0010
+// 5 << 1	        10	    0101 << 1	    1010
     `
 
     const res = parserNode.parse(test, Program)
