@@ -15,6 +15,15 @@ Vielang hỗ trợ các tính năng bao gồm:
 - Chấp nhận kí tự dấu và dấu cách
 - ...[và xem thêm](https://vielang.vienhuynh.dev) 🚀
 
+
+## 🌠 Star History
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=h-vien/vielang&type=Date&theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=h-vien/vielang&type=Date" />
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=h-vien/vielang&type=Date" />
+</picture>
+
 ### Table of Contents
 
 - 🚀 [Bắt đầu](#getting-started)
