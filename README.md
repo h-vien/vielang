@@ -1,6 +1,6 @@
 [![VieLang banner](./assets/og-vielang.png)](banner)
 
-# Vielang - Vietnamese programing language
+#  Ngôn ngữ lập trình tiếng Việt - Vielang
 
 <p>
   <a href="./LICENSE"><img src="https://img.shields.io/github/license/nuxt/nuxt.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="License"></a>
@@ -16,7 +16,7 @@ Vielang hỗ trợ các tính năng bao gồm:
 - ...[và xem thêm](https://vielang.vienhuynh.dev) 🚀
 
 
-## 🌠 Star History
+## 🌠 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=h-vien/vielang&type=Date&theme=dark" />
@@ -24,17 +24,17 @@ Vielang hỗ trợ các tính năng bao gồm:
   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=h-vien/vielang&type=Date" />
 </picture>
 
-### Table of Contents
+### Mục lục
 
 - 🚀 [Bắt đầu](#getting-started)
 - 💻 [Cú pháp](#syntax)
 - 📖 [Tài liệu](#documentation)
-- 🔗 [Follow me](#follow-me)
+- 🔗 [Theo dõi tôi](#follow-me)
 - ⚖️ [License](#license)
 
 ---
 
-## <a name="getting-started">🚀 Getting Started</a>
+## <a name="getting-started">🚀 Bắt đầu</a>
 
 ### Sử dụng ngay tại trình duyệt:
 
@@ -66,11 +66,7 @@ Bạn có thể xem thêm tài liệu tại [Vielang Documentation](https://viel
 
 
 
-## <a name="local-development">🏠 Local Development</a>
-
-Follow the docs to [Set Up Your Local Development Environment](https://nuxt.com/docs/community/framework-contribution#setup) to contribute to the framework and documentation.
-
-## <a name="follow-me">🔗 Follow me</a>
+## <a name="follow-me">🔗 Theo dõi tôi tại: </a>
   - Website: https://vienhuynh.dev
   - Facebook: https://www.facebook.com/vienhoang133/
 <p valign="center">
