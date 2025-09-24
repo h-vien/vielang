@@ -2,9 +2,8 @@ import { CaretRightOutlined, CloudUploadOutlined } from '@ant-design/icons'
 import { transpiler } from '@vielang/parser'
 import { Button, Tabs, TabsProps } from 'antd'
 import { useContext, useEffect, useState } from 'react'
-import authApi from 'src/apis/auth.api'
 import { AppContext } from 'src/context/app'
-import { supabase } from 'src/utils/supabase'
+// import { supabase } from 'src/utils/supabase'
 import { formatFunctionName } from 'src/utils/utils'
 import TestCases from './TestCases'
 import TestResults from './TestResults'
@@ -22,7 +21,20 @@ interface TestCase {
 }
 export default function Results({ id, program, fnName, setIsSubmitted }: Props) {
   const { profile } = useContext(AppContext)
-  const [testCases, setTestCases] = useState([{ input: '', expectedOutput: '' }])
+  const [testCases, setTestCases] = useState([
+    {
+      input: '4',
+      expectedOutput: '10'
+    },
+    {
+      input: '1',
+      expectedOutput: '1'
+    },
+    {
+      input: '6',
+      expectedOutput: '21'
+    }
+  ])
 
   const [activeTab, setActiveTab] = useState('1')
   const [time, setTime] = useState(0)
@@ -34,14 +46,14 @@ export default function Results({ id, program, fnName, setIsSubmitted }: Props) 
       result: string
     }[]
   >()
-  const getTestCases = async () => {
-    const { data, error } = await supabase.from('test_cases').select('*').eq('problem_id', id)
-    setTestCases(data?.[0].test_cases)
-  }
-  useEffect(() => {
-    setActiveTab('1')
-    getTestCases()
-  }, [id])
+  // const getTestCases = async () => {
+  //   const { data, error } = await supabase.from('test_cases').select('*').eq('problem_id', id)
+  //   setTestCases(data?.[0].test_cases)
+  // }
+  // useEffect(() => {
+  //   setActiveTab('1')
+  //   getTestCases()
+  // }, [id])
 
   const runTests = (testCases: TestCase[]) => {
     const results = testCases.map((testCase) => {
@@ -111,13 +123,13 @@ export default function Results({ id, program, fnName, setIsSubmitted }: Props) 
     const memory = memoryEnd - memoryStart
     const time = timeEnd - timeStart
     if (results?.every((result) => String(result.result) === result.expectedOutput)) {
-      await authApi.submit({
-        problem_id: id,
-        user_id: profile?.id,
-        program,
-        time: time.toFixed(2),
-        memory
-      })
+      // await authApi.submit({
+      //   problem_id: id,
+      //   user_id: profile?.id,
+      //   program,
+      //   time: time.toFixed(2),
+      //   memory
+      // })
       setIsSubmitted(true)
     }
   }
@@ -127,7 +139,7 @@ export default function Results({ id, program, fnName, setIsSubmitted }: Props) 
       <Button type='default' onClick={handleRunCode} shape='default'>
         <CaretRightOutlined size={10} /> Chạy thử
       </Button>
-      <Button
+      {/* <Button
         type='primary'
         onClick={handleSubmit}
         disabled={!results?.every((result) => String(result.result) === result.expectedOutput)}
@@ -135,7 +147,7 @@ export default function Results({ id, program, fnName, setIsSubmitted }: Props) 
         className='ml-2'
       >
         <CloudUploadOutlined size={10} /> Nộp bài
-      </Button>
+      </Button> */}
       <Tabs defaultActiveKey={'1'} onChange={(key) => setActiveTab(key)} activeKey={String(activeTab)} items={items} />
     </div>
   )

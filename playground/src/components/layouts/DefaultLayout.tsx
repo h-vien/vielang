@@ -21,42 +21,42 @@ export default function DefaultLayout({ children }: ReactWithChild) {
     }
   }
 
-  const items: MenuProps['items'] = [
-    {
-      key: '1',
-      label: (
-        <div>
-          <Avatar>{profile?.user_name.slice(0, 1).toLocaleUpperCase()}</Avatar>
-          <Typography.Text className='ml-2 font-bold'>{profile?.user_name}</Typography.Text>
-        </div>
-      )
-    },
-    {
-      key: '2',
-      label: (
-        <span>
-          <CodeSandboxOutlined className='mr-2' /> Trang code của tôi
-        </span>
-      )
-    },
-    {
-      key: '3',
-      label: (
-        <span className='text-black text-le'>
-          <LogoutOutlined className='mr-2' /> Đăng xuất
-        </span>
-      )
-    }
-  ]
+  // const items: MenuProps['items'] = [
+  //   {
+  //     key: '1',
+  //     label: (
+  //       <div>
+  //         <Avatar>{profile?.user_name.slice(0, 1).toLocaleUpperCase()}</Avatar>
+  //         <Typography.Text className='ml-2 font-bold'>{profile?.user_name}</Typography.Text>
+  //       </div>
+  //     )
+  //   },
+  //   {
+  //     key: '2',
+  //     label: (
+  //       <span>
+  //         <CodeSandboxOutlined className='mr-2' /> Trang code của tôi
+  //       </span>
+  //     )
+  //   },
+  //   {
+  //     key: '3',
+  //     label: (
+  //       <span className='text-black text-le'>
+  //         <LogoutOutlined className='mr-2' /> Đăng xuất
+  //       </span>
+  //     )
+  //   }
+  // ]
   return (
     <>
       <nav className='container w-full h-12 px-4 flex items-center justify-between'>
         <Typography className='text-lg text-emerald-500 font-bold'>VieLang</Typography>
-        <div className='flex items-center'>
+        {/* <div className='flex items-center'>
           <Dropdown menu={{ items, onClick }} placement='bottomRight' arrow>
             <Avatar>{profile?.user_name.slice(0, 1).toLocaleUpperCase()}</Avatar>
           </Dropdown>
-        </div>
+        </div> */}
       </nav>
       {children}
     </>

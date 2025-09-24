@@ -1,7 +1,7 @@
 import { Button, Form, Input, Space, Typography } from 'antd'
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import authApi from 'src/apis/auth.api'
+// import authApi from 'src/apis/auth.api'
 import { AppContext } from 'src/context/app'
 import { setProfileToLS } from 'src/utils/auth'
 
@@ -9,15 +9,15 @@ export default function Login() {
   const { setProfile } = useContext(AppContext)
   const navigate = useNavigate()
   const onFinish = async (values: any) => {
-    const { data } = await authApi.login({
-      user_name: values.username,
-      password: values.password
-    })
-    if (data) {
-      setProfile(data as any)
-      setProfileToLS(data as any)
-      navigate('/')
-    }
+    // const { data } = await authApi.login({
+    //   user_name: values.username,
+    //   password: values.password
+    // })
+    // if (data) {
+    //   setProfile(data as any)
+    //   setProfileToLS(data as any)
+    //   navigate('/')
+    // }
   }
   return (
     <div className='flex items-center flex-col justify-center w-full h-screen'>

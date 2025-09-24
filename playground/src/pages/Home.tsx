@@ -6,7 +6,6 @@ import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import authApi from 'src/apis/auth.api'
 import Results from 'src/components/Results'
 import { AppContext } from 'src/context/app'
 import { createDependencyProposals } from 'src/editor/autocomplete'
@@ -18,22 +17,17 @@ const MOCK_DATA = [
     id: 'test_1',
     serial: 1,
     created_at: '2024-05-26T13:31:09.945224+00:00',
-    title: 'Demo switch case',
-    code: 'khai báo tuổi tác = 12;\n    duyệt(tuổi tác){\n        trường hợp 20: \n            in ra("bạn 20 tuổi");\n            phá huỷ;\n        trường hợp 12: \n            in ra("bạn 12 tuổi");\n            phá huỷ;\n        mặc định: \n            in ra("mặc định ở ");\n    }'
-  },
-  {
-    id: 'test_2',
-    serial: 2,
-    created_at: '2024-05-26T13:31:09.945224+00:00',
-    title: 'Demo for statement',
-    code: 'lặp(khai báo i = 0 ;i < 5 ; i++){\n      in ra(i)\n  }'
-  },
-  {
-    id: 'test_3',
-    serial: 3,
-    created_at: '2024-05-26T13:31:09.945224+00:00',
-    title: 'Demo while statement',
-    code: 'khai báo a = 0;\n  khi mà (a < 4){\n    in ra (a)\n    a++\n  }'
+    title: 'Tính tổng từ 1 đến n',
+    code: 'hàm Tính tổng (n){ \n    khai báo kq= 1\n    lặp (khai báo i =2; i<= n; i++) {\n        kq = kq + i;\n    }\n    trả về kq\n}',
+    meta_data: {
+      functionName: 'Tính tổng',
+      params: '(n)',
+      description: 'Tính tổng từ 1 đến số n',
+      input: 4,
+      output: 10
+    },
+    tag: 'number',
+    difficulty: 'easy'
   }
 ]
 
