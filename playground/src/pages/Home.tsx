@@ -57,12 +57,13 @@ export default function Home() {
   }
 
   const getProblems = async () => {
-    const { data: problems, error } = await authApi.getProblems(profile?.id ?? '')
+    // const { data: problems, error } = await authApi.getProblems(profile?.id ?? '')
+    const problems = MOCK_DATA
     if (problems) {
       setProblems(problems)
       setSelectedProblem(problems.find((problem) => problem.serial === 1))
     }
-    if (error) toast(error.message, { type: 'error' })
+    // if (error) toast(error.message, { type: 'error' })
   }
 
   useEffect(() => {
